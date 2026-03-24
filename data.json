@@ -1,72 +1,1780 @@
 {
   "meta": {
     "scan_date": "2026-03-24",
-    "scan_time": "18:11 IST",
-    "total_indian": 0,
-    "total_us": 0,
-    "bull_signals_india": 0,
+    "scan_time": "19:11 IST",
+    "total_indian": 30,
+    "total_us": 20,
+    "bull_signals_india": 4,
     "sell_signals_india": 0,
-    "bull_signals_us": 0,
-    "generated_by": "ZenPro Scanner v3.0",
-    "test_mode": false
+    "bull_signals_us": 1,
+    "generated_by": "ZenPro Scanner v3.2",
+    "test_mode": true
   },
   "breadth": {
-    "above_ema10": 0,
-    "above_ema20": 0,
-    "above_ema200": 0,
-    "below_ema10": 0,
-    "below_ema20": 0,
-    "below_ema200": 0,
+    "above_ema10": 2,
+    "above_ema20": 2,
+    "above_ema200": 5,
+    "below_ema10": 28,
+    "below_ema20": 28,
+    "below_ema200": 25,
     "overbought_rsi70": 0,
-    "oversold_rsi30": 0,
-    "neutral": 0,
-    "total": 0
+    "oversold_rsi30": 4,
+    "neutral": 26,
+    "total": 30
   },
-  "indices": [],
-  "global_assets": [],
-  "gold_ratios": [],
-  "dxy_ratios": [],
-  "bullish_signals": [],
+  "indices": [
+    {
+      "symbol": "NIFTY 50",
+      "price": 22912.4,
+      "change_pct": 1.78,
+      "rsi": 33.9,
+      "signal": "BULLISH",
+      "ema200_status": "BELOW",
+      "ema200": 25037.39
+    },
+    {
+      "symbol": "BANK NIFTY",
+      "price": 52605.65,
+      "change_pct": 2.27,
+      "rsi": 31.3,
+      "signal": "BULLISH",
+      "ema200_status": "BELOW",
+      "ema200": 57095.55
+    },
+    {
+      "symbol": "NIFTY IT",
+      "price": 29648.9,
+      "change_pct": 1.72,
+      "rsi": 38.4,
+      "signal": "BULLISH",
+      "ema200_status": "BELOW",
+      "ema200": 35567.27
+    },
+    {
+      "symbol": "NIFTY AUTO",
+      "price": 24515.25,
+      "change_pct": 2.43,
+      "rsi": 38.7,
+      "signal": "BULLISH",
+      "ema200_status": "BELOW",
+      "ema200": 26230.36
+    },
+    {
+      "symbol": "NIFTY PHARMA",
+      "price": 22239.8,
+      "change_pct": 0.85,
+      "rsi": 44.0,
+      "signal": "BULLISH",
+      "ema200_status": "BELOW",
+      "ema200": 22267.25
+    },
+    {
+      "symbol": "NIFTY FMCG",
+      "price": 46408.3,
+      "change_pct": 1.25,
+      "rsi": 28.8,
+      "signal": "BULLISH",
+      "ema200_status": "BELOW",
+      "ema200": 53553.24
+    },
+    {
+      "symbol": "NIFTY METAL",
+      "price": 11059.15,
+      "change_pct": 1.8,
+      "rsi": 39.6,
+      "signal": "BULLISH",
+      "ema200_status": "ABOVE",
+      "ema200": 10636.55
+    },
+    {
+      "symbol": "NIFTY REALTY",
+      "price": 673.95,
+      "change_pct": 1.59,
+      "rsi": 30.4,
+      "signal": "BULLISH",
+      "ema200_status": "BELOW",
+      "ema200": 864.48
+    },
+    {
+      "symbol": "NIFTY ENERGY",
+      "price": 35082.45,
+      "change_pct": 0.7,
+      "rsi": 42.4,
+      "signal": "BULLISH",
+      "ema200_status": "BELOW",
+      "ema200": 35633.07
+    },
+    {
+      "symbol": "NIFTY MEDIA",
+      "price": 1296.55,
+      "change_pct": 3.45,
+      "rsi": 40.9,
+      "signal": "BULLISH",
+      "ema200_status": "BELOW",
+      "ema200": 1503.9
+    },
+    {
+      "symbol": "NIFTY INFRA",
+      "price": 8734.2,
+      "change_pct": 1.87,
+      "rsi": 38.3,
+      "signal": "BULLISH",
+      "ema200_status": "BELOW",
+      "ema200": 9217.91
+    },
+    {
+      "symbol": "PSU BANK",
+      "price": 8357.55,
+      "change_pct": 1.53,
+      "rsi": 36.7,
+      "signal": "BULLISH",
+      "ema200_status": "ABOVE",
+      "ema200": 8129.61
+    },
+    {
+      "symbol": "MIDCAP 50",
+      "price": 15411.75,
+      "change_pct": 2.74,
+      "rsi": 38.9,
+      "signal": "BULLISH",
+      "ema200_status": "BELOW",
+      "ema200": 16483.72
+    }
+  ],
+  "global_assets": [
+    {
+      "symbol": "DXY",
+      "price": 99.46,
+      "change_pct": 0.51,
+      "rsi": 55.0
+    },
+    {
+      "symbol": "GOLD",
+      "price": 4366.1,
+      "change_pct": -0.86,
+      "rsi": 27.1
+    },
+    {
+      "symbol": "SILVER",
+      "price": 68.29,
+      "change_pct": -1.11,
+      "rsi": 34.4
+    },
+    {
+      "symbol": "CRUDE",
+      "price": 92.47,
+      "change_pct": 4.92,
+      "rsi": 60.0
+    },
+    {
+      "symbol": "INDIA VIX",
+      "price": 24.74,
+      "change_pct": -7.44,
+      "rsi": 62.6
+    },
+    {
+      "symbol": "US VIX",
+      "price": 27.38,
+      "change_pct": 4.7,
+      "rsi": 59.0
+    },
+    {
+      "symbol": "USDINR",
+      "price": 93.79,
+      "change_pct": -0.11,
+      "rsi": 70.8
+    },
+    {
+      "symbol": "S&P 500",
+      "price": 6527.98,
+      "change_pct": -0.81,
+      "rsi": 34.4
+    },
+    {
+      "symbol": "NASDAQ",
+      "price": 21733.16,
+      "change_pct": -0.97,
+      "rsi": 37.3
+    },
+    {
+      "symbol": "DOW JONES",
+      "price": 45774.29,
+      "change_pct": -0.94,
+      "rsi": 31.7
+    },
+    {
+      "symbol": "RUSSELL 2000",
+      "price": 2494.23,
+      "change_pct": 2.29,
+      "rsi": 42.2
+    }
+  ],
+  "gold_ratios": [
+    {
+      "index": "NIFTY 50",
+      "ratio": 5.2478,
+      "change": 1.78,
+      "trend": "UP"
+    },
+    {
+      "index": "BANK NIFTY",
+      "ratio": 12.0487,
+      "change": 2.27,
+      "trend": "UP"
+    },
+    {
+      "index": "NIFTY IT",
+      "ratio": 6.7907,
+      "change": 1.72,
+      "trend": "UP"
+    },
+    {
+      "index": "NIFTY AUTO",
+      "ratio": 5.6149,
+      "change": 2.43,
+      "trend": "UP"
+    },
+    {
+      "index": "NIFTY PHARMA",
+      "ratio": 5.0937,
+      "change": 0.85,
+      "trend": "UP"
+    },
+    {
+      "index": "NIFTY FMCG",
+      "ratio": 10.6292,
+      "change": 1.25,
+      "trend": "UP"
+    },
+    {
+      "index": "NIFTY METAL",
+      "ratio": 2.533,
+      "change": 1.8,
+      "trend": "UP"
+    },
+    {
+      "index": "NIFTY REALTY",
+      "ratio": 0.1544,
+      "change": 1.59,
+      "trend": "UP"
+    },
+    {
+      "index": "NIFTY ENERGY",
+      "ratio": 8.0352,
+      "change": 0.7,
+      "trend": "UP"
+    },
+    {
+      "index": "NIFTY MEDIA",
+      "ratio": 0.297,
+      "change": 3.45,
+      "trend": "UP"
+    },
+    {
+      "index": "NIFTY INFRA",
+      "ratio": 2.0005,
+      "change": 1.87,
+      "trend": "UP"
+    },
+    {
+      "index": "PSU BANK",
+      "ratio": 1.9142,
+      "change": 1.53,
+      "trend": "UP"
+    },
+    {
+      "index": "MIDCAP 50",
+      "ratio": 3.5299,
+      "change": 2.74,
+      "trend": "UP"
+    }
+  ],
+  "dxy_ratios": [
+    {
+      "index": "NIFTY 50",
+      "ratio": 230.37,
+      "change": 1.78,
+      "trend": "UP"
+    },
+    {
+      "index": "BANK NIFTY",
+      "ratio": 528.92,
+      "change": 2.27,
+      "trend": "UP"
+    },
+    {
+      "index": "NIFTY IT",
+      "ratio": 298.1,
+      "change": 1.72,
+      "trend": "UP"
+    },
+    {
+      "index": "NIFTY AUTO",
+      "ratio": 246.49,
+      "change": 2.43,
+      "trend": "UP"
+    },
+    {
+      "index": "NIFTY PHARMA",
+      "ratio": 223.61,
+      "change": 0.85,
+      "trend": "UP"
+    },
+    {
+      "index": "NIFTY FMCG",
+      "ratio": 466.61,
+      "change": 1.25,
+      "trend": "UP"
+    },
+    {
+      "index": "NIFTY METAL",
+      "ratio": 111.19,
+      "change": 1.8,
+      "trend": "UP"
+    },
+    {
+      "index": "NIFTY REALTY",
+      "ratio": 6.78,
+      "change": 1.59,
+      "trend": "UP"
+    },
+    {
+      "index": "NIFTY ENERGY",
+      "ratio": 352.73,
+      "change": 0.7,
+      "trend": "UP"
+    },
+    {
+      "index": "NIFTY MEDIA",
+      "ratio": 13.04,
+      "change": 3.45,
+      "trend": "UP"
+    },
+    {
+      "index": "NIFTY INFRA",
+      "ratio": 87.82,
+      "change": 1.87,
+      "trend": "UP"
+    },
+    {
+      "index": "PSU BANK",
+      "ratio": 84.03,
+      "change": 1.53,
+      "trend": "UP"
+    },
+    {
+      "index": "MIDCAP 50",
+      "ratio": 154.96,
+      "change": 2.74,
+      "trend": "UP"
+    }
+  ],
+  "bullish_signals": [
+    {
+      "symbol": "CRAFTSMAN",
+      "tf": "Daily",
+      "signal": "EMA 200 Cross \u2191",
+      "direction": "BULLISH",
+      "price": 6843.0,
+      "rsi": 40.4,
+      "vol_ratio": 0.78,
+      "ema10": "BELOW",
+      "ema20": "BELOW",
+      "ema50": "BELOW",
+      "ema200": "ABOVE",
+      "change_pct": 4.53
+    },
+    {
+      "symbol": "ADANIPOWER",
+      "tf": "Daily",
+      "signal": "EMA 10/20 Squeeze \u2191",
+      "direction": "BULLISH",
+      "price": 150.11,
+      "rsi": 56.1,
+      "vol_ratio": 0.93,
+      "ema10": "ABOVE",
+      "ema20": "ABOVE",
+      "ema50": "ABOVE",
+      "ema200": "ABOVE",
+      "change_pct": 1.53
+    },
+    {
+      "symbol": "LUPIN",
+      "tf": "Daily",
+      "signal": "RSI/SMA Cross \u2191",
+      "direction": "BULLISH",
+      "price": 2331.8,
+      "rsi": 57.2,
+      "vol_ratio": 1.4,
+      "ema10": "ABOVE",
+      "ema20": "ABOVE",
+      "ema50": "ABOVE",
+      "ema200": "ABOVE",
+      "change_pct": 1.53
+    },
+    {
+      "symbol": "LUPIN",
+      "tf": "Daily",
+      "signal": "EMA 10/20 Squeeze \u2191",
+      "direction": "BULLISH",
+      "price": 2331.8,
+      "rsi": 57.2,
+      "vol_ratio": 1.4,
+      "ema10": "ABOVE",
+      "ema20": "ABOVE",
+      "ema50": "ABOVE",
+      "ema200": "ABOVE",
+      "change_pct": 1.53
+    }
+  ],
   "sell_signals": [],
-  "us_bullish": [],
-  "us_sell": [],
-  "us_rs": [],
-  "ipo_3y": [],
-  "ipo_5y": [],
-  "ipo_10y": [],
+  "us_bullish": [
+    {
+      "symbol": "MRK",
+      "tf": "Daily",
+      "signal": "EMA 10/20 Squeeze \u2191",
+      "direction": "BULLISH",
+      "price": 115.83,
+      "rsi": 49.5,
+      "vol_ratio": 0.04,
+      "ema10": "ABOVE",
+      "ema20": "BELOW",
+      "ema50": "ABOVE",
+      "ema200": "ABOVE",
+      "change_pct": 0.13
+    }
+  ],
+  "us_sell": [
+    {
+      "symbol": "AMZN",
+      "tf": "Daily",
+      "signal": "RSI/SMA Cross \u2193",
+      "direction": "BEARISH",
+      "price": 207.05,
+      "rsi": 43.7,
+      "vol_ratio": 0.05,
+      "ema10": "BELOW",
+      "ema20": "BELOW",
+      "ema50": "BELOW",
+      "ema200": "BELOW",
+      "change_pct": -1.47
+    },
+    {
+      "symbol": "JNJ",
+      "tf": "Daily",
+      "signal": "MACD Zero Cross \u2193",
+      "direction": "BEARISH",
+      "price": 233.93,
+      "rsi": 39.8,
+      "vol_ratio": 0.04,
+      "ema10": "BELOW",
+      "ema20": "BELOW",
+      "ema50": "ABOVE",
+      "ema200": "ABOVE",
+      "change_pct": -0.63
+    }
+  ],
+  "us_rs": [
+    {
+      "symbol": "GOOGL",
+      "name": "Alphabet Inc.",
+      "rs_score": 99,
+      "price": 298.35,
+      "change_pct": -1.23,
+      "ema200": "ABOVE",
+      "near_52w": false,
+      "sector": "Communication Services"
+    },
+    {
+      "symbol": "JNJ",
+      "name": "Johnson & Johnson",
+      "rs_score": 77.2,
+      "price": 233.93,
+      "change_pct": -0.63,
+      "ema200": "ABOVE",
+      "near_52w": false,
+      "sector": "Healthcare"
+    },
+    {
+      "symbol": "XOM",
+      "name": "Exxon Mobil Corporation",
+      "rs_score": 76.8,
+      "price": 164.38,
+      "change_pct": 2.02,
+      "ema200": "ABOVE",
+      "near_52w": true,
+      "sector": "Energy"
+    },
+    {
+      "symbol": "NVDA",
+      "name": "NVIDIA Corporation",
+      "rs_score": 74.7,
+      "price": 174.94,
+      "change_pct": -0.4,
+      "ema200": "ABOVE",
+      "near_52w": false,
+      "sector": "Technology"
+    },
+    {
+      "symbol": "WMT",
+      "name": "Walmart Inc.",
+      "rs_score": 71.2,
+      "price": 121.2,
+      "change_pct": 0.4,
+      "ema200": "ABOVE",
+      "near_52w": false,
+      "sector": "Consumer Defensive"
+    },
+    {
+      "symbol": "TSLA",
+      "name": "Tesla, Inc.",
+      "rs_score": 69.5,
+      "price": 383.35,
+      "change_pct": 0.66,
+      "ema200": "BELOW",
+      "near_52w": false,
+      "sector": "Consumer Cyclical"
+    },
+    {
+      "symbol": "CVX",
+      "name": "Chevron Corporation",
+      "rs_score": 64.5,
+      "price": 207.45,
+      "change_pct": 1.09,
+      "ema200": "ABOVE",
+      "near_52w": true,
+      "sector": "Energy"
+    },
+    {
+      "symbol": "MRK",
+      "name": "Merck & Company, Inc.",
+      "rs_score": 63.4,
+      "price": 115.83,
+      "change_pct": 0.13,
+      "ema200": "ABOVE",
+      "near_52w": false,
+      "sector": "Healthcare"
+    },
+    {
+      "symbol": "JPM",
+      "name": "JP Morgan Chase & Co.",
+      "rs_score": 54.3,
+      "price": 288.35,
+      "change_pct": -0.54,
+      "ema200": "BELOW",
+      "near_52w": false,
+      "sector": "Financial Services"
+    },
+    {
+      "symbol": "AAPL",
+      "name": "Apple Inc.",
+      "rs_score": 50.9,
+      "price": 251.54,
+      "change_pct": 0.02,
+      "ema200": "ABOVE",
+      "near_52w": false,
+      "sector": "Technology"
+    },
+    {
+      "symbol": "AMZN",
+      "name": "Amazon.com, Inc.",
+      "rs_score": 40.9,
+      "price": 207.05,
+      "change_pct": -1.47,
+      "ema200": "BELOW",
+      "near_52w": false,
+      "sector": "Consumer Cyclical"
+    },
+    {
+      "symbol": "ABBV",
+      "name": "AbbVie Inc.",
+      "rs_score": 39.8,
+      "price": 203.57,
+      "change_pct": -0.67,
+      "ema200": "BELOW",
+      "near_52w": false,
+      "sector": "Healthcare"
+    },
+    {
+      "symbol": "META",
+      "name": "Meta Platforms, Inc.",
+      "rs_score": 36.8,
+      "price": 596.97,
+      "change_pct": -1.17,
+      "ema200": "BELOW",
+      "near_52w": false,
+      "sector": "Communication Services"
+    },
+    {
+      "symbol": "MSFT",
+      "name": "Microsoft Corporation",
+      "rs_score": 36.5,
+      "price": 376.17,
+      "change_pct": -1.78,
+      "ema200": "BELOW",
+      "near_52w": false,
+      "sector": "Technology"
+    },
+    {
+      "symbol": "MA",
+      "name": "Mastercard Incorporated",
+      "rs_score": 32.9,
+      "price": 496.5,
+      "change_pct": -0.78,
+      "ema200": "BELOW",
+      "near_52w": false,
+      "sector": "Financial Services"
+    },
+    {
+      "symbol": "HD",
+      "name": "Home Depot, Inc. (The)",
+      "rs_score": 32.4,
+      "price": 323.74,
+      "change_pct": -2.16,
+      "ema200": "BELOW",
+      "near_52w": false,
+      "sector": "Consumer Cyclical"
+    },
+    {
+      "symbol": "BRK-B",
+      "name": "Berkshire Hathaway Inc. New",
+      "rs_score": 32.3,
+      "price": 479.64,
+      "change_pct": -0.07,
+      "ema200": "BELOW",
+      "near_52w": false,
+      "sector": "Financial Services"
+    },
+    {
+      "symbol": "PG",
+      "name": "Procter & Gamble Company (The)",
+      "rs_score": 30.5,
+      "price": 143.34,
+      "change_pct": -0.45,
+      "ema200": "BELOW",
+      "near_52w": false,
+      "sector": "Consumer Defensive"
+    },
+    {
+      "symbol": "V",
+      "name": "Visa Inc.",
+      "rs_score": 30.2,
+      "price": 302.16,
+      "change_pct": -0.75,
+      "ema200": "BELOW",
+      "near_52w": false,
+      "sector": "Financial Services"
+    },
+    {
+      "symbol": "UNH",
+      "name": "UnitedHealth Group Incorporated",
+      "rs_score": 2.1,
+      "price": 268.4,
+      "change_pct": -0.42,
+      "ema200": "BELOW",
+      "near_52w": false,
+      "sector": "Healthcare"
+    }
+  ],
+  "ipo_3y": [
+    {
+      "symbol": "DELHIVERY",
+      "tf": "Daily",
+      "signal": "EMA 200 Cross \u2191",
+      "direction": "BULLISH",
+      "price": 418.9,
+      "rsi": 49.9,
+      "vol_ratio": 0.45,
+      "ema10": "ABOVE",
+      "ema20": "ABOVE",
+      "ema50": "BELOW",
+      "ema200": "ABOVE",
+      "change_pct": 1.82,
+      "age_group": "3Y"
+    },
+    {
+      "symbol": "NYKAA",
+      "tf": "Daily",
+      "signal": "RSI/SMA Cross \u2191",
+      "direction": "BULLISH",
+      "price": 240.05,
+      "rsi": 40.9,
+      "vol_ratio": 1.03,
+      "ema10": "BELOW",
+      "ema20": "BELOW",
+      "ema50": "BELOW",
+      "ema200": "ABOVE",
+      "change_pct": 2.26,
+      "age_group": "3Y"
+    },
+    {
+      "symbol": "NYKAA",
+      "tf": "Daily",
+      "signal": "EMA 200 Cross \u2191",
+      "direction": "BULLISH",
+      "price": 240.05,
+      "rsi": 40.9,
+      "vol_ratio": 1.03,
+      "ema10": "BELOW",
+      "ema20": "BELOW",
+      "ema50": "BELOW",
+      "ema200": "ABOVE",
+      "change_pct": 2.26,
+      "age_group": "3Y"
+    },
+    {
+      "symbol": "MEDPLUS",
+      "tf": "Daily",
+      "signal": "EMA 200 Cross \u2191",
+      "direction": "BULLISH",
+      "price": 822.15,
+      "rsi": 47.5,
+      "vol_ratio": 0.47,
+      "ema10": "BELOW",
+      "ema20": "BELOW",
+      "ema50": "BELOW",
+      "ema200": "ABOVE",
+      "change_pct": 3.06,
+      "age_group": "3Y"
+    }
+  ],
+  "ipo_5y": [
+    {
+      "symbol": "CRAFTSMAN",
+      "tf": "Daily",
+      "signal": "EMA 200 Cross \u2191",
+      "direction": "BULLISH",
+      "price": 6843.0,
+      "rsi": 40.4,
+      "vol_ratio": 0.78,
+      "ema10": "BELOW",
+      "ema20": "BELOW",
+      "ema50": "BELOW",
+      "ema200": "ABOVE",
+      "change_pct": 4.53,
+      "age_group": "5Y"
+    }
+  ],
+  "ipo_10y": [
+    {
+      "symbol": "AUBANK",
+      "tf": "Daily",
+      "signal": "EMA 200 Cross \u2191",
+      "direction": "BULLISH",
+      "price": 877.5,
+      "rsi": 38.7,
+      "vol_ratio": 0.56,
+      "ema10": "BELOW",
+      "ema20": "BELOW",
+      "ema50": "BELOW",
+      "ema200": "ABOVE",
+      "change_pct": 3.29,
+      "age_group": "10Y"
+    }
+  ],
   "ipo_15y": [],
-  "rs_india": [],
-  "wm_crosses": [],
-  "vol_spurt_30d": [],
-  "vol_spurt_1m": [],
-  "high_52w": [],
+  "rs_india": [
+    {
+      "symbol": "ADANIPOWER",
+      "rs_score": 87.8,
+      "price": 150.11,
+      "change_pct": 1.53,
+      "ema200": "ABOVE",
+      "near_52w": false
+    },
+    {
+      "symbol": "CRAFTSMAN",
+      "rs_score": 87.0,
+      "price": 6843.0,
+      "change_pct": 4.53,
+      "ema200": "ABOVE",
+      "near_52w": false
+    },
+    {
+      "symbol": "CEATLTD",
+      "rs_score": 74.6,
+      "price": 3451.7,
+      "change_pct": 1.93,
+      "ema200": "BELOW",
+      "near_52w": false
+    },
+    {
+      "symbol": "TITAN",
+      "rs_score": 74.2,
+      "price": 3899.5,
+      "change_pct": 1.2,
+      "ema200": "ABOVE",
+      "near_52w": false
+    },
+    {
+      "symbol": "KEI",
+      "rs_score": 73.2,
+      "price": 4126.0,
+      "change_pct": 3.4,
+      "ema200": "BELOW",
+      "near_52w": false
+    },
+    {
+      "symbol": "BAJAJ-AUTO",
+      "rs_score": 67.0,
+      "price": 8898.0,
+      "change_pct": 1.39,
+      "ema200": "BELOW",
+      "near_52w": false
+    },
+    {
+      "symbol": "LUPIN",
+      "rs_score": 63.6,
+      "price": 2331.8,
+      "change_pct": 1.53,
+      "ema200": "ABOVE",
+      "near_52w": true
+    },
+    {
+      "symbol": "IDFCFIRSTB",
+      "rs_score": 62.4,
+      "price": 62.09,
+      "change_pct": 3.07,
+      "ema200": "BELOW",
+      "near_52w": false
+    },
+    {
+      "symbol": "M&M",
+      "rs_score": 60.2,
+      "price": 3031.3,
+      "change_pct": 2.55,
+      "ema200": "BELOW",
+      "near_52w": false
+    },
+    {
+      "symbol": "PFC",
+      "rs_score": 54.9,
+      "price": 398.75,
+      "change_pct": 0.19,
+      "ema200": "ABOVE",
+      "near_52w": false
+    },
+    {
+      "symbol": "ZYDUSLIFE",
+      "rs_score": 51.3,
+      "price": 886.4,
+      "change_pct": 3.0,
+      "ema200": "BELOW",
+      "near_52w": false
+    },
+    {
+      "symbol": "TORNTPOWER",
+      "rs_score": 49.5,
+      "price": 1366.3,
+      "change_pct": 0.26,
+      "ema200": "BELOW",
+      "near_52w": false
+    },
+    {
+      "symbol": "ELGIEQUIP",
+      "rs_score": 48.5,
+      "price": 480.95,
+      "change_pct": 1.03,
+      "ema200": "BELOW",
+      "near_52w": false
+    },
+    {
+      "symbol": "GODFRYPHLP",
+      "rs_score": 48.1,
+      "price": 1897.5,
+      "change_pct": 2.9,
+      "ema200": "BELOW",
+      "near_52w": false
+    },
+    {
+      "symbol": "MPHASIS",
+      "rs_score": 48.1,
+      "price": 2116.8,
+      "change_pct": 2.58,
+      "ema200": "BELOW",
+      "near_52w": false
+    },
+    {
+      "symbol": "CHOLAFIN",
+      "rs_score": 47.6,
+      "price": 1418.9,
+      "change_pct": 2.75,
+      "ema200": "BELOW",
+      "near_52w": false
+    },
+    {
+      "symbol": "ISGEC",
+      "rs_score": 43.1,
+      "price": 882.7,
+      "change_pct": -0.04,
+      "ema200": "BELOW",
+      "near_52w": false
+    },
+    {
+      "symbol": "DEEPAKFERT",
+      "rs_score": 40.4,
+      "price": 921.05,
+      "change_pct": 5.61,
+      "ema200": "BELOW",
+      "near_52w": false
+    },
+    {
+      "symbol": "CHOLAHLDNG",
+      "rs_score": 39.7,
+      "price": 1374.6,
+      "change_pct": 1.75,
+      "ema200": "BELOW",
+      "near_52w": false
+    },
+    {
+      "symbol": "KALYANKJIL",
+      "rs_score": 38.3,
+      "price": 371.7,
+      "change_pct": 2.48,
+      "ema200": "BELOW",
+      "near_52w": false
+    },
+    {
+      "symbol": "IGL",
+      "rs_score": 36.2,
+      "price": 149.89,
+      "change_pct": 1.29,
+      "ema200": "BELOW",
+      "near_52w": false
+    },
+    {
+      "symbol": "RECLTD",
+      "rs_score": 36.0,
+      "price": 320.8,
+      "change_pct": 1.37,
+      "ema200": "BELOW",
+      "near_52w": false
+    },
+    {
+      "symbol": "ITC",
+      "rs_score": 32.6,
+      "price": 291.25,
+      "change_pct": 0.28,
+      "ema200": "BELOW",
+      "near_52w": false
+    },
+    {
+      "symbol": "INDHOTEL",
+      "rs_score": 32.3,
+      "price": 604.05,
+      "change_pct": 3.71,
+      "ema200": "BELOW",
+      "near_52w": false
+    },
+    {
+      "symbol": "TATACHEM",
+      "rs_score": 31.6,
+      "price": 608.1,
+      "change_pct": -0.12,
+      "ema200": "BELOW",
+      "near_52w": false
+    },
+    {
+      "symbol": "GODREJPROP",
+      "rs_score": 31.1,
+      "price": 1540.5,
+      "change_pct": 2.89,
+      "ema200": "BELOW",
+      "near_52w": false
+    },
+    {
+      "symbol": "ACC",
+      "rs_score": 28.9,
+      "price": 1334.3,
+      "change_pct": 0.34,
+      "ema200": "BELOW",
+      "near_52w": false
+    },
+    {
+      "symbol": "JUBLFOOD",
+      "rs_score": 28.9,
+      "price": 448.6,
+      "change_pct": 2.41,
+      "ema200": "BELOW",
+      "near_52w": false
+    },
+    {
+      "symbol": "BRIGADE",
+      "rs_score": 27.1,
+      "price": 645.4,
+      "change_pct": 1.69,
+      "ema200": "BELOW",
+      "near_52w": false
+    },
+    {
+      "symbol": "MANYAVAR",
+      "rs_score": 8.8,
+      "price": 350.95,
+      "change_pct": 3.74,
+      "ema200": "BELOW",
+      "near_52w": false
+    }
+  ],
+  "wm_crosses": [
+    {
+      "symbol": "TORNTPOWER",
+      "tf": "Weekly",
+      "signal": "EMA 10 Cross \u2193",
+      "direction": "BEARISH",
+      "price": 1366.3,
+      "rsi": 49.4,
+      "vol_ratio": 0,
+      "ema10": "BELOW",
+      "ema20": "BELOW",
+      "ema50": "ABOVE",
+      "ema200": "ABOVE",
+      "change_pct": -5.82
+    },
+    {
+      "symbol": "TORNTPOWER",
+      "tf": "Weekly",
+      "signal": "EMA 20 Cross \u2193",
+      "direction": "BEARISH",
+      "price": 1366.3,
+      "rsi": 49.4,
+      "vol_ratio": 0,
+      "ema10": "BELOW",
+      "ema20": "BELOW",
+      "ema50": "ABOVE",
+      "ema200": "ABOVE",
+      "change_pct": -5.82
+    },
+    {
+      "symbol": "TORNTPOWER",
+      "tf": "Monthly",
+      "signal": "EMA 10 Cross \u2193",
+      "direction": "BEARISH",
+      "price": 1366.3,
+      "rsi": 53.2,
+      "vol_ratio": 0,
+      "ema10": "BELOW",
+      "ema20": "ABOVE",
+      "ema50": "ABOVE",
+      "ema200": "BELOW",
+      "change_pct": -11.87
+    },
+    {
+      "symbol": "ELGIEQUIP",
+      "tf": "Monthly",
+      "signal": "EMA 10 Cross \u2193",
+      "direction": "BEARISH",
+      "price": 480.95,
+      "rsi": 47.2,
+      "vol_ratio": 0,
+      "ema10": "BELOW",
+      "ema20": "BELOW",
+      "ema50": "ABOVE",
+      "ema200": "BELOW",
+      "change_pct": -10.06
+    },
+    {
+      "symbol": "ELGIEQUIP",
+      "tf": "Monthly",
+      "signal": "EMA 20 Cross \u2193",
+      "direction": "BEARISH",
+      "price": 480.95,
+      "rsi": 47.2,
+      "vol_ratio": 0,
+      "ema10": "BELOW",
+      "ema20": "BELOW",
+      "ema50": "ABOVE",
+      "ema200": "BELOW",
+      "change_pct": -10.06
+    },
+    {
+      "symbol": "BAJAJ-AUTO",
+      "tf": "Monthly",
+      "signal": "EMA 10 Cross \u2193",
+      "direction": "BEARISH",
+      "price": 8898.0,
+      "rsi": 55.4,
+      "vol_ratio": 0,
+      "ema10": "BELOW",
+      "ema20": "ABOVE",
+      "ema50": "ABOVE",
+      "ema200": "BELOW",
+      "change_pct": -10.77
+    },
+    {
+      "symbol": "M&M",
+      "tf": "Monthly",
+      "signal": "EMA 10 Cross \u2193",
+      "direction": "BEARISH",
+      "price": 3031.3,
+      "rsi": 54.2,
+      "vol_ratio": 0,
+      "ema10": "BELOW",
+      "ema20": "BELOW",
+      "ema50": "ABOVE",
+      "ema200": "BELOW",
+      "change_pct": -10.78
+    },
+    {
+      "symbol": "M&M",
+      "tf": "Monthly",
+      "signal": "EMA 20 Cross \u2193",
+      "direction": "BEARISH",
+      "price": 3031.3,
+      "rsi": 54.2,
+      "vol_ratio": 0,
+      "ema10": "BELOW",
+      "ema20": "BELOW",
+      "ema50": "ABOVE",
+      "ema200": "BELOW",
+      "change_pct": -10.78
+    },
+    {
+      "symbol": "ZYDUSLIFE",
+      "tf": "Monthly",
+      "signal": "EMA 20 Cross \u2193",
+      "direction": "BEARISH",
+      "price": 886.4,
+      "rsi": 50.1,
+      "vol_ratio": 0,
+      "ema10": "BELOW",
+      "ema20": "BELOW",
+      "ema50": "ABOVE",
+      "ema200": "BELOW",
+      "change_pct": -3.83
+    },
+    {
+      "symbol": "CHOLAFIN",
+      "tf": "Monthly",
+      "signal": "EMA 10 Cross \u2193",
+      "direction": "BEARISH",
+      "price": 1418.9,
+      "rsi": 49.8,
+      "vol_ratio": 0,
+      "ema10": "BELOW",
+      "ema20": "BELOW",
+      "ema50": "ABOVE",
+      "ema200": "BELOW",
+      "change_pct": -17.96
+    },
+    {
+      "symbol": "CHOLAFIN",
+      "tf": "Monthly",
+      "signal": "EMA 20 Cross \u2193",
+      "direction": "BEARISH",
+      "price": 1418.9,
+      "rsi": 49.8,
+      "vol_ratio": 0,
+      "ema10": "BELOW",
+      "ema20": "BELOW",
+      "ema50": "ABOVE",
+      "ema200": "BELOW",
+      "change_pct": -17.96
+    },
+    {
+      "symbol": "KEI",
+      "tf": "Monthly",
+      "signal": "EMA 10 Cross \u2193",
+      "direction": "BEARISH",
+      "price": 4126.0,
+      "rsi": 54.5,
+      "vol_ratio": 0,
+      "ema10": "BELOW",
+      "ema20": "ABOVE",
+      "ema50": "ABOVE",
+      "ema200": "BELOW",
+      "change_pct": -18.79
+    },
+    {
+      "symbol": "IDFCFIRSTB",
+      "tf": "Monthly",
+      "signal": "EMA 20 Cross \u2193",
+      "direction": "BEARISH",
+      "price": 62.09,
+      "rsi": 43.1,
+      "vol_ratio": 0,
+      "ema10": "BELOW",
+      "ema20": "BELOW",
+      "ema50": "BELOW",
+      "ema200": "BELOW",
+      "change_pct": -15.5
+    },
+    {
+      "symbol": "TITAN",
+      "tf": "Weekly",
+      "signal": "EMA 20 Cross \u2193",
+      "direction": "BEARISH",
+      "price": 3899.5,
+      "rsi": 47.7,
+      "vol_ratio": 0,
+      "ema10": "BELOW",
+      "ema20": "BELOW",
+      "ema50": "ABOVE",
+      "ema200": "ABOVE",
+      "change_pct": -5.04
+    }
+  ],
+  "vol_spurt_30d": [
+    {
+      "symbol": "CHOLAHLDNG",
+      "price": 1374.6,
+      "volume": 411208,
+      "vol_avg30": 201004,
+      "vol_ratio": 2.05,
+      "change_pct": 1.75,
+      "ema200": "BELOW"
+    },
+    {
+      "symbol": "DEEPAKFERT",
+      "price": 921.05,
+      "volume": 509977,
+      "vol_avg30": 257655,
+      "vol_ratio": 1.98,
+      "change_pct": 5.61,
+      "ema200": "BELOW"
+    },
+    {
+      "symbol": "IGL",
+      "price": 149.89,
+      "volume": 4832671,
+      "vol_avg30": 3123341,
+      "vol_ratio": 1.55,
+      "change_pct": 1.29,
+      "ema200": "BELOW"
+    },
+    {
+      "symbol": "ITC",
+      "price": 291.25,
+      "volume": 33332205,
+      "vol_avg30": 21555899,
+      "vol_ratio": 1.55,
+      "change_pct": 0.28,
+      "ema200": "BELOW"
+    },
+    {
+      "symbol": "PFC",
+      "price": 398.75,
+      "volume": 12402671,
+      "vol_avg30": 8101137,
+      "vol_ratio": 1.53,
+      "change_pct": 0.19,
+      "ema200": "ABOVE"
+    },
+    {
+      "symbol": "TITAN",
+      "price": 3899.5,
+      "volume": 1300523,
+      "vol_avg30": 875649,
+      "vol_ratio": 1.49,
+      "change_pct": 1.2,
+      "ema200": "ABOVE"
+    },
+    {
+      "symbol": "CHOLAFIN",
+      "price": 1418.9,
+      "volume": 2457386,
+      "vol_avg30": 1740409,
+      "vol_ratio": 1.41,
+      "change_pct": 2.75,
+      "ema200": "BELOW"
+    },
+    {
+      "symbol": "LUPIN",
+      "price": 2331.8,
+      "volume": 1275794,
+      "vol_avg30": 913067,
+      "vol_ratio": 1.4,
+      "change_pct": 1.53,
+      "ema200": "ABOVE"
+    },
+    {
+      "symbol": "BAJAJ-AUTO",
+      "price": 8898.0,
+      "volume": 438085,
+      "vol_avg30": 315936,
+      "vol_ratio": 1.39,
+      "change_pct": 1.39,
+      "ema200": "BELOW"
+    },
+    {
+      "symbol": "ACC",
+      "price": 1334.3,
+      "volume": 249453,
+      "vol_avg30": 195236,
+      "vol_ratio": 1.28,
+      "change_pct": 0.34,
+      "ema200": "BELOW"
+    },
+    {
+      "symbol": "TATACHEM",
+      "price": 608.1,
+      "volume": 633827,
+      "vol_avg30": 493687,
+      "vol_ratio": 1.28,
+      "change_pct": -0.12,
+      "ema200": "BELOW"
+    },
+    {
+      "symbol": "MANYAVAR",
+      "price": 350.95,
+      "volume": 601265,
+      "vol_avg30": 490102,
+      "vol_ratio": 1.23,
+      "change_pct": 3.74,
+      "ema200": "BELOW"
+    },
+    {
+      "symbol": "M&M",
+      "price": 3031.3,
+      "volume": 3943843,
+      "vol_avg30": 3267116,
+      "vol_ratio": 1.21,
+      "change_pct": 2.55,
+      "ema200": "BELOW"
+    },
+    {
+      "symbol": "RECLTD",
+      "price": 320.8,
+      "volume": 8841890,
+      "vol_avg30": 7410275,
+      "vol_ratio": 1.19,
+      "change_pct": 1.37,
+      "ema200": "BELOW"
+    },
+    {
+      "symbol": "MPHASIS",
+      "price": 2116.8,
+      "volume": 747214,
+      "vol_avg30": 636974,
+      "vol_ratio": 1.17,
+      "change_pct": 2.58,
+      "ema200": "BELOW"
+    },
+    {
+      "symbol": "INDHOTEL",
+      "price": 604.05,
+      "volume": 2989995,
+      "vol_avg30": 2611321,
+      "vol_ratio": 1.15,
+      "change_pct": 3.71,
+      "ema200": "BELOW"
+    }
+  ],
+  "vol_spurt_1m": [
+    {
+      "symbol": "ITC",
+      "price": 291.25,
+      "volume": 33332205,
+      "vol_ratio": 1.55,
+      "change_pct": 0.28,
+      "ema200": "BELOW"
+    },
+    {
+      "symbol": "IDFCFIRSTB",
+      "price": 62.09,
+      "volume": 24088358,
+      "vol_ratio": 0.36,
+      "change_pct": 3.07,
+      "ema200": "BELOW"
+    },
+    {
+      "symbol": "ADANIPOWER",
+      "price": 150.11,
+      "volume": 21759041,
+      "vol_ratio": 0.93,
+      "change_pct": 1.53,
+      "ema200": "ABOVE"
+    },
+    {
+      "symbol": "PFC",
+      "price": 398.75,
+      "volume": 12402671,
+      "vol_ratio": 1.53,
+      "change_pct": 0.19,
+      "ema200": "ABOVE"
+    },
+    {
+      "symbol": "RECLTD",
+      "price": 320.8,
+      "volume": 8841890,
+      "vol_ratio": 1.19,
+      "change_pct": 1.37,
+      "ema200": "BELOW"
+    },
+    {
+      "symbol": "IGL",
+      "price": 149.89,
+      "volume": 4832671,
+      "vol_ratio": 1.55,
+      "change_pct": 1.29,
+      "ema200": "BELOW"
+    },
+    {
+      "symbol": "M&M",
+      "price": 3031.3,
+      "volume": 3943843,
+      "vol_ratio": 1.21,
+      "change_pct": 2.55,
+      "ema200": "BELOW"
+    },
+    {
+      "symbol": "INDHOTEL",
+      "price": 604.05,
+      "volume": 2989995,
+      "vol_ratio": 1.15,
+      "change_pct": 3.71,
+      "ema200": "BELOW"
+    },
+    {
+      "symbol": "KALYANKJIL",
+      "price": 371.7,
+      "volume": 2901874,
+      "vol_ratio": 0.65,
+      "change_pct": 2.48,
+      "ema200": "BELOW"
+    },
+    {
+      "symbol": "CHOLAFIN",
+      "price": 1418.9,
+      "volume": 2457386,
+      "vol_ratio": 1.41,
+      "change_pct": 2.75,
+      "ema200": "BELOW"
+    },
+    {
+      "symbol": "JUBLFOOD",
+      "price": 448.6,
+      "volume": 2152059,
+      "vol_ratio": 0.92,
+      "change_pct": 2.41,
+      "ema200": "BELOW"
+    },
+    {
+      "symbol": "TITAN",
+      "price": 3899.5,
+      "volume": 1300523,
+      "vol_ratio": 1.49,
+      "change_pct": 1.2,
+      "ema200": "ABOVE"
+    },
+    {
+      "symbol": "LUPIN",
+      "price": 2331.8,
+      "volume": 1275794,
+      "vol_ratio": 1.4,
+      "change_pct": 1.53,
+      "ema200": "ABOVE"
+    }
+  ],
+  "high_52w": [
+    {
+      "symbol": "LUPIN",
+      "price": 2331.8,
+      "change_pct": 1.53,
+      "w52h": 2377.6,
+      "ath": 2381.29,
+      "rsi": 57.2,
+      "ema200": "ABOVE"
+    }
+  ],
   "all_time_high": [],
-  "near_ath_25pct": [],
+  "near_ath_25pct": [
+    {
+      "symbol": "CRAFTSMAN",
+      "price": 6843.0,
+      "change_pct": 4.53,
+      "w52h": 8220.0,
+      "ath": 8119.0,
+      "rsi": 40.4,
+      "ema200": "ABOVE"
+    },
+    {
+      "symbol": "KEI",
+      "price": 4126.0,
+      "change_pct": 3.4,
+      "w52h": 5303.0,
+      "ath": 5206.0,
+      "rsi": 39.1,
+      "ema200": "BELOW"
+    },
+    {
+      "symbol": "TITAN",
+      "price": 3899.5,
+      "change_pct": 1.2,
+      "w52h": 4378.4,
+      "ath": 4342.6,
+      "rsi": 36.1,
+      "ema200": "ABOVE"
+    },
+    {
+      "symbol": "CEATLTD",
+      "price": 3451.7,
+      "change_pct": 1.93,
+      "w52h": 4438.0,
+      "ath": 4302.7,
+      "rsi": 45.3,
+      "ema200": "BELOW"
+    },
+    {
+      "symbol": "M&M",
+      "price": 3031.3,
+      "change_pct": 2.55,
+      "w52h": 3839.9,
+      "ath": 3802.4,
+      "rsi": 39.9,
+      "ema200": "BELOW"
+    },
+    {
+      "symbol": "LUPIN",
+      "price": 2331.8,
+      "change_pct": 1.53,
+      "w52h": 2377.6,
+      "ath": 2381.29,
+      "rsi": 57.2,
+      "ema200": "ABOVE"
+    },
+    {
+      "symbol": "CHOLAFIN",
+      "price": 1418.9,
+      "change_pct": 2.75,
+      "w52h": 1831.5,
+      "ath": 1804.05,
+      "rsi": 29.5,
+      "ema200": "BELOW"
+    },
+    {
+      "symbol": "PFC",
+      "price": 398.75,
+      "change_pct": 0.19,
+      "w52h": 444.1,
+      "ath": 527.75,
+      "rsi": 47.8,
+      "ema200": "ABOVE"
+    },
+    {
+      "symbol": "ADANIPOWER",
+      "price": 150.11,
+      "change_pct": 1.53,
+      "w52h": 182.7,
+      "ath": 174.9,
+      "rsi": 56.1,
+      "ema200": "ABOVE"
+    }
+  ],
   "mutual_funds": [
+    {
+      "code": 125354,
+      "name": "Axis Small Cap Fund - Direct Plan - Growth",
+      "category": "Equity Scheme - Small Cap Fund",
+      "nav": 111.17,
+      "nav_date": "20-03-2026",
+      "cagr_1y": -0.65,
+      "cagr_3y": 17.65,
+      "cagr_5y": 19.2,
+      "cagr_10y": 19.14
+    },
+    {
+      "code": 119775,
+      "name": "Kotak Midcap Fund - Direct Plan - Growth",
+      "category": "Equity Scheme - Mid Cap Fund",
+      "nav": 146.76,
+      "nav_date": "20-03-2026",
+      "cagr_1y": 6.6,
+      "cagr_3y": 21.0,
+      "cagr_5y": 19.14,
+      "cagr_10y": 19.07
+    },
+    {
+      "code": 120828,
+      "name": "quant Small Cap Fund - Growth Option - Direct Plan",
+      "category": "Equity Scheme - Small Cap Fund",
+      "nav": 248.64,
+      "nav_date": "20-03-2026",
+      "cagr_1y": -1.88,
+      "cagr_3y": 19.88,
+      "cagr_5y": 24.55,
+      "cagr_10y": 18.57
+    },
+    {
+      "code": 135781,
+      "name": "Mirae Asset ELSS Tax Saver Fund - Direct Plan - Growth",
+      "category": "Equity Scheme - ELSS",
+      "nav": 51.79,
+      "nav_date": "20-03-2026",
+      "cagr_1y": 2.36,
+      "cagr_3y": 16.54,
+      "cagr_5y": 14.16,
+      "cagr_10y": 18.25
+    },
+    {
+      "code": 122639,
+      "name": "Parag Parikh Flexi Cap Fund - Direct Plan - Growth",
+      "category": "Equity Scheme - Flexi Cap Fund",
+      "nav": 87.79,
+      "nav_date": "20-03-2026",
+      "cagr_1y": 0.99,
+      "cagr_3y": 18.66,
+      "cagr_5y": 17.42,
+      "cagr_10y": 17.96
+    },
+    {
+      "code": 120251,
+      "name": "ICICI Prudential Equity & Debt Fund - Direct Plan - Growth",
+      "category": "Hybrid Scheme - Aggressive Hybrid Fund",
+      "nav": 428.58,
+      "nav_date": "20-03-2026",
+      "cagr_1y": 4.46,
+      "cagr_3y": 18.45,
+      "cagr_5y": 18.97,
+      "cagr_10y": 16.61
+    },
+    {
+      "code": 108466,
+      "name": "ICICI Prudential Large Cap Fund (erstwhile Bluechip Fund)  - Growth",
+      "category": "Equity Scheme - Large Cap Fund",
+      "nav": 103.05,
+      "nav_date": "20-03-2026",
+      "cagr_1y": -0.36,
+      "cagr_3y": 15.86,
+      "cagr_5y": 14.44,
+      "cagr_10y": 14.19
+    },
+    {
+      "code": 118272,
+      "name": "CANARA ROBECO EQUITY HYBRID FUND - DIRECT PLAN - GROWTH OPTION",
+      "category": "Hybrid Scheme - Aggressive Hybrid Fund",
+      "nav": 390.65,
+      "nav_date": "20-03-2026",
+      "cagr_1y": 2.69,
+      "cagr_3y": 13.93,
+      "cagr_5y": 11.95,
+      "cagr_10y": 13.64
+    },
+    {
+      "code": 120716,
+      "name": "UTI Nifty 50 Index Fund - Growth Option- Direct",
+      "category": "Other Scheme - Index Funds",
+      "nav": 161.61,
+      "nav_date": "20-03-2026",
+      "cagr_1y": -1.39,
+      "cagr_3y": 11.95,
+      "cagr_5y": 11.08,
+      "cagr_10y": 12.65
+    },
+    {
+      "code": 100476,
+      "name": "Taurus Flexi Cap Fund - Regular Plan - Growth ",
+      "category": "Equity Scheme - Flexi Cap Fund",
+      "nav": 205.26,
+      "nav_date": "20-03-2026",
+      "cagr_1y": -3.98,
+      "cagr_3y": 13.73,
+      "cagr_5y": 10.92,
+      "cagr_10y": 9.61
+    },
     {
       "code": 101206,
       "name": "SBI OVERNIGHT FUND - REGULAR PLAN - GROWTH",
       "category": "Debt Scheme - Overnight Fund",
       "nav": 4315.03,
       "nav_date": "22-03-2026",
-      "cagr_1y": 0.0,
-      "cagr_3y": 0.0,
-      "cagr_5y": 0.0,
-      "cagr_10y": 0.0
-    },
-    {
-      "code": 118560,
-      "name": "Franklin India Ultra Short Bond Fund - Super Institutional Plan - Direct - Growth",
-      "category": "Debt Scheme - Ultra Short Duration Fund",
-      "nav": 34.24,
-      "nav_date": "07-08-2022",
-      "cagr_1y": 0.0,
-      "cagr_3y": 0.0,
-      "cagr_5y": 0.0,
-      "cagr_10y": 0.0
+      "cagr_1y": 5.37,
+      "cagr_3y": 6.19,
+      "cagr_5y": 5.4,
+      "cagr_10y": 5.36
     }
   ],
-  "etfs": [],
+  "etfs": [
+    {
+      "symbol": "NIFTYBEES.NS",
+      "name": "Nifty BeES",
+      "price": 259.83,
+      "change_pct": 1.83,
+      "ret_1y": 3.03,
+      "ret_3y": 36.97,
+      "ret_5y": 68.87
+    },
+    {
+      "symbol": "BANKBEES.NS",
+      "name": "Bank BeES",
+      "price": 543.04,
+      "change_pct": 2.14,
+      "ret_1y": 9.51,
+      "ret_3y": 33.08,
+      "ret_5y": 63.06
+    },
+    {
+      "symbol": "GOLDBEES.NS",
+      "name": "Gold BeES",
+      "price": 115.49,
+      "change_pct": 4.31,
+      "ret_1y": 57.07,
+      "ret_3y": 143.6,
+      "ret_5y": 196.97
+    },
+    {
+      "symbol": "SILVERBEES.NS",
+      "name": "Silver BeES",
+      "price": 212.31,
+      "change_pct": 9.71,
+      "ret_1y": 120.06,
+      "ret_3y": 239.8,
+      "ret_5y": 243.71
+    },
+    {
+      "symbol": "ITBEES.NS",
+      "name": "IT BeES",
+      "price": 32.76,
+      "change_pct": 1.93,
+      "ret_1y": -16.98,
+      "ret_3y": 4.9,
+      "ret_5y": 26.88
+    },
+    {
+      "symbol": "JUNIORBEES.NS",
+      "name": "Junior BeES",
+      "price": 672.29,
+      "change_pct": 1.53,
+      "ret_1y": 5.78,
+      "ret_3y": 70.43,
+      "ret_5y": 91.26
+    },
+    {
+      "symbol": "SETFNIF50.NS",
+      "name": "SBI Nifty ETF",
+      "price": 245.18,
+      "change_pct": 1.63,
+      "ret_1y": 2.96,
+      "ret_3y": 36.66,
+      "ret_5y": 68.17
+    },
+    {
+      "symbol": "MOM100.NS",
+      "name": "Momentum 100",
+      "price": 58.39,
+      "change_pct": 2.67,
+      "ret_1y": 12.2,
+      "ret_3y": 83.67,
+      "ret_5y": 136.78
+    },
+    {
+      "symbol": "HNGSNGBEES.NS",
+      "name": "Hang Seng BeES",
+      "price": 461.13,
+      "change_pct": 2.29,
+      "ret_1y": 5.87,
+      "ret_3y": 61.62,
+      "ret_5y": 33.14
+    },
+    {
+      "symbol": "ICICIB22.NS",
+      "name": "Bharat Bond 2032",
+      "price": 114.47,
+      "change_pct": 1.0,
+      "ret_1y": 15.57,
+      "ret_3y": 97.16,
+      "ret_5y": 226.96
+    }
+  ],
   "news": [
     {
       "title": "",
