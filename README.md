@@ -7,6 +7,6 @@
 - Gold Ratio charts
 - High RS + 52W High stocks
 
-Website: https://YOUR-USERNAME.github.io/Zen-market-scanner
+Website: https://zenpro.github.io/Zen-market-scanner
 
 Last updated automatically every 4 hours.
