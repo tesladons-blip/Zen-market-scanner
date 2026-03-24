@@ -1,51 +1,695 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>ZeroZen Market Scanner</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    body { background: #0a0a0a; color: white; font-family: Arial; padding: 20px; }
-    .green { background: #14532d; color: #10b981; padding: 10px; }
-    .red { background: #7f1d1d; color: #f87171; padding: 10px; }
-    h1 { color: #10b981; text-shadow: 0 0 15px #10b981; font-size: 2.5rem; }
-    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-    th, td { border: 1px solid #333; padding: 10px; text-align: left; }
-  </style>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>ZeroZen Market Scanner</title>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root {
+  --bg0: #020c06;
+  --bg1: #050f08;
+  --bg2: #071410;
+  --bg3: #0a1d14;
+  --card: #0c1f16;
+  --card2: #0f2419;
+  --border: #1a3d26;
+  --border2: #204d30;
+  --green: #00ff88;
+  --green2: #00e676;
+  --green3: #00c853;
+  --green-dim: rgba(0,255,136,0.12);
+  --green-glow: 0 0 20px rgba(0,255,136,0.3);
+  --red: #ff2d55;
+  --red-dim: rgba(255,45,85,0.12);
+  --orange: #ff9500;
+  --orange-dim: rgba(255,149,0,0.12);
+  --blue: #0af;
+  --blue-dim: rgba(0,170,255,0.12);
+  --purple: #bf5af2;
+  --yellow: #ffd60a;
+  --text1: #e8f5e9;
+  --text2: #a5d6a7;
+  --text3: #4caf50;
+  --muted: #37474f;
+  --scanline: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,255,136,0.015) 2px, rgba(0,255,136,0.015) 4px);
+  --grid-bg: radial-gradient(ellipse at 20% 50%, rgba(0,255,136,0.04) 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(0,170,255,0.03) 0%, transparent 60%);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg0);
+  color:var(--text1);
+  font-family:'Rajdhani',sans-serif;
+  font-size:15px;
+  min-height:100vh;
+  background-image: var(--grid-bg), var(--scanline);
+  overflow-x:hidden;
+}
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar{width:4px;height:4px;}
+::-webkit-scrollbar-track{background:var(--bg1);}
+::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px;}
+
+/* ─── Header ─── */
+.header{
+  position:sticky;top:0;z-index:100;
+  background:rgba(2,12,6,0.95);
+  border-bottom:1px solid var(--border);
+  backdrop-filter:blur(12px);
+  padding:10px 24px;
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:10px;
+}
+.logo{
+  display:flex;align-items:center;gap:12px;
+}
+.logo-icon{
+  width:36px;height:36px;
+  border:2px solid var(--green);
+  border-radius:6px;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:var(--green-glow);
+  position:relative;overflow:hidden;
+}
+.logo-icon::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,var(--green-dim),transparent);
+}
+.logo-icon svg{width:20px;height:20px;stroke:var(--green);}
+.logo-title{font-family:'Share Tech Mono',monospace;font-size:18px;color:var(--green);letter-spacing:2px;text-shadow:0 0 10px rgba(0,255,136,0.5);}
+.logo-sub{font-size:11px;color:var(--text3);letter-spacing:1px;}
+.header-meta{display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+.meta-chip{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:4px;padding:4px 10px;
+  font-family:'JetBrains Mono',monospace;font-size:11px;
+  color:var(--text2);
+}
+.meta-chip span{color:var(--green);font-weight:600;}
+.pulse-dot{
+  width:8px;height:8px;background:var(--green);border-radius:50%;
+  box-shadow:0 0 6px var(--green);
+  animation:pulse 2s ease-in-out infinite;
+  display:inline-block;margin-right:6px;
+}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.6;transform:scale(0.8);}}
+.refresh-btn{
+  background:var(--green-dim);border:1px solid var(--green);
+  color:var(--green);font-family:'Rajdhani',sans-serif;font-weight:600;
+  font-size:12px;padding:5px 14px;border-radius:4px;cursor:pointer;
+  letter-spacing:1px;transition:all .2s;
+}
+.refresh-btn:hover{background:rgba(0,255,136,0.25);box-shadow:var(--green-glow);}
+
+/* ─── Main Layout ─── */
+.container{max-width:1600px;margin:0 auto;padding:20px 24px;}
+
+/* ─── Section headers ─── */
+.section-title{
+  font-family:'Share Tech Mono',monospace;
+  font-size:13px;letter-spacing:3px;
+  color:var(--green);text-transform:uppercase;
+  margin-bottom:14px;
+  display:flex;align-items:center;gap:10px;
+}
+.section-title::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--border),transparent);}
+
+/* ─── Summary Cards ─── */
+.summary-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+  gap:12px;margin-bottom:24px;
+}
+.summary-card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:16px;
+  position:relative;overflow:hidden;
+  transition:border-color .2s,transform .2s;
+}
+.summary-card:hover{border-color:var(--border2);transform:translateY(-2px);}
+.summary-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:var(--accent,var(--green));
+}
+.summary-card.bullish{--accent:var(--green);}
+.summary-card.bearish{--accent:var(--red);}
+.summary-card.caution{--accent:var(--orange);}
+.summary-card.info{--accent:var(--blue);}
+.card-label{font-size:11px;color:var(--text3);letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;}
+.card-value{
+  font-family:'Share Tech Mono',monospace;
+  font-size:28px;font-weight:700;
+  color:var(--accent,var(--green));
+  text-shadow:0 0 10px rgba(var(--accent,0,255,136),.3);
+}
+.card-sub{font-size:12px;color:var(--muted);margin-top:4px;}
+
+/* ─── Two column layout ─── */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px;}
+.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:24px;}
+@media(max-width:900px){.two-col,.three-col{grid-template-columns:1fr;}}
+
+/* ─── Panel ─── */
+.panel{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:18px;
+  margin-bottom:16px;
+}
+.panel-title{
+  font-family:'Share Tech Mono',monospace;
+  font-size:11px;letter-spacing:2px;color:var(--text3);
+  text-transform:uppercase;margin-bottom:14px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.chart-wrap{position:relative;height:200px;}
+
+/* ─── Sector Heatmap ─── */
+.heatmap-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+  gap:8px;
+}
+.hm-cell{
+  border-radius:6px;padding:10px 12px;
+  cursor:default;transition:transform .15s;
+  border:1px solid transparent;
+}
+.hm-cell:hover{transform:scale(1.03);border-color:rgba(255,255,255,.15);}
+.hm-cell.bull-strong{background:rgba(0,200,83,0.3);border-color:rgba(0,200,83,0.4);}
+.hm-cell.bull-mild{background:rgba(0,200,83,0.15);border-color:rgba(0,200,83,0.2);}
+.hm-cell.neutral{background:var(--card2);border-color:var(--border);}
+.hm-cell.bear-mild{background:rgba(255,45,85,0.15);border-color:rgba(255,45,85,0.2);}
+.hm-cell.bear-strong{background:rgba(255,45,85,0.3);border-color:rgba(255,45,85,0.4);}
+.hm-name{font-size:11px;color:var(--text2);font-weight:600;margin-bottom:4px;}
+.hm-price{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--text1);font-weight:600;}
+.hm-change{font-family:'JetBrains Mono',monospace;font-size:11px;margin-top:2px;}
+.hm-rsi{font-size:10px;color:var(--muted);margin-top:3px;}
+.positive{color:var(--green2);}
+.negative{color:var(--red);}
+
+/* ─── Signal Table ─── */
+.signal-table-wrap{overflow-x:auto;margin-top:4px;}
+table{width:100%;border-collapse:collapse;font-size:13px;}
+th{
+  font-family:'Share Tech Mono',monospace;
+  font-size:10px;letter-spacing:1px;
+  color:var(--text3);text-align:left;
+  padding:8px 10px;border-bottom:1px solid var(--border);
+  text-transform:uppercase;cursor:pointer;white-space:nowrap;
+}
+th:hover{color:var(--green);}
+td{padding:8px 10px;border-bottom:1px solid rgba(26,61,38,.4);white-space:nowrap;vertical-align:middle;}
+tr:hover td{background:rgba(0,255,136,0.03);}
+tr.row-bull-strong td{background:rgba(0,200,83,0.08);}
+tr.row-bull-mild td{background:rgba(0,200,83,0.04);}
+tr.row-bear-strong td{background:rgba(255,45,85,0.1);}
+tr.row-bear-mild td{background:rgba(255,45,85,0.05);}
+tr.row-caution td{background:rgba(255,149,0,0.08);}
+
+.badge{
+  display:inline-block;padding:2px 8px;border-radius:3px;
+  font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;
+  letter-spacing:.5px;
+}
+.badge-bull{background:rgba(0,200,83,0.2);color:var(--green2);border:1px solid rgba(0,200,83,.4);}
+.badge-bear{background:rgba(255,45,85,0.2);color:var(--red);border:1px solid rgba(255,45,85,.4);}
+.badge-caution{background:rgba(255,149,0,0.2);color:var(--orange);border:1px solid rgba(255,149,0,.4);}
+.badge-neutral{background:var(--card2);color:var(--muted);border:1px solid var(--border);}
+.badge-rsi70{background:rgba(255,149,0,0.25);color:var(--orange);border:1px solid rgba(255,149,0,.5);font-weight:700;}
+.badge-rsi30{background:rgba(0,200,83,0.25);color:var(--green);border:1px solid rgba(0,200,83,.5);font-weight:700;}
+.badge-macd-up{background:rgba(0,170,255,0.2);color:var(--blue);border:1px solid rgba(0,170,255,.4);}
+.badge-macd-dn{background:rgba(191,90,242,0.2);color:var(--purple);border:1px solid rgba(191,90,242,.4);}
+
+.ema-dot{
+  display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:2px;
+}
+.ema-above{background:var(--green3);}
+.ema-below{background:var(--red);}
+
+/* ─── RS Leaders ─── */
+.rs-card{
+  display:flex;align-items:center;gap:10px;
+  padding:8px 12px;border-radius:6px;
+  background:var(--card2);border:1px solid var(--border);
+  margin-bottom:6px;transition:border-color .15s;
+}
+.rs-card:hover{border-color:var(--border2);}
+.rs-rank{
+  font-family:'Share Tech Mono',monospace;font-size:11px;
+  color:var(--muted);width:22px;flex-shrink:0;
+}
+.rs-symbol{font-weight:700;color:var(--text1);font-size:14px;flex:1;}
+.rs-score{
+  font-family:'JetBrains Mono',monospace;font-size:13px;
+  font-weight:600;
+}
+.rs-bar-wrap{width:80px;height:6px;background:var(--bg0);border-radius:3px;overflow:hidden;}
+.rs-bar{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--green3),var(--green));}
+.rs-52w{font-size:10px;padding:1px 5px;border-radius:2px;background:rgba(255,214,10,.15);color:var(--yellow);border:1px solid rgba(255,214,10,.3);}
+
+/* ─── Gold Ratio ─── */
+.gold-row{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:8px 12px;border-radius:5px;
+  border-bottom:1px solid rgba(26,61,38,.3);
+  transition:background .1s;
+}
+.gold-row:hover{background:var(--card2);}
+.gold-name{font-size:13px;color:var(--text2);font-weight:600;flex:1;}
+.gold-ratio{font-family:'JetBrains Mono',monospace;font-size:14px;color:var(--yellow);}
+.gold-trend{font-size:11px;width:40px;text-align:right;}
+
+/* ─── EMA Breadth Bars ─── */
+.ema-row{display:flex;align-items:center;gap:12px;margin-bottom:10px;}
+.ema-label{font-size:12px;color:var(--text3);width:70px;flex-shrink:0;font-family:'JetBrains Mono',monospace;}
+.ema-bar-track{flex:1;height:12px;background:var(--bg0);border-radius:6px;overflow:hidden;display:flex;border:1px solid var(--border);}
+.ema-above-bar{background:linear-gradient(90deg,rgba(0,200,83,.6),rgba(0,200,83,.4));transition:width .8s ease;}
+.ema-below-bar{background:linear-gradient(90deg,rgba(255,45,85,.4),rgba(255,45,85,.6));transition:width .8s ease;}
+.ema-pct{font-family:'JetBrains Mono',monospace;font-size:11px;width:45px;text-align:right;}
+
+/* ─── Global Assets strip ─── */
+.assets-strip{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
+  gap:8px;margin-bottom:24px;
+}
+.asset-tile{
+  background:var(--card);border:1px solid var(--border);border-radius:6px;
+  padding:10px 12px;
+}
+.asset-name{font-size:10px;color:var(--text3);letter-spacing:1px;text-transform:uppercase;}
+.asset-price{font-family:'JetBrains Mono',monospace;font-size:15px;color:var(--text1);font-weight:600;margin:3px 0;}
+.asset-chg{font-family:'JetBrains Mono',monospace;font-size:11px;}
+
+/* ─── Tab Filters ─── */
+.tab-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;}
+.tab{
+  padding:4px 12px;border-radius:4px;font-size:12px;font-weight:600;
+  cursor:pointer;border:1px solid var(--border);color:var(--text3);
+  letter-spacing:.5px;transition:all .15s;
+  font-family:'JetBrains Mono',monospace;
+}
+.tab:hover{border-color:var(--border2);color:var(--text2);}
+.tab.active{background:var(--green-dim);border-color:var(--green);color:var(--green);}
+
+/* ─── Footer ─── */
+.footer{
+  text-align:center;padding:20px;
+  border-top:1px solid var(--border);margin-top:32px;
+  font-size:11px;color:var(--muted);letter-spacing:1px;
+  font-family:'Share Tech Mono',monospace;
+}
+.footer a{color:var(--green);text-decoration:none;}
+
+/* ─── Loading ─── */
+#loading{
+  position:fixed;inset:0;z-index:999;
+  background:var(--bg0);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;
+}
+.load-title{font-family:'Share Tech Mono',monospace;font-size:22px;color:var(--green);letter-spacing:4px;text-shadow:0 0 20px rgba(0,255,136,.5);}
+.load-bar{width:280px;height:3px;background:var(--card);border-radius:2px;overflow:hidden;}
+.load-fill{height:100%;background:var(--green);width:0;animation:loadfill 1.5s ease forwards;box-shadow:0 0 8px var(--green);}
+@keyframes loadfill{to{width:100%;}}
+.load-sub{font-size:12px;color:var(--text3);letter-spacing:2px;}
+
+/* ─── Animate in ─── */
+@keyframes fadein{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
+.animate-in{animation:fadein .4s ease both;}
+
+/* ─── Ticker strip ─── */
+.ticker-wrap{
+  background:var(--card);border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+  overflow:hidden;padding:6px 0;margin-bottom:20px;
+}
+.ticker-inner{display:flex;gap:32px;animation:ticker 40s linear infinite;width:max-content;}
+.ticker-inner:hover{animation-play-state:paused;}
+@keyframes ticker{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+.ticker-item{font-family:'JetBrains Mono',monospace;font-size:12px;white-space:nowrap;display:flex;gap:6px;align-items:center;}
+.ticker-name{color:var(--text3);}
+.ticker-price{color:var(--text1);}
+</style>
 </head>
 <body>
-  <h1>🔴🟢 ZeroZen Live Market Scanner</h1>
-  <p id="time" style="color:#10b981; font-size:1.2rem;"></p>
 
-  <h2 style="margin-top:30px;">📊 Latest Signals</h2>
-  <div id="signals">Loading signals... please wait</div>
+<!-- Loading Screen -->
+<div id="loading">
+  <div class="load-title">// ZEROZEN SCANNER</div>
+  <div class="load-bar"><div class="load-fill"></div></div>
+  <div class="load-sub">LOADING MARKET DATA...</div>
+</div>
 
-  <script>
-    async function loadPage() {
-      try {
-        const res = await fetch('data.json');
-        const data = await res.json();
-        
-        document.getElementById('time').innerHTML = 'Last updated: ' + data.last_updated;
-        
-        let html = '<table><tr><th>Symbol</th><th>Type</th><th>Price</th><th>Timeframe</th></tr>';
-        
-        data.signals.forEach(item => {
-          let rowColor = item.Type.includes('BEARISH') ? 'red' : 'green';
-          html += `<tr class="${rowColor}">
-                     <td>${item.Symbol}</td>
-                     <td>${item.Type}</td>
-                     <td>${item.Current_Price}</td>
-                     <td>${item.Timeframe}</td>
-                   </tr>`;
-        });
-        
-        html += '</table>';
-        document.getElementById('signals').innerHTML = html;
-      } catch(e) {
-        document.getElementById('signals').innerHTML = '<p style="color:orange;">Waiting for data.json file... Run your scanner first!</p>';
+<!-- Header -->
+<header class="header">
+  <div class="logo">
+    <div class="logo-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/>
+        <polyline points="16 7 22 7 22 13"/>
+      </svg>
+    </div>
+    <div>
+      <div class="logo-title">ZEROZEN</div>
+      <div class="logo-sub">MARKET SCANNER</div>
+    </div>
+  </div>
+  <div class="header-meta">
+    <div class="meta-chip"><span class="pulse-dot"></span>EOD</div>
+    <div class="meta-chip">Scanned: <span id="hdr-scanned">—</span></div>
+    <div class="meta-chip">Signals: <span id="hdr-signals">—</span></div>
+    <div class="meta-chip" id="hdr-time">—</div>
+    <button class="refresh-btn" onclick="loadData()">↻ REFRESH</button>
+  </div>
+</header>
+
+<!-- Ticker -->
+<div class="ticker-wrap">
+  <div class="ticker-inner" id="ticker-inner">
+    <div class="ticker-item"><span class="ticker-name">Loading...</span></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- Summary Cards -->
+  <div class="section-title">// Market Snapshot</div>
+  <div class="summary-grid" id="summary-grid">
+    <div class="summary-card info"><div class="card-label">Total Scanned</div><div class="card-value" id="c-total">—</div><div class="card-sub">stocks &amp; indices</div></div>
+    <div class="summary-card caution"><div class="card-label">Overbought RSI70+</div><div class="card-value" id="c-ob" style="color:var(--orange)">—</div><div class="card-sub">caution zone</div></div>
+    <div class="summary-card bullish"><div class="card-label">Oversold RSI30-</div><div class="card-value" id="c-os">—</div><div class="card-sub">reversal watch</div></div>
+    <div class="summary-card bearish"><div class="card-label">Active Signals</div><div class="card-value" id="c-sig" style="color:var(--red)">—</div><div class="card-sub">across all TFs</div></div>
+    <div class="summary-card info"><div class="card-label">Above EMA200</div><div class="card-value" id="c-ema200">—</div><div class="card-sub">% of universe</div></div>
+    <div class="summary-card bullish"><div class="card-label">Above EMA20</div><div class="card-value" id="c-ema20">—</div><div class="card-sub">% of universe</div></div>
+  </div>
+
+  <!-- Global Assets Strip -->
+  <div class="section-title">// Global &amp; Commodity Pulse</div>
+  <div class="assets-strip" id="assets-strip"></div>
+
+  <!-- Sector Heatmap -->
+  <div class="section-title">// Sector Heatmap</div>
+  <div class="panel">
+    <div class="panel-title">RSI &amp; Price Change ― color intensity = strength of move</div>
+    <div class="heatmap-grid" id="heatmap-grid"></div>
+  </div>
+
+  <!-- EMA Breadth + Breadth Charts -->
+  <div class="two-col">
+    <div class="panel">
+      <div class="panel-title">EMA Market Breadth</div>
+      <div id="ema-breadth-rows"></div>
+    </div>
+    <div class="panel">
+      <div class="panel-title">RSI Zone Distribution</div>
+      <div class="chart-wrap"><canvas id="rsi-donut"></canvas></div>
+    </div>
+  </div>
+
+  <!-- Signal Table -->
+  <div class="section-title">// Signal Feed — All Timeframes</div>
+  <div class="panel">
+    <div class="tab-row" id="tf-tabs">
+      <div class="tab active" onclick="filterTF('ALL',this)">ALL</div>
+      <div class="tab" onclick="filterTF('Daily',this)">DAILY</div>
+      <div class="tab" onclick="filterTF('4H',this)">4H</div>
+      <div class="tab" onclick="filterTF('Weekly',this)">WEEKLY</div>
+      <div class="tab" onclick="filterTF('Monthly',this)">MONTHLY</div>
+      <div class="tab" onclick="filterDir('BULLISH',this)" style="margin-left:8px;border-color:var(--green);color:var(--green)">BULLISH</div>
+      <div class="tab" onclick="filterDir('BEARISH',this)" style="border-color:var(--red);color:var(--red)">BEARISH</div>
+    </div>
+    <div class="signal-table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th onclick="sortTable('symbol')">Symbol ↕</th>
+            <th onclick="sortTable('tf')">TF ↕</th>
+            <th onclick="sortTable('signal_type')">Signal ↕</th>
+            <th>Direction</th>
+            <th onclick="sortTable('rsi')">RSI ↕</th>
+            <th onclick="sortTable('price')">Price ↕</th>
+            <th>Vol Ratio</th>
+            <th>EMA 10</th>
+            <th>EMA 20</th>
+            <th>EMA 200</th>
+          </tr>
+        </thead>
+        <tbody id="signal-tbody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- RS Leaders + Gold Ratios -->
+  <div class="two-col">
+    <div class="panel">
+      <div class="panel-title">High RS Score — Leaders &amp; 52W High Watch</div>
+      <div id="rs-list"></div>
+    </div>
+    <div class="panel">
+      <div class="panel-title">Gold Ratio — Index / Gold Price</div>
+      <div id="gold-ratio-list"></div>
+    </div>
+  </div>
+
+  <!-- Sector Momentum Chart -->
+  <div class="panel">
+    <div class="panel-title">Sector RSI Momentum — Daily Snapshot</div>
+    <div class="chart-wrap" style="height:240px;"><canvas id="sector-bar"></canvas></div>
+  </div>
+
+</div>
+
+<footer class="footer">
+  ZEROZEN SCANNER · For the community · Educational use only · Not financial advice<br>
+  Data via Yahoo Finance (EOD) · Auto-refresh every 30 min · <a href="https://github.com/tesladons-blip/Zen-market-scanner">GitHub</a>
+</footer>
+
+<script>
+'use strict';
+let allSignals=[], currentTF='ALL', currentDir='ALL', sortCol='', sortDir=1;
+
+function signalBadgeClass(s){
+  if(s==='RSI_CROSS_DOWN_70') return 'badge-rsi70';
+  if(s==='RSI_CROSS_UP_30')   return 'badge-rsi30';
+  if(s==='MACD_CROSS_UP')     return 'badge-macd-up';
+  if(s==='MACD_CROSS_DOWN')   return 'badge-macd-dn';
+  if(s==='RSI_CROSS_DOWN_SMA')return 'badge-caution';
+  if(s==='RSI_CROSS_UP_SMA')  return 'badge-bull';
+  return 'badge-neutral';
+}
+function signalLabel(s){
+  const m={'RSI_CROSS_DOWN_70':'RSI>70↓','RSI_CROSS_UP_30':'RSI<30↑','MACD_CROSS_UP':'MACD↑','MACD_CROSS_DOWN':'MACD↓','RSI_CROSS_DOWN_SMA':'RSI/SMA↓','RSI_CROSS_UP_SMA':'RSI/SMA↑'};
+  return m[s]||s;
+}
+function rowClass(s){
+  if(s==='RSI_CROSS_DOWN_70') return 'row-caution';
+  if(s==='RSI_CROSS_UP_30')   return 'row-bull-strong';
+  if(s==='MACD_CROSS_UP'||s==='RSI_CROSS_UP_SMA') return 'row-bull-mild';
+  if(s==='MACD_CROSS_DOWN'||s==='RSI_CROSS_DOWN_SMA') return 'row-bear-mild';
+  return '';
+}
+function emaDot(status){
+  return `<span class="ema-dot ${status==='ABOVE'?'ema-above':'ema-below'}"></span>`;
+}
+function pctColor(v){return v>=0?'positive':'negative';}
+
+function renderSignals(){
+  let data=allSignals.filter(r=>{
+    if(currentTF!=='ALL'&&r.tf!==currentTF) return false;
+    if(currentDir!=='ALL'&&r.direction!==currentDir) return false;
+    return true;
+  });
+  if(sortCol){
+    data.sort((a,b)=>{
+      const av=a[sortCol],bv=b[sortCol];
+      return typeof av==='number'?(av-bv)*sortDir:(String(av).localeCompare(String(bv)))*sortDir;
+    });
+  }
+  const tbody=document.getElementById('signal-tbody');
+  tbody.innerHTML=data.map(r=>`
+    <tr class="${rowClass(r.signal_type)}">
+      <td style="font-weight:700;font-family:'JetBrains Mono',monospace;font-size:13px">${r.symbol}</td>
+      <td><span class="badge badge-neutral">${r.tf}</span></td>
+      <td><span class="badge ${signalBadgeClass(r.signal_type)}">${signalLabel(r.signal_type)}</span></td>
+      <td><span class="badge ${r.direction==='BULLISH'?'badge-bull':'badge-bear'}">${r.direction}</span></td>
+      <td style="font-family:'JetBrains Mono',monospace;color:${r.rsi>=70?'var(--orange)':r.rsi<=30?'var(--green)':'var(--text1)'};font-weight:600">${r.rsi.toFixed(1)}</td>
+      <td style="font-family:'JetBrains Mono',monospace">${r.price.toLocaleString('en-IN',{maximumFractionDigits:2})}</td>
+      <td style="font-family:'JetBrains Mono',monospace;color:${r.vol_ratio>=1.5?'var(--green)':'var(--muted)'}">${r.vol_ratio.toFixed(1)}x</td>
+      <td>${emaDot(r.ema10)}${r.ema10}</td>
+      <td>${emaDot(r.ema20)}${r.ema20}</td>
+      <td>${emaDot(r.ema200)}${r.ema200}</td>
+    </tr>`).join('');
+}
+
+window.filterTF=function(tf,el){
+  currentTF=tf;
+  document.querySelectorAll('#tf-tabs .tab').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  renderSignals();
+};
+window.filterDir=function(dir,el){
+  currentDir=currentDir===dir?'ALL':dir;
+  renderSignals();
+};
+window.sortTable=function(col){
+  if(sortCol===col) sortDir*=-1; else{sortCol=col;sortDir=1;}
+  renderSignals();
+};
+
+let rsiDonut=null, sectorBar=null;
+
+function buildCharts(data){
+  // RSI donut
+  const rctx=document.getElementById('rsi-donut').getContext('2d');
+  if(rsiDonut) rsiDonut.destroy();
+  const ob=data.breadth.overbought_rsi70, os=data.breadth.oversold_rsi30, neu=data.breadth.neutral;
+  rsiDonut=new Chart(rctx,{
+    type:'doughnut',
+    data:{
+      labels:['Overbought (RSI>70)','Neutral','Oversold (RSI<30)'],
+      datasets:[{data:[ob,neu,os],backgroundColor:['rgba(255,149,0,.7)','rgba(14,29,21,.8)','rgba(0,200,83,.7)'],borderColor:['#ff9500','#1a3d26','#00c853'],borderWidth:1}]
+    },
+    options:{
+      responsive:true,maintainAspectRatio:false,cutout:'70%',
+      plugins:{legend:{position:'bottom',labels:{color:'#a5d6a7',font:{family:"'JetBrains Mono',monospace",size:10},padding:12}},
+        tooltip:{callbacks:{label:c=>`${c.label}: ${c.parsed} stocks (${((c.parsed/(ob+neu+os))*100).toFixed(1)}%)`}}}
+    }
+  });
+
+  // Sector bar chart
+  const sctx=document.getElementById('sector-bar').getContext('2d');
+  if(sectorBar) sectorBar.destroy();
+  const labels=data.indices.map(i=>i.symbol);
+  const rsis=data.indices.map(i=>i.rsi_daily);
+  const bgs=rsis.map(v=>v>=70?'rgba(255,149,0,.7)':v<=30?'rgba(0,200,83,.7)':'rgba(0,170,255,.5)');
+  sectorBar=new Chart(sctx,{
+    type:'bar',
+    data:{labels,datasets:[{label:'RSI(14)',data:rsis,backgroundColor:bgs,borderColor:bgs,borderWidth:1,borderRadius:4}]},
+    options:{
+      responsive:true,maintainAspectRatio:false,
+      scales:{
+        x:{ticks:{color:'#a5d6a7',font:{family:"'JetBrains Mono',monospace",size:9}},grid:{color:'rgba(26,61,38,.3)'}},
+        y:{min:0,max:100,ticks:{color:'#4caf50',font:{family:"'JetBrains Mono',monospace",size:9}},grid:{color:'rgba(26,61,38,.3)'},
+          afterDataLimits(scale){scale.max=100;scale.min=0;}}
+      },
+      plugins:{
+        legend:{display:false},
+        annotation:{annotations:{l30:{type:'line',yMin:30,yMax:30,borderColor:'rgba(0,200,83,.5)',borderWidth:1,borderDash:[4,4]},l70:{type:'line',yMin:70,yMax:70,borderColor:'rgba(255,149,0,.5)',borderWidth:1,borderDash:[4,4]}}}
       }
     }
-    loadPage();
-  </script>
+  });
+}
+
+function hmClass(chg, rsi){
+  if(chg>1.5||rsi>65) return 'bull-strong';
+  if(chg>0) return 'bull-mild';
+  if(chg>-1.5&&chg<0) return 'bear-mild';
+  if(chg<=-1.5||rsi<35) return 'bear-strong';
+  return 'neutral';
+}
+
+function buildTicker(data){
+  const items=[...data.indices,...data.global_assets];
+  const half=items.map(i=>`<div class="ticker-item"><span class="ticker-name">${i.symbol}</span><span class="ticker-price">${typeof i.price==='number'?i.price.toLocaleString('en-IN',{maximumFractionDigits:2}):i.price}</span><span class="${pctColor(i.change_pct)}">${i.change_pct>=0?'+':''}${i.change_pct.toFixed(2)}%</span></div>`).join('');
+  const t=document.getElementById('ticker-inner');
+  t.innerHTML=half+half; // duplicate for seamless loop
+}
+
+function loadData(){
+  fetch('data.json?t='+Date.now())
+    .then(r=>r.json())
+    .then(data=>{
+      // Header
+      document.getElementById('hdr-scanned').textContent=data.meta.total_scanned;
+      document.getElementById('hdr-signals').textContent=data.meta.signals_count;
+      document.getElementById('hdr-time').textContent=data.meta.scan_date+' '+data.meta.scan_time;
+
+      // Summary cards
+      document.getElementById('c-total').textContent=data.meta.total_scanned;
+      document.getElementById('c-ob').textContent=data.breadth.overbought_rsi70;
+      document.getElementById('c-os').textContent=data.breadth.oversold_rsi30;
+      document.getElementById('c-sig').textContent=data.meta.signals_count;
+      const tot=data.breadth.total;
+      document.getElementById('c-ema200').textContent=Math.round(data.breadth.above_ema200/tot*100)+'%';
+      document.getElementById('c-ema20').textContent=Math.round(data.breadth.above_ema20/tot*100)+'%';
+
+      // Assets strip
+      document.getElementById('assets-strip').innerHTML=data.global_assets.map(a=>`
+        <div class="asset-tile">
+          <div class="asset-name">${a.symbol}</div>
+          <div class="asset-price">${typeof a.price==='number'?a.price.toLocaleString('en-IN',{maximumFractionDigits:2}):a.price}</div>
+          <div class="asset-chg ${pctColor(a.change_pct)}">${a.change_pct>=0?'+':''}${a.change_pct.toFixed(2)}%</div>
+        </div>`).join('');
+
+      // Sector heatmap
+      document.getElementById('heatmap-grid').innerHTML=data.indices.map(i=>`
+        <div class="hm-cell ${hmClass(i.change_pct,i.rsi_daily)}">
+          <div class="hm-name">${i.symbol}</div>
+          <div class="hm-price">${i.price.toLocaleString('en-IN',{maximumFractionDigits:0})}</div>
+          <div class="hm-change ${pctColor(i.change_pct)}">${i.change_pct>=0?'+':''}${i.change_pct.toFixed(2)}%</div>
+          <div class="hm-rsi">RSI ${i.rsi_daily.toFixed(1)} · ${i.ema200_status} EMA200</div>
+        </div>`).join('');
+
+      // EMA Breadth
+      const emas=[{label:'EMA 10',above:data.breadth.above_ema10,below:data.breadth.below_ema10},{label:'EMA 20',above:data.breadth.above_ema20,below:data.breadth.below_ema20},{label:'EMA 200',above:data.breadth.above_ema200,below:data.breadth.below_ema200}];
+      document.getElementById('ema-breadth-rows').innerHTML=emas.map(e=>{
+        const t=e.above+e.below,ap=Math.round(e.above/t*100);
+        return `<div class="ema-row">
+          <div class="ema-label">${e.label}</div>
+          <div class="ema-bar-track">
+            <div class="ema-above-bar" style="width:${ap}%"></div>
+            <div class="ema-below-bar" style="width:${100-ap}%"></div>
+          </div>
+          <div class="ema-pct positive">${ap}%</div>
+        </div>`;
+      }).join('');
+
+      // Signals table
+      allSignals=data.signals;
+      renderSignals();
+
+      // RS Leaders
+      document.getElementById('rs-list').innerHTML=data.rs_leaders.map((r,i)=>`
+        <div class="rs-card">
+          <div class="rs-rank">#${i+1}</div>
+          <div class="rs-symbol">${r.symbol}</div>
+          ${r.near_52w_high?'<span class="rs-52w">52W HIGH</span>':''}
+          <div class="rs-bar-wrap"><div class="rs-bar" style="width:${r.rs_score}%"></div></div>
+          <div class="rs-score" style="color:var(--green)">${r.rs_score}</div>
+          <div class="${pctColor(r.change_pct)}" style="font-family:'JetBrains Mono',monospace;font-size:11px">${r.change_pct>=0?'+':''}${r.change_pct.toFixed(1)}%</div>
+        </div>`).join('');
+
+      // Gold Ratios
+      document.getElementById('gold-ratio-list').innerHTML=data.gold_ratios.map(g=>`
+        <div class="gold-row">
+          <div class="gold-name">${g.index}</div>
+          <div class="gold-ratio">${g.ratio.toFixed(3)}</div>
+          <div class="gold-trend ${g.trend==='UP'?'positive':'negative'}">${g.trend==='UP'?'▲':'▼'}</div>
+        </div>`).join('');
+
+      // Ticker
+      buildTicker(data);
+
+      // Charts
+      buildCharts(data);
+
+      // Hide loading
+      document.getElementById('loading').style.display='none';
+    })
+    .catch(e=>{
+      console.error('Data load failed:',e);
+      document.getElementById('loading').innerHTML='<div class="load-title" style="color:var(--red)">DATA LOAD ERROR</div><div class="load-sub">Check data.json · Try refreshing</div>';
+    });
+}
+
+// Auto-refresh every 30 min
+loadData();
+setInterval(loadData,30*60*1000);
+</script>
 </body>
 </html>
