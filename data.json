@@ -1,12 +1,14 @@
 {
   "meta": {
     "scan_date": "2026-03-24",
-    "scan_time": "13:35 IST",
-    "total_scanned": 21,
-    "signals_count": 0,
-    "overbought_count": 0,
-    "oversold_count": 0,
-    "generated_by": "ZenPro Scanner v2.0"
+    "scan_time": "18:11 IST",
+    "total_indian": 0,
+    "total_us": 0,
+    "bull_signals_india": 0,
+    "sell_signals_india": 0,
+    "bull_signals_us": 0,
+    "generated_by": "ZenPro Scanner v3.0",
+    "test_mode": false
   },
   "breadth": {
     "above_ema10": 0,
@@ -23,6 +25,55 @@
   "indices": [],
   "global_assets": [],
   "gold_ratios": [],
-  "rs_leaders": [],
-  "signals": []
+  "dxy_ratios": [],
+  "bullish_signals": [],
+  "sell_signals": [],
+  "us_bullish": [],
+  "us_sell": [],
+  "us_rs": [],
+  "ipo_3y": [],
+  "ipo_5y": [],
+  "ipo_10y": [],
+  "ipo_15y": [],
+  "rs_india": [],
+  "wm_crosses": [],
+  "vol_spurt_30d": [],
+  "vol_spurt_1m": [],
+  "high_52w": [],
+  "all_time_high": [],
+  "near_ath_25pct": [],
+  "mutual_funds": [
+    {
+      "code": 101206,
+      "name": "SBI OVERNIGHT FUND - REGULAR PLAN - GROWTH",
+      "category": "Debt Scheme - Overnight Fund",
+      "nav": 4315.03,
+      "nav_date": "22-03-2026",
+      "cagr_1y": 0.0,
+      "cagr_3y": 0.0,
+      "cagr_5y": 0.0,
+      "cagr_10y": 0.0
+    },
+    {
+      "code": 118560,
+      "name": "Franklin India Ultra Short Bond Fund - Super Institutional Plan - Direct - Growth",
+      "category": "Debt Scheme - Ultra Short Duration Fund",
+      "nav": 34.24,
+      "nav_date": "07-08-2022",
+      "cagr_1y": 0.0,
+      "cagr_3y": 0.0,
+      "cagr_5y": 0.0,
+      "cagr_10y": 0.0
+    }
+  ],
+  "etfs": [],
+  "news": [
+    {
+      "title": "",
+      "publisher": "",
+      "link": "",
+      "time": "",
+      "ticker": "NSEI"
+    }
+  ]
 }
