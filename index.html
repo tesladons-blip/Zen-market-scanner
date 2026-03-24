@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ZeroZen Market Scanner</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { background: #0a0a0a; color: white; font-family: Arial; padding: 20px; }
+    .green { background: #14532d; color: #10b981; padding: 10px; }
+    .red { background: #7f1d1d; color: #f87171; padding: 10px; }
+    h1 { color: #10b981; text-shadow: 0 0 15px #10b981; font-size: 2.5rem; }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    th, td { border: 1px solid #333; padding: 10px; text-align: left; }
+  </style>
+</head>
+<body>
+  <h1>🔴🟢 ZeroZen Live Market Scanner</h1>
+  <p id="time" style="color:#10b981; font-size:1.2rem;"></p>
+
+  <h2 style="margin-top:30px;">📊 Latest Signals</h2>
+  <div id="signals">Loading signals... please wait</div>
+
+  <script>
+    async function loadPage() {
+      try {
+        const res = await fetch('data.json');
+        const data = await res.json();
+        
+        document.getElementById('time').innerHTML = 'Last updated: ' + data.last_updated;
+        
+        let html = '<table><tr><th>Symbol</th><th>Type</th><th>Price</th><th>Timeframe</th></tr>';
+        
+        data.signals.forEach(item => {
+          let rowColor = item.Type.includes('BEARISH') ? 'red' : 'green';
+          html += `<tr class="${rowColor}">
+                     <td>${item.Symbol}</td>
+                     <td>${item.Type}</td>
+                     <td>${item.Current_Price}</td>
+                     <td>${item.Timeframe}</td>
+                   </tr>`;
+        });
+        
+        html += '</table>';
+        document.getElementById('signals').innerHTML = html;
+      } catch(e) {
+        document.getElementById('signals').innerHTML = '<p style="color:orange;">Waiting for data.json file... Run your scanner first!</p>';
+      }
+    }
+    loadPage();
+  </script>
+</body>
+</html>
