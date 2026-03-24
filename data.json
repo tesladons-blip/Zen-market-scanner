@@ -1,26 +1,26 @@
 {
   "meta": {
     "scan_date": "2026-03-24",
-    "scan_time": "19:41 IST",
-    "total_indian": 24,
+    "scan_time": "19:51 IST",
+    "total_indian": 29,
     "total_us": 20,
     "bull_signals_india": 1,
     "sell_signals_india": 0,
-    "bull_signals_us": 2,
+    "bull_signals_us": 1,
     "generated_by": "ZenPro Scanner v3.2",
     "test_mode": true
   },
   "breadth": {
-    "above_ema10": 2,
+    "above_ema10": 3,
     "above_ema20": 1,
-    "above_ema200": 3,
-    "below_ema10": 22,
-    "below_ema20": 23,
-    "below_ema200": 21,
+    "above_ema200": 5,
+    "below_ema10": 26,
+    "below_ema20": 28,
+    "below_ema200": 24,
     "overbought_rsi70": 0,
     "oversold_rsi30": 4,
-    "neutral": 20,
-    "total": 24
+    "neutral": 25,
+    "total": 29
   },
   "indices": [
     {
@@ -144,27 +144,27 @@
   "global_assets": [
     {
       "symbol": "DXY",
-      "price": 99.4,
-      "change_pct": 0.45,
-      "rsi": 54.5
+      "price": 99.33,
+      "change_pct": 0.39,
+      "rsi": 54.0
     },
     {
       "symbol": "GOLD",
-      "price": 4387.9,
-      "change_pct": -0.37,
-      "rsi": 27.6
+      "price": 4400.7,
+      "change_pct": -0.08,
+      "rsi": 27.9
     },
     {
       "symbol": "SILVER",
-      "price": 68.65,
-      "change_pct": -0.57,
-      "rsi": 34.7
+      "price": 69.04,
+      "change_pct": -0.02,
+      "rsi": 35.1
     },
     {
       "symbol": "CRUDE",
-      "price": 91.83,
-      "change_pct": 4.2,
-      "rsi": 59.4
+      "price": 91.5,
+      "change_pct": 3.82,
+      "rsi": 59.2
     },
     {
       "symbol": "INDIA VIX",
@@ -174,117 +174,117 @@
     },
     {
       "symbol": "US VIX",
-      "price": 27.5,
-      "change_pct": 5.16,
-      "rsi": 59.2
+      "price": 26.79,
+      "change_pct": 2.45,
+      "rsi": 57.9
     },
     {
       "symbol": "USDINR",
-      "price": 93.71,
-      "change_pct": -0.2,
-      "rsi": 69.5
+      "price": 93.77,
+      "change_pct": -0.13,
+      "rsi": 70.5
     },
     {
       "symbol": "S&P 500",
-      "price": 6555.31,
-      "change_pct": -0.39,
-      "rsi": 35.8
+      "price": 6553.44,
+      "change_pct": -0.42,
+      "rsi": 35.7
     },
     {
       "symbol": "NASDAQ",
-      "price": 21798.38,
-      "change_pct": -0.68,
-      "rsi": 38.1
+      "price": 21779.61,
+      "change_pct": -0.76,
+      "rsi": 37.8
     },
     {
       "symbol": "DOW JONES",
-      "price": 46058.48,
-      "change_pct": -0.32,
-      "rsi": 33.5
+      "price": 46038.28,
+      "change_pct": -0.37,
+      "rsi": 33.4
     },
     {
       "symbol": "RUSSELL 2000",
-      "price": 2474.31,
-      "change_pct": -0.8,
-      "rsi": 40.1
+      "price": 2478.25,
+      "change_pct": -0.64,
+      "rsi": 40.5
     }
   ],
   "gold_ratios": [
     {
       "index": "NIFTY 50",
-      "ratio": 5.2217,
+      "ratio": 5.2065,
       "change": 1.78,
       "trend": "UP"
     },
     {
       "index": "BANK NIFTY",
-      "ratio": 11.9888,
+      "ratio": 11.9539,
       "change": 2.27,
       "trend": "UP"
     },
     {
       "index": "NIFTY IT",
-      "ratio": 6.757,
+      "ratio": 6.7373,
       "change": 1.72,
       "trend": "UP"
     },
     {
       "index": "NIFTY AUTO",
-      "ratio": 5.587,
+      "ratio": 5.5708,
       "change": 2.43,
       "trend": "UP"
     },
     {
       "index": "NIFTY PHARMA",
-      "ratio": 5.0684,
+      "ratio": 5.0537,
       "change": 0.85,
       "trend": "UP"
     },
     {
       "index": "NIFTY FMCG",
-      "ratio": 10.5764,
+      "ratio": 10.5457,
       "change": 1.25,
       "trend": "UP"
     },
     {
       "index": "NIFTY METAL",
-      "ratio": 2.5204,
+      "ratio": 2.513,
       "change": 1.8,
       "trend": "UP"
     },
     {
       "index": "NIFTY REALTY",
-      "ratio": 0.1536,
+      "ratio": 0.1531,
       "change": 1.59,
       "trend": "UP"
     },
     {
       "index": "NIFTY ENERGY",
-      "ratio": 7.9953,
+      "ratio": 7.972,
       "change": 0.7,
       "trend": "UP"
     },
     {
       "index": "NIFTY MEDIA",
-      "ratio": 0.2955,
+      "ratio": 0.2946,
       "change": 3.45,
       "trend": "UP"
     },
     {
       "index": "NIFTY INFRA",
-      "ratio": 1.9905,
+      "ratio": 1.9847,
       "change": 1.87,
       "trend": "UP"
     },
     {
       "index": "PSU BANK",
-      "ratio": 1.9047,
+      "ratio": 1.8991,
       "change": 1.53,
       "trend": "UP"
     },
     {
       "index": "MIDCAP 50",
-      "ratio": 3.5123,
+      "ratio": 3.5021,
       "change": 2.74,
       "trend": "UP"
     }
@@ -292,43 +292,43 @@
   "dxy_ratios": [
     {
       "index": "NIFTY 50",
-      "ratio": 230.51,
+      "ratio": 230.66,
       "change": 1.78,
       "trend": "UP"
     },
     {
       "index": "BANK NIFTY",
-      "ratio": 529.24,
+      "ratio": 529.59,
       "change": 2.27,
       "trend": "UP"
     },
     {
       "index": "NIFTY IT",
-      "ratio": 298.28,
+      "ratio": 298.48,
       "change": 1.72,
       "trend": "UP"
     },
     {
       "index": "NIFTY AUTO",
-      "ratio": 246.63,
+      "ratio": 246.8,
       "change": 2.43,
       "trend": "UP"
     },
     {
       "index": "NIFTY PHARMA",
-      "ratio": 223.74,
+      "ratio": 223.89,
       "change": 0.85,
       "trend": "UP"
     },
     {
       "index": "NIFTY FMCG",
-      "ratio": 466.89,
+      "ratio": 467.2,
       "change": 1.25,
       "trend": "UP"
     },
     {
       "index": "NIFTY METAL",
-      "ratio": 111.26,
+      "ratio": 111.34,
       "change": 1.8,
       "trend": "UP"
     },
@@ -340,31 +340,31 @@
     },
     {
       "index": "NIFTY ENERGY",
-      "ratio": 352.95,
+      "ratio": 353.18,
       "change": 0.7,
       "trend": "UP"
     },
     {
       "index": "NIFTY MEDIA",
-      "ratio": 13.04,
+      "ratio": 13.05,
       "change": 3.45,
       "trend": "UP"
     },
     {
       "index": "NIFTY INFRA",
-      "ratio": 87.87,
+      "ratio": 87.93,
       "change": 1.87,
       "trend": "UP"
     },
     {
       "index": "PSU BANK",
-      "ratio": 84.08,
+      "ratio": 84.14,
       "change": 1.53,
       "trend": "UP"
     },
     {
       "index": "MIDCAP 50",
-      "ratio": 155.05,
+      "ratio": 155.15,
       "change": 2.74,
       "trend": "UP"
     }
@@ -392,28 +392,14 @@
       "tf": "Daily",
       "signal": "EMA 10/20 Squeeze \u2191",
       "direction": "BULLISH",
-      "price": 116.46,
-      "rsi": 51.7,
-      "vol_ratio": 0.09,
+      "price": 115.71,
+      "rsi": 49.1,
+      "vol_ratio": 0.1,
       "ema10": "ABOVE",
-      "ema20": "ABOVE",
+      "ema20": "BELOW",
       "ema50": "ABOVE",
       "ema200": "ABOVE",
-      "change_pct": 0.68
-    },
-    {
-      "symbol": "MRK",
-      "tf": "Daily",
-      "signal": "EMA 20/50 Squeeze \u2191",
-      "direction": "BULLISH",
-      "price": 116.46,
-      "rsi": 51.7,
-      "vol_ratio": 0.09,
-      "ema10": "ABOVE",
-      "ema20": "ABOVE",
-      "ema50": "ABOVE",
-      "ema200": "ABOVE",
-      "change_pct": 0.68
+      "change_pct": 0.02
     }
   ],
   "us_sell": [
@@ -422,42 +408,42 @@
       "tf": "Daily",
       "signal": "MACD Cross \u2193 Signal",
       "direction": "BEARISH",
-      "price": 296.47,
-      "rsi": 37.9,
-      "vol_ratio": 0.14,
+      "price": 296.41,
+      "rsi": 37.8,
+      "vol_ratio": 0.17,
       "ema10": "BELOW",
       "ema20": "BELOW",
       "ema50": "BELOW",
       "ema200": "ABOVE",
-      "change_pct": -1.85
+      "change_pct": -1.87
     },
     {
       "symbol": "AMZN",
       "tf": "Daily",
       "signal": "RSI/SMA Cross \u2193",
       "direction": "BEARISH",
-      "price": 207.55,
-      "rsi": 44.2,
-      "vol_ratio": 0.11,
+      "price": 207.85,
+      "rsi": 44.5,
+      "vol_ratio": 0.12,
       "ema10": "BELOW",
       "ema20": "BELOW",
       "ema50": "BELOW",
       "ema200": "BELOW",
-      "change_pct": -1.23
+      "change_pct": -1.09
     },
     {
       "symbol": "JNJ",
       "tf": "Daily",
       "signal": "MACD Zero Cross \u2193",
       "direction": "BEARISH",
-      "price": 235.32,
-      "rsi": 42.3,
-      "vol_ratio": 0.08,
+      "price": 234.46,
+      "rsi": 40.8,
+      "vol_ratio": 0.1,
       "ema10": "BELOW",
       "ema20": "BELOW",
       "ema50": "ABOVE",
       "ema200": "ABOVE",
-      "change_pct": -0.04
+      "change_pct": -0.41
     }
   ],
   "us_rs": [
@@ -465,38 +451,38 @@
       "symbol": "GOOGL",
       "name": "Alphabet Inc.",
       "rs_score": 99,
-      "price": 296.47,
-      "change_pct": -1.85,
+      "price": 296.41,
+      "change_pct": -1.87,
       "ema200": "ABOVE",
       "near_52w": false,
       "sector": "Communication Services"
     },
     {
-      "symbol": "JNJ",
-      "name": "Johnson & Johnson",
-      "rs_score": 77.7,
-      "price": 235.32,
-      "change_pct": -0.04,
-      "ema200": "ABOVE",
-      "near_52w": false,
-      "sector": "Healthcare"
-    },
-    {
       "symbol": "XOM",
       "name": "Exxon Mobil Corporation",
       "rs_score": 77.5,
-      "price": 165.66,
-      "change_pct": 2.81,
+      "price": 165.62,
+      "change_pct": 2.78,
       "ema200": "ABOVE",
       "near_52w": true,
       "sector": "Energy"
     },
     {
+      "symbol": "JNJ",
+      "name": "Johnson & Johnson",
+      "rs_score": 77.2,
+      "price": 234.46,
+      "change_pct": -0.41,
+      "ema200": "ABOVE",
+      "near_52w": false,
+      "sector": "Healthcare"
+    },
+    {
       "symbol": "NVDA",
       "name": "NVIDIA Corporation",
-      "rs_score": 74.1,
-      "price": 174.38,
-      "change_pct": -0.72,
+      "rs_score": 74.2,
+      "price": 174.54,
+      "change_pct": -0.62,
       "ema200": "ABOVE",
       "near_52w": false,
       "sector": "Technology"
@@ -504,9 +490,9 @@
     {
       "symbol": "WMT",
       "name": "Walmart Inc.",
-      "rs_score": 72.1,
-      "price": 122.39,
-      "change_pct": 1.38,
+      "rs_score": 72.2,
+      "price": 122.62,
+      "change_pct": 1.58,
       "ema200": "ABOVE",
       "near_52w": false,
       "sector": "Consumer Defensive"
@@ -514,9 +500,9 @@
     {
       "symbol": "TSLA",
       "name": "Tesla, Inc.",
-      "rs_score": 69.6,
-      "price": 384.47,
-      "change_pct": 0.95,
+      "rs_score": 69.7,
+      "price": 384.82,
+      "change_pct": 1.04,
       "ema200": "BELOW",
       "near_52w": false,
       "sector": "Consumer Cyclical"
@@ -524,9 +510,9 @@
     {
       "symbol": "CVX",
       "name": "Chevron Corporation",
-      "rs_score": 64.9,
-      "price": 208.8,
-      "change_pct": 1.75,
+      "rs_score": 65.0,
+      "price": 209.1,
+      "change_pct": 1.9,
       "ema200": "ABOVE",
       "near_52w": true,
       "sector": "Energy"
@@ -534,9 +520,9 @@
     {
       "symbol": "MRK",
       "name": "Merck & Company, Inc.",
-      "rs_score": 63.8,
-      "price": 116.46,
-      "change_pct": 0.68,
+      "rs_score": 63.0,
+      "price": 115.71,
+      "change_pct": 0.02,
       "ema200": "ABOVE",
       "near_52w": false,
       "sector": "Healthcare"
@@ -544,9 +530,9 @@
     {
       "symbol": "JPM",
       "name": "JP Morgan Chase & Co.",
-      "rs_score": 54.2,
-      "price": 288.86,
-      "change_pct": -0.36,
+      "rs_score": 54.1,
+      "price": 288.62,
+      "change_pct": -0.44,
       "ema200": "BELOW",
       "near_52w": false,
       "sector": "Financial Services"
@@ -555,8 +541,8 @@
       "symbol": "AAPL",
       "name": "Apple Inc.",
       "rs_score": 51.2,
-      "price": 252.74,
-      "change_pct": 0.5,
+      "price": 252.87,
+      "change_pct": 0.55,
       "ema200": "ABOVE",
       "near_52w": false,
       "sector": "Technology"
@@ -564,9 +550,9 @@
     {
       "symbol": "AMZN",
       "name": "Amazon.com, Inc.",
-      "rs_score": 40.8,
-      "price": 207.55,
-      "change_pct": -1.23,
+      "rs_score": 40.9,
+      "price": 207.85,
+      "change_pct": -1.09,
       "ema200": "BELOW",
       "near_52w": false,
       "sector": "Consumer Cyclical"
@@ -574,9 +560,9 @@
     {
       "symbol": "ABBV",
       "name": "AbbVie Inc.",
-      "rs_score": 40.0,
-      "price": 204.5,
-      "change_pct": -0.21,
+      "rs_score": 39.7,
+      "price": 203.84,
+      "change_pct": -0.53,
       "ema200": "BELOW",
       "near_52w": false,
       "sector": "Healthcare"
@@ -585,8 +571,8 @@
       "symbol": "META",
       "name": "Meta Platforms, Inc.",
       "rs_score": 36.1,
-      "price": 593.49,
-      "change_pct": -1.75,
+      "price": 593.78,
+      "change_pct": -1.7,
       "ema200": "BELOW",
       "near_52w": false,
       "sector": "Communication Services"
@@ -594,9 +580,9 @@
     {
       "symbol": "MSFT",
       "name": "Microsoft Corporation",
-      "rs_score": 35.7,
-      "price": 373.33,
-      "change_pct": -2.52,
+      "rs_score": 35.6,
+      "price": 373.21,
+      "change_pct": -2.56,
       "ema200": "BELOW",
       "near_52w": false,
       "sector": "Technology"
@@ -604,9 +590,9 @@
     {
       "symbol": "HD",
       "name": "Home Depot, Inc. (The)",
-      "rs_score": 32.7,
-      "price": 326.37,
-      "change_pct": -1.37,
+      "rs_score": 33.0,
+      "price": 327.82,
+      "change_pct": -0.93,
       "ema200": "BELOW",
       "near_52w": false,
       "sector": "Consumer Cyclical"
@@ -614,9 +600,9 @@
     {
       "symbol": "BRK-B",
       "name": "Berkshire Hathaway Inc. New",
-      "rs_score": 32.6,
-      "price": 482.68,
-      "change_pct": 0.56,
+      "rs_score": 32.5,
+      "price": 482.28,
+      "change_pct": 0.48,
       "ema200": "BELOW",
       "near_52w": false,
       "sector": "Financial Services"
@@ -624,9 +610,9 @@
     {
       "symbol": "MA",
       "name": "Mastercard Incorporated",
-      "rs_score": 32.3,
-      "price": 493.94,
-      "change_pct": -1.29,
+      "rs_score": 32.4,
+      "price": 494.98,
+      "change_pct": -1.08,
       "ema200": "BELOW",
       "near_52w": false,
       "sector": "Financial Services"
@@ -635,8 +621,8 @@
       "symbol": "PG",
       "name": "Procter & Gamble Company (The)",
       "rs_score": 31.0,
-      "price": 144.71,
-      "change_pct": 0.5,
+      "price": 144.81,
+      "change_pct": 0.57,
       "ema200": "BELOW",
       "near_52w": false,
       "sector": "Consumer Defensive"
@@ -644,9 +630,9 @@
     {
       "symbol": "V",
       "name": "Visa Inc.",
-      "rs_score": 29.8,
-      "price": 301.52,
-      "change_pct": -0.96,
+      "rs_score": 29.9,
+      "price": 302.11,
+      "change_pct": -0.77,
       "ema200": "BELOW",
       "near_52w": false,
       "sector": "Financial Services"
@@ -654,9 +640,9 @@
     {
       "symbol": "UNH",
       "name": "UnitedHealth Group Incorporated",
-      "rs_score": 2.2,
-      "price": 270.36,
-      "change_pct": 0.3,
+      "rs_score": 2.1,
+      "price": 270.15,
+      "change_pct": 0.23,
       "ema200": "BELOW",
       "near_52w": false,
       "sector": "Healthcare"
@@ -769,6 +755,14 @@
       "near_52w": false
     },
     {
+      "symbol": "NAVINFLUOR",
+      "rs_score": 92.4,
+      "price": 6184.5,
+      "change_pct": 5.06,
+      "ema200": "ABOVE",
+      "near_52w": false
+    },
+    {
       "symbol": "MFSL",
       "rs_score": 87.5,
       "price": 1583.5,
@@ -782,6 +776,22 @@
       "price": 262.5,
       "change_pct": 3.2,
       "ema200": "ABOVE",
+      "near_52w": false
+    },
+    {
+      "symbol": "GLENMARK",
+      "rs_score": 85.6,
+      "price": 2095.7,
+      "change_pct": 0.32,
+      "ema200": "ABOVE",
+      "near_52w": false
+    },
+    {
+      "symbol": "GRAPHITE",
+      "rs_score": 73.5,
+      "price": 570.85,
+      "change_pct": 1.27,
+      "ema200": "BELOW",
       "near_52w": false
     },
     {
@@ -825,6 +835,14 @@
       "near_52w": false
     },
     {
+      "symbol": "BANDHANBNK",
+      "rs_score": 58.2,
+      "price": 149.99,
+      "change_pct": 1.11,
+      "ema200": "BELOW",
+      "near_52w": false
+    },
+    {
       "symbol": "KIMS",
       "rs_score": 58.0,
       "price": 631.05,
@@ -838,6 +856,14 @@
       "price": 418.7,
       "change_pct": 3.34,
       "ema200": "ABOVE",
+      "near_52w": false
+    },
+    {
+      "symbol": "WELCORP",
+      "rs_score": 52.2,
+      "price": 802.2,
+      "change_pct": 4.05,
+      "ema200": "BELOW",
       "near_52w": false
     },
     {
@@ -1135,6 +1161,14 @@
       "ema200": "BELOW"
     },
     {
+      "symbol": "BANDHANBNK",
+      "price": 149.99,
+      "volume": 8123440,
+      "vol_ratio": 0.69,
+      "change_pct": 1.11,
+      "ema200": "BELOW"
+    },
+    {
       "symbol": "FEDERALBNK",
       "price": 262.5,
       "volume": 6879978,
@@ -1195,6 +1229,15 @@
   "all_time_high": [],
   "near_ath_25pct": [
     {
+      "symbol": "NAVINFLUOR",
+      "price": 6184.5,
+      "change_pct": 5.06,
+      "w52h": 6965.0,
+      "ath": 6649.5,
+      "rsi": 48.2,
+      "ema200": "ABOVE"
+    },
+    {
       "symbol": "THANGAMAYL",
       "price": 3309.4,
       "change_pct": 4.77,
@@ -1211,6 +1254,15 @@
       "ath": 3276.15,
       "rsi": 42.3,
       "ema200": "BELOW"
+    },
+    {
+      "symbol": "GLENMARK",
+      "price": 2095.7,
+      "change_pct": 0.32,
+      "w52h": 2297.9,
+      "ath": 2272.7,
+      "rsi": 48.5,
+      "ema200": "ABOVE"
     },
     {
       "symbol": "MFSL",
@@ -1231,12 +1283,30 @@
       "ema200": "BELOW"
     },
     {
+      "symbol": "WELCORP",
+      "price": 802.2,
+      "change_pct": 4.05,
+      "w52h": 994.0,
+      "ath": 965.75,
+      "rsi": 49.8,
+      "ema200": "BELOW"
+    },
+    {
       "symbol": "KIMS",
       "price": 631.05,
       "change_pct": 0.09,
       "w52h": 798.4,
       "ath": 789.35,
       "rsi": 39.1,
+      "ema200": "BELOW"
+    },
+    {
+      "symbol": "GRAPHITE",
+      "price": 570.85,
+      "change_pct": 1.27,
+      "w52h": 747.0,
+      "ath": 730.15,
+      "rsi": 34.5,
       "ema200": "BELOW"
     },
     {
@@ -1262,15 +1332,70 @@
       "cagr_10y": 19.07
     },
     {
-      "code": 118834,
-      "name": "Mirae Asset Large & Midcap Fund - Direct Plan - Growth",
-      "category": "Equity Scheme - Large & Mid Cap Fund",
-      "nav": 160.17,
+      "code": 120828,
+      "name": "quant Small Cap Fund - Growth Option - Direct Plan",
+      "category": "Equity Scheme - Small Cap Fund",
+      "nav": 248.64,
       "nav_date": "20-03-2026",
-      "cagr_1y": 3.98,
-      "cagr_3y": 16.99,
-      "cagr_5y": 14.24,
-      "cagr_10y": 18.01
+      "cagr_1y": -1.88,
+      "cagr_3y": 19.88,
+      "cagr_5y": 24.55,
+      "cagr_10y": 18.57
+    },
+    {
+      "code": 118533,
+      "name": "Franklin India Mid Cap Fund - Direct - Growth",
+      "category": "Equity Scheme - Mid Cap Fund",
+      "nav": 2807.0,
+      "nav_date": "20-03-2026",
+      "cagr_1y": -1.15,
+      "cagr_3y": 20.77,
+      "cagr_5y": 16.36,
+      "cagr_10y": 15.51
+    },
+    {
+      "code": 118272,
+      "name": "CANARA ROBECO EQUITY HYBRID FUND - DIRECT PLAN - GROWTH OPTION",
+      "category": "Hybrid Scheme - Aggressive Hybrid Fund",
+      "nav": 390.65,
+      "nav_date": "20-03-2026",
+      "cagr_1y": 2.69,
+      "cagr_3y": 13.93,
+      "cagr_5y": 11.95,
+      "cagr_10y": 13.64
+    },
+    {
+      "code": 120465,
+      "name": "Axis Large Cap Fund - Direct Plan - Growth",
+      "category": "Equity Scheme - Large Cap Fund",
+      "nav": 64.36,
+      "nav_date": "20-03-2026",
+      "cagr_1y": -2.59,
+      "cagr_3y": 11.96,
+      "cagr_5y": 9.08,
+      "cagr_10y": 13.05
+    },
+    {
+      "code": 120503,
+      "name": "Axis ELSS Tax Saver Fund - Direct Plan - Growth Option",
+      "category": "Equity Scheme - ELSS",
+      "nav": 99.61,
+      "nav_date": "20-03-2026",
+      "cagr_1y": -2.83,
+      "cagr_3y": 14.57,
+      "cagr_5y": 8.96,
+      "cagr_10y": 12.65
+    },
+    {
+      "code": 100476,
+      "name": "Taurus Flexi Cap Fund - Regular Plan - Growth ",
+      "category": "Equity Scheme - Flexi Cap Fund",
+      "nav": 205.26,
+      "nav_date": "20-03-2026",
+      "cagr_1y": -3.98,
+      "cagr_3y": 13.73,
+      "cagr_5y": 10.92,
+      "cagr_10y": 9.61
     }
   ],
   "etfs": [
