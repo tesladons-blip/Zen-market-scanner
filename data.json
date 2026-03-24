@@ -1,11 +1,82 @@
 {
-  "last_updated": "24 Mar 2026 07:14 IST",
-  "signals": [],
-  "market_breadth": [],
-  "high_rs_ath": [],
-  "ema_breadth": {
-    "above_ema10": 0,
-    "above_ema20": 0,
-    "above_ema200": 0
-  }
+  "meta": {
+    "scan_date": "2025-03-24",
+    "scan_time": "18:05 IST",
+    "total_scanned": 723,
+    "signals_count": 87,
+    "overbought_count": 45,
+    "oversold_count": 23,
+    "generated_by": "ZeroZen Scanner v2.0"
+  },
+  "breadth": {
+    "overbought_rsi70": 45,
+    "oversold_rsi30": 23,
+    "neutral": 655,
+    "above_ema10": 312,
+    "above_ema20": 298,
+    "above_ema200": 401,
+    "below_ema10": 411,
+    "below_ema20": 425,
+    "below_ema200": 322,
+    "total": 723
+  },
+  "indices": [
+    {"symbol": "NIFTY 50",     "price": 22450.50, "change_pct": -0.45, "rsi_daily": 48.2, "signal": "NEUTRAL",  "ema200_status": "ABOVE"},
+    {"symbol": "BANK NIFTY",   "price": 48120.30, "change_pct": -0.82, "rsi_daily": 44.5, "signal": "BEARISH",  "ema200_status": "ABOVE"},
+    {"symbol": "NIFTY IT",     "price": 36540.10, "change_pct":  1.12, "rsi_daily": 61.3, "signal": "BULLISH",  "ema200_status": "ABOVE"},
+    {"symbol": "NIFTY AUTO",   "price": 22310.80, "change_pct":  0.34, "rsi_daily": 55.7, "signal": "NEUTRAL",  "ema200_status": "ABOVE"},
+    {"symbol": "NIFTY PHARMA", "price": 19870.40, "change_pct": -1.20, "rsi_daily": 38.4, "signal": "BEARISH",  "ema200_status": "BELOW"},
+    {"symbol": "NIFTY FMCG",   "price": 54230.60, "change_pct":  0.65, "rsi_daily": 59.8, "signal": "NEUTRAL",  "ema200_status": "ABOVE"},
+    {"symbol": "NIFTY METAL",  "price": 8420.90,  "change_pct": -2.10, "rsi_daily": 33.1, "signal": "BEARISH",  "ema200_status": "BELOW"},
+    {"symbol": "NIFTY REALTY", "price": 780.50,   "change_pct":  1.90, "rsi_daily": 64.2, "signal": "BULLISH",  "ema200_status": "ABOVE"},
+    {"symbol": "NIFTY ENERGY", "price": 36180.20, "change_pct": -0.30, "rsi_daily": 51.6, "signal": "NEUTRAL",  "ema200_status": "ABOVE"},
+    {"symbol": "NIFTY MEDIA",  "price": 1840.70,  "change_pct": -0.75, "rsi_daily": 41.2, "signal": "BEARISH",  "ema200_status": "BELOW"},
+    {"symbol": "NIFTY INFRA",  "price": 8750.30,  "change_pct":  0.22, "rsi_daily": 53.4, "signal": "NEUTRAL",  "ema200_status": "ABOVE"},
+    {"symbol": "PSU BANK",     "price": 6320.80,  "change_pct": -1.40, "rsi_daily": 36.8, "signal": "BEARISH",  "ema200_status": "BELOW"}
+  ],
+  "global_assets": [
+    {"symbol": "DXY",     "price": 104.32, "change_pct":  0.18, "rsi_daily": 55.4, "signal": "NEUTRAL"},
+    {"symbol": "GOLD",    "price": 2312.40, "change_pct":  0.42, "rsi_daily": 62.1, "signal": "BULLISH"},
+    {"symbol": "SILVER",  "price": 27.85,  "change_pct":  0.85, "rsi_daily": 58.3, "signal": "NEUTRAL"},
+    {"symbol": "CRUDE",   "price": 82.40,  "change_pct": -1.20, "rsi_daily": 44.7, "signal": "BEARISH"},
+    {"symbol": "INDIA VIX","price": 14.82, "change_pct":  8.40, "rsi_daily": 68.9, "signal": "CAUTION"},
+    {"symbol": "US VIX",  "price": 16.45, "change_pct":  5.10, "rsi_daily": 61.2, "signal": "CAUTION"},
+    {"symbol": "USDINR",  "price": 83.42, "change_pct":  0.08, "rsi_daily": 52.3, "signal": "NEUTRAL"}
+  ],
+  "gold_ratios": [
+    {"index": "NIFTY 50",    "ratio": 9.71, "change": -0.43, "trend": "DOWN"},
+    {"index": "BANK NIFTY",  "ratio": 20.82,"change": -0.82, "trend": "DOWN"},
+    {"index": "NIFTY IT",    "ratio": 15.80,"change":  1.12, "trend": "UP"},
+    {"index": "NIFTY AUTO",  "ratio": 9.65, "change":  0.34, "trend": "UP"},
+    {"index": "NIFTY PHARMA","ratio": 8.60, "change": -1.20, "trend": "DOWN"},
+    {"index": "NIFTY METAL", "ratio": 3.64, "change": -2.10, "trend": "DOWN"},
+    {"index": "NIFTY FMCG",  "ratio": 23.46,"change":  0.65, "trend": "UP"},
+    {"index": "NIFTY REALTY","ratio": 0.338,"change":  1.90, "trend": "UP"}
+  ],
+  "rs_leaders": [
+    {"symbol": "TATAPOWER",    "rs_score": 94, "price": 452.30, "ema200_status": "ABOVE", "near_52w_high": true,  "change_pct": 3.20},
+    {"symbol": "ADANIGREEN",   "rs_score": 91, "price": 1842.50,"ema200_status": "ABOVE", "near_52w_high": true,  "change_pct": 2.85},
+    {"symbol": "PERSISTENT",   "rs_score": 89, "price": 4820.10,"ema200_status": "ABOVE", "near_52w_high": false, "change_pct": 1.95},
+    {"symbol": "IRFC",         "rs_score": 88, "price": 195.40, "ema200_status": "ABOVE", "near_52w_high": true,  "change_pct": 2.10},
+    {"symbol": "BHARTIARTL",   "rs_score": 86, "price": 1245.80,"ema200_status": "ABOVE", "near_52w_high": false, "change_pct": 1.40},
+    {"symbol": "DIXON",        "rs_score": 85, "price": 9840.20,"ema200_status": "ABOVE", "near_52w_high": true,  "change_pct": 1.80},
+    {"symbol": "POLICYBZR",    "rs_score": 83, "price": 1420.60,"ema200_status": "ABOVE", "near_52w_high": false, "change_pct": 2.30},
+    {"symbol": "COCHINSHIP",   "rs_score": 82, "price": 1640.30,"ema200_status": "ABOVE", "near_52w_high": true,  "change_pct": 1.60},
+    {"symbol": "ZOMATO",       "rs_score": 80, "price": 214.50, "ema200_status": "ABOVE", "near_52w_high": false, "change_pct": 1.20},
+    {"symbol": "HBLPOWER",     "rs_score": 78, "price": 540.80, "ema200_status": "ABOVE", "near_52w_high": true,  "change_pct": 0.95}
+  ],
+  "signals": [
+    {"symbol": "RELIANCE",   "tf": "Daily",  "signal_type": "RSI_CROSS_DOWN_70", "direction": "BEARISH", "rsi": 71.8, "price": 2845.5,  "vol_ratio": 1.2, "ema10": "ABOVE", "ema20": "ABOVE", "ema200": "ABOVE"},
+    {"symbol": "HDFCBANK",   "tf": "Weekly", "signal_type": "MACD_CROSS_DOWN",   "direction": "BEARISH", "rsi": 52.3, "price": 1542.30, "vol_ratio": 0.9, "ema10": "ABOVE", "ema20": "ABOVE", "ema200": "ABOVE"},
+    {"symbol": "INFY",       "tf": "Daily",  "signal_type": "RSI_CROSS_DOWN_SMA","direction": "BEARISH", "rsi": 58.4, "price": 1842.60, "vol_ratio": 1.1, "ema10": "BELOW", "ema20": "ABOVE", "ema200": "ABOVE"},
+    {"symbol": "TATAMOTORS", "tf": "Daily",  "signal_type": "RSI_CROSS_UP_30",   "direction": "BULLISH", "rsi": 28.4, "price": 842.50,  "vol_ratio": 2.1, "ema10": "BELOW", "ema20": "BELOW", "ema200": "BELOW"},
+    {"symbol": "SBIN",       "tf": "Daily",  "signal_type": "MACD_CROSS_UP",     "direction": "BULLISH", "rsi": 42.1, "price": 642.80,  "vol_ratio": 1.8, "ema10": "BELOW", "ema20": "BELOW", "ema200": "ABOVE"},
+    {"symbol": "ICICIBANK",  "tf": "4H",     "signal_type": "RSI_CROSS_UP_SMA",  "direction": "BULLISH", "rsi": 34.8, "price": 1098.40, "vol_ratio": 1.6, "ema10": "BELOW", "ema20": "BELOW", "ema200": "ABOVE"},
+    {"symbol": "NIFTY IT",   "tf": "Weekly", "signal_type": "RSI_CROSS_DOWN_70", "direction": "BEARISH", "rsi": 72.1, "price": 36540.1, "vol_ratio": 1.0, "ema10": "ABOVE", "ema20": "ABOVE", "ema200": "ABOVE"},
+    {"symbol": "TATAPOWER",  "tf": "Daily",  "signal_type": "RSI_CROSS_UP_SMA",  "direction": "BULLISH", "rsi": 38.2, "price": 452.30,  "vol_ratio": 2.4, "ema10": "ABOVE", "ema20": "ABOVE", "ema200": "ABOVE"},
+    {"symbol": "BAJFINANCE", "tf": "Monthly","signal_type": "MACD_CROSS_DOWN",   "direction": "BEARISH", "rsi": 44.8, "price": 7140.20, "vol_ratio": 0.8, "ema10": "ABOVE", "ema20": "ABOVE", "ema200": "ABOVE"},
+    {"symbol": "ZOMATO",     "tf": "Daily",  "signal_type": "MACD_CROSS_UP",     "direction": "BULLISH", "rsi": 41.2, "price": 214.50,  "vol_ratio": 1.9, "ema10": "BELOW", "ema20": "ABOVE", "ema200": "ABOVE"},
+    {"symbol": "ADANIPORTS", "tf": "Daily",  "signal_type": "RSI_CROSS_DOWN_SMA","direction": "BEARISH", "rsi": 55.8, "price": 1241.30, "vol_ratio": 1.3, "ema10": "ABOVE", "ema20": "ABOVE", "ema200": "ABOVE"},
+    {"symbol": "COAL INDIA", "tf": "Weekly", "signal_type": "RSI_CROSS_UP_30",   "direction": "BULLISH", "rsi": 27.8, "price": 410.60,  "vol_ratio": 2.2, "ema10": "BELOW", "ema20": "BELOW", "ema200": "BELOW"}
+  ]
 }
