@@ -162,6 +162,7 @@ td.left{text-align:left}
     <div class="tab" onclick="switchTab('sector')">🔥 Sector Heatmap</div>
     <div class="tab" onclick="switchTab('rotation')">💰 Capital Rotation</div>
     <div class="tab" onclick="switchTab('fresh')">🔔 Fresh Signals</div>
+    <div class="tab" onclick="switchTab('buys')">⚡ Daily Buys</div>
     <div class="tab" onclick="switchTab('daily')">📊 Daily Signals</div>
     <div class="tab" onclick="switchTab('weekly')">📈 Weekly Signals</div>
     <div class="tab" onclick="switchTab('monthly')">🗓 Monthly Signals</div>
@@ -169,6 +170,7 @@ td.left{text-align:left}
     <div class="tab" onclick="switchTab('tracker')">📉 Trade Tracker</div>
     <div class="tab" onclick="switchTab('volume')">🔊 Volume Surge</div>
     <div class="tab" onclick="switchTab('retest')">🎯 Retest Setup</div>
+    <div class="tab" onclick="switchTab('squeeze')">🔒 EMA Squeeze</div>
   </div>
 </div>
 
@@ -217,6 +219,24 @@ td.left{text-align:left}
     </tr></thead><tbody id="tbody-fresh"></tbody></table></div>
   </div>
 
+  <!-- Daily Buy Signals — TODAY's MACD & EMA10 crossovers -->
+  <div class="tab-panel" id="panel-buys">
+    <div class="section-title">⚡ Daily Buy Signals <span class="badge">Today's MACD Zero Cross + EMA10 Bull Cross · Above SMA200</span></div>
+    <div class="filter-bar">
+      <input type="text" id="buys-search" placeholder="Search..." oninput="filterTable('buys-search','tbody-buys',0)" style="width:180px">
+      <select id="buys-conv" onchange="filterBuys()">
+        <option value="">All Conviction</option>
+        <option value="TREND SETUP">🟢 Trend Setup</option>
+        <option value="DEVELOPING">🟡 Developing</option>
+        <option value="COUNTER TREND">🔴 Counter Trend</option>
+      </select>
+      <span class="count-badge" id="buys-count"></span>
+    </div>
+    <div class="table-wrap"><table><thead><tr>
+      <th>Signal Type</th><th class="left">Company</th><th>Symbol</th><th>Date</th><th>Price ₹</th><th>W ✓</th><th>M ✓</th><th>W Status</th><th>M Status</th><th>Conviction</th><th>RS Score</th>
+    </tr></thead><tbody id="tbody-buys"></tbody></table></div>
+  </div>
+
   <!-- Daily Signals -->
   <div class="tab-panel" id="panel-daily">
     <div class="section-title">📊 India Daily Signals</div>
@@ -232,7 +252,7 @@ td.left{text-align:left}
       <span class="count-badge" id="daily-count"></span>
     </div>
     <div class="table-wrap"><table><thead><tr>
-      <th class="left">Company</th><th>Symbol</th><th>Price ₹</th><th>1D %</th><th>1M %</th><th>3M %</th><th>RSI</th><th>Stars</th><th>Signal</th><th>RS Score</th>
+      <th class="left">Company</th><th>Symbol</th><th>Price ₹</th><th>1D %</th><th>1M %</th><th>3M %</th><th>RSI</th><th>Stars</th><th>IBD</th><th>Signal</th><th>RS Score</th>
     </tr></thead><tbody id="tbody-daily"></tbody></table></div>
   </div>
 
@@ -244,7 +264,7 @@ td.left{text-align:left}
       <span class="count-badge" id="weekly-count"></span>
     </div>
     <div class="table-wrap"><table><thead><tr>
-      <th class="left">Company</th><th>Symbol</th><th>Price ₹</th><th>1D %</th><th>1M %</th><th>3M %</th><th>RSI</th><th>Stars</th><th>Signal</th><th>RS Score</th>
+      <th class="left">Company</th><th>Symbol</th><th>Price ₹</th><th>1D %</th><th>1M %</th><th>3M %</th><th>RSI</th><th>Stars</th><th>IBD</th><th>Signal</th><th>RS Score</th>
     </tr></thead><tbody id="tbody-weekly"></tbody></table></div>
   </div>
 
@@ -256,7 +276,7 @@ td.left{text-align:left}
       <span class="count-badge" id="monthly-count"></span>
     </div>
     <div class="table-wrap"><table><thead><tr>
-      <th class="left">Company</th><th>Symbol</th><th>Price ₹</th><th>1D %</th><th>1M %</th><th>3M %</th><th>RSI</th><th>Stars</th><th>Signal</th><th>RS Score</th>
+      <th class="left">Company</th><th>Symbol</th><th>Price ₹</th><th>1D %</th><th>1M %</th><th>3M %</th><th>RSI</th><th>Stars</th><th>IBD</th><th>Signal</th><th>RS Score</th>
     </tr></thead><tbody id="tbody-monthly"></tbody></table></div>
   </div>
 
@@ -280,7 +300,7 @@ td.left{text-align:left}
 
   <!-- Trade Tracker -->
   <div class="tab-panel" id="panel-tracker">
-    <div class="section-title">📉 ZenPro Trade Tracker R&D <span class="badge">₹1L per trade · Stop −5%/−10% · EOD prices only</span></div>
+    <div class="section-title">📉 ZenPro Trade Tracker <span class="badge">v8 · Stepped Trail · Lock+15%(W) Lock+25%(M) · ₹1L per trade · EOD</span></div>
     <div class="filter-bar">
       <select id="tracker-type" onchange="renderTracker()">
         <option value="weekly_macd">Weekly MACD Zero Cross</option>
@@ -291,15 +311,22 @@ td.left{text-align:left}
       <select id="tracker-status" onchange="renderTracker()">
         <option value="">All Status</option>
         <option value="OPEN">Open</option>
-        <option value="HALF OPEN">Half Open</option>
         <option value="CLOSED">Closed</option>
+      </select>
+      <select id="tracker-locked" onchange="renderTracker()">
+        <option value="">All</option>
+        <option value="1">🔒 Locked Only</option>
+        <option value="0">Unlocked Only</option>
       </select>
       <input type="text" id="tracker-search" placeholder="Search..." oninput="renderTracker()" style="width:160px">
       <span class="count-badge" id="tracker-count"></span>
     </div>
     <div id="tracker-summary" style="margin-bottom:12px"></div>
     <div class="table-wrap"><table><thead><tr>
-      <th>Signal</th><th class="left">Company</th><th>Symbol</th><th>Entry Date</th><th>Entry ₹</th><th>Stop1(−5%)</th><th>Stop2(−10%)</th><th>Last EOD ₹</th><th>P&L ₹</th><th>P&L %</th><th>Days</th><th>RS Score</th><th>Status</th>
+      <th>Signal</th><th class="left">Company</th><th>Symbol</th><th>Entry Date</th><th>Entry ₹</th>
+      <th>Backup Stop</th><th>Lock Level</th><th>🔒 Locked?</th>
+      <th>Curr Stop ₹</th><th>Exit Reason</th>
+      <th>Last EOD ₹</th><th>P&L ₹</th><th>P&L %</th><th>Days</th><th>RS Score</th><th>Status</th>
     </tr></thead><tbody id="tbody-tracker"></tbody></table></div>
   </div>
 
@@ -326,12 +353,29 @@ td.left{text-align:left}
       <th class="left">Company</th><th>Symbol</th><th>Price ₹</th><th>EMA10</th><th>EMA21</th><th>RSI</th><th>Dist 52H</th><th>Vol Drying</th><th>W-MACD</th><th>1M %</th><th>RS Score</th><th>Delivery %</th><th>Quality</th>
     </tr></thead><tbody id="tbody-retest"></tbody></table></div>
   </div>
+  <!-- EMA Squeeze -->
+  <div class="tab-panel" id="panel-squeeze">
+    <div class="section-title">🔒 Daily EMA Squeeze <span class="badge">Price between EMA10 & EMA21 · Coiling for breakout · Lowest-risk entry zone</span></div>
+    <div class="filter-bar">
+      <input type="text" id="squeeze-search" placeholder="Search..." oninput="filterTable('squeeze-search','tbody-squeeze',0)" style="width:180px">
+      <select id="squeeze-quality" onchange="filterSqueeze()">
+        <option value="">All Quality</option>
+        <option value="HIGH">🟢 HIGH</option>
+        <option value="MED">🟡 MED</option>
+        <option value="LOW">🔴 LOW</option>
+      </select>
+      <span class="count-badge" id="squeeze-count"></span>
+    </div>
+    <div class="table-wrap"><table><thead><tr>
+      <th class="left">Company</th><th>Symbol</th><th>Price ₹</th><th>EMA10</th><th>EMA21</th><th>RSI</th><th>Dist 52H</th><th>Vol Dry</th><th>W-MACD</th><th>1D %</th><th>1M %</th><th>RS Score</th><th>IBD</th><th>Quality</th>
+    </tr></thead><tbody id="tbody-squeeze"></tbody></table></div>
+  </div>
 
 </div><!-- /content -->
 
 <script>
 let DATA=null;
-const TAB_IDS=['world','sector','rotation','fresh','daily','weekly','monthly','woe','tracker','volume','retest'];
+const TAB_IDS=['world','sector','rotation','fresh','buys','daily','weekly','monthly','woe','tracker','volume','retest','squeeze'];
 
 function switchTab(id){
   document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
@@ -472,6 +516,7 @@ function renderRatioCharts(ratios){
 
 // ── Signal table (shared renderer for daily/weekly/monthly) ──
 function renderSignalTable(data,tbodyId,countId){
+  const ibdCol={'IBD ELITE':'#00e676','IBD STRONG':'#69f0ae','IBD WATCH':'#ffd740','—':'#546e7a'};
   document.getElementById(tbodyId).innerHTML=data.map(s=>`<tr>
     <td class="left" style="font-weight:500">${s.name}</td>
     <td class="ticker">${s.ticker}</td>
@@ -479,6 +524,7 @@ function renderSignalTable(data,tbodyId,countId){
     <td>${pct(s.chg_1d,2)}</td><td>${pct(s.chg_1m)}</td><td>${pct(s.chg_3m)}</td>
     <td><span style="color:${s.rsi>60?'var(--green)':s.rsi<40?'var(--red)':'var(--text2)'}">${num(s.rsi,1)}</span></td>
     <td>${starsHtml(s.stars)}</td>
+    <td><span style="color:${ibdCol[s.ibd_label||'—']};font-size:10px;font-weight:700">${s.ibd_score||0}/7 ${s.ibd_label||'—'}</span></td>
     <td>${actionBadge(s.action)}</td>
     <td><span class="${rsClass(s.rs_score)}">${s.rs_score}</span></td>
   </tr>`).join('');
@@ -523,49 +569,123 @@ function renderWOETable(data){
   document.getElementById('woe-count').textContent=`${data.length} stocks`;
 }
 
-// ── Trade Tracker ──
+// ── Trade Tracker v8 (Stepped Trail) ──
 let trackerAllData={};
 function renderTracker(){
   const type=document.getElementById('tracker-type').value;
   const status=document.getElementById('tracker-status').value;
+  const lockedF=document.getElementById('tracker-locked').value;
   const q=document.getElementById('tracker-search').value.toLowerCase();
   let data=(trackerAllData[type]||[]).filter(t=>
-    (!status||t.status===status)&&(!q||t.name.toLowerCase().includes(q)||t.ticker.toLowerCase().includes(q))
+    (!status||t.status===status)&&
+    (lockedF===''||String(t.locked)===lockedF)&&
+    (!q||t.name.toLowerCase().includes(q)||t.ticker.toLowerCase().includes(q))
   );
   const wins=data.filter(t=>t.pnl>0).length;
   const tot=data.reduce((a,t)=>a+t.pnl,0);
   const wr=data.length?Math.round(wins/data.length*100):0;
+  const lockedN=data.filter(t=>t.locked).length;
+  const openN=data.filter(t=>t.status==='OPEN').length;
   document.getElementById('tracker-summary').innerHTML=`
-    <div style="display:flex;gap:16px;flex-wrap:wrap">
-      <div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 16px">
-        <span style="color:var(--text2);font-size:11px">Total Trades</span>
-        <span style="color:var(--gold);font-weight:700;margin-left:8px;font-size:16px">${data.length}</span>
+    <div style="display:flex;gap:12px;flex-wrap:wrap">
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:8px 14px">
+        <span style="color:var(--text2);font-size:11px">Trades</span>
+        <span style="color:var(--gold);font-weight:700;margin-left:8px;font-size:15px">${data.length}</span>
       </div>
-      <div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 16px">
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:8px 14px">
+        <span style="color:var(--text2);font-size:11px">Open</span>
+        <span style="color:var(--blue);font-weight:700;margin-left:8px;font-size:15px">${openN}</span>
+      </div>
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:8px 14px">
+        <span style="color:var(--text2);font-size:11px">🔒 Locked</span>
+        <span style="color:#00e676;font-weight:700;margin-left:8px;font-size:15px">${lockedN}</span>
+      </div>
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:8px 14px">
         <span style="color:var(--text2);font-size:11px">Win Rate</span>
-        <span style="color:${wr>=50?'var(--green)':'var(--red)'};font-weight:700;margin-left:8px;font-size:16px">${wr}%</span>
+        <span style="color:${wr>=50?'var(--green)':'var(--red)'};font-weight:700;margin-left:8px;font-size:15px">${wr}%</span>
       </div>
-      <div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 16px">
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:8px 14px">
         <span style="color:var(--text2);font-size:11px">Total P&L</span>
-        <span style="color:${tot>=0?'var(--green)':'var(--red)'};font-weight:700;margin-left:8px;font-size:16px">₹${tot.toLocaleString('en-IN',{maximumFractionDigits:0})}</span>
+        <span style="color:${tot>=0?'var(--green)':'var(--red)'};font-weight:700;margin-left:8px;font-size:15px">₹${tot.toLocaleString('en-IN',{maximumFractionDigits:0})}</span>
       </div>
     </div>`;
-  document.getElementById('tbody-tracker').innerHTML=data.map(t=>`<tr>
+  const fmtStop=v=>v&&v!=='—'?`₹${Number(v).toLocaleString('en-IN',{maximumFractionDigits:2})}`:'—';
+  const reasonColor=r=>r&&r.includes('Stepped')?'#ffd740':r&&r.includes('EMA')?'#00bcd4':r&&r.includes('Backup')?'#ff5252':'#546e7a';
+  document.getElementById('tbody-tracker').innerHTML=data.map(t=>`<tr style="${t.locked?'border-left:3px solid #00e676':t.status==='OPEN'?'border-left:3px solid var(--blue)':''}">
     <td>${sigBadge(t.signal)}</td>
     <td class="left" style="font-weight:500">${t.name}</td>
     <td class="ticker">${t.ticker}</td>
-    <td style="color:var(--text2)">${t.entry_date}</td>
+    <td style="color:var(--text2);font-size:11px">${t.entry_date}</td>
     <td class="price">₹${Number(t.entry_price).toLocaleString('en-IN',{maximumFractionDigits:2})}</td>
-    <td style="color:var(--yellow)">₹${Number(t.stop1).toLocaleString('en-IN',{maximumFractionDigits:2})}</td>
-    <td style="color:var(--red)">₹${Number(t.stop2).toLocaleString('en-IN',{maximumFractionDigits:2})}</td>
+    <td style="color:var(--red);font-size:11px">${fmtStop(t.atr_stop)}</td>
+    <td style="color:var(--gold);font-weight:600">${fmtStop(t.lock_level)}</td>
+    <td style="text-align:center">${t.locked?'<span style="color:#00e676;font-weight:700;font-size:13px">🔒</span>':'<span style="color:#546e7a">—</span>'}</td>
+    <td style="color:${t.locked?'#00e676':'var(--teal)'};font-weight:600">${fmtStop(t.curr_stop)}</td>
+    <td style="color:${reasonColor(t.exit_reason)};font-size:10px">${t.exit_reason||'—'}</td>
     <td style="color:var(--blue);font-weight:600">₹${Number(t.last_price).toLocaleString('en-IN',{maximumFractionDigits:2})}</td>
-    <td><span style="color:${t.pnl>=0?'var(--green)':'var(--red)'};font-weight:700">₹${t.pnl.toLocaleString('en-IN',{maximumFractionDigits:0})}</span></td>
+    <td><span style="color:${t.pnl>=0?'var(--green)':'var(--red)'};font-weight:700">₹${Number(t.pnl).toLocaleString('en-IN',{maximumFractionDigits:0})}</span></td>
     <td>${pct(t.pnl_pct,2)}</td>
-    <td style="color:var(--text2)">${t.days_held}d</td>
+    <td style="color:var(--text2);font-size:11px">${t.days_held}d</td>
     <td><span class="${rsClass(t.rs_score)}">${t.rs_score}</span></td>
     <td>${statusBadge(t.status)}</td>
   </tr>`).join('');
   document.getElementById('tracker-count').textContent=`${data.length} trades`;
+}
+
+// ── Daily Buy Signals (today's MACD + EMA10 crossovers) ──
+let buysData=[];
+function filterBuys(){
+  const conv=document.getElementById('buys-conv').value;
+  const filtered=buysData.filter(d=>!conv||d.conviction===conv);
+  renderBuysTable(filtered);
+}
+function renderBuysTable(data){
+  const convBg={'TREND SETUP':'#0d2a1a','DEVELOPING':'#2a200a','COUNTER TREND':'#2a0a0a'};
+  const convCol={'TREND SETUP':'var(--green)','DEVELOPING':'var(--yellow)','COUNTER TREND':'var(--red)'};
+  const stCol={'BUY':'var(--green)','NEUTRAL':'var(--yellow)','SELL':'var(--red)','NO DATA':'#546e7a'};
+  document.getElementById('tbody-buys').innerHTML=data.map(d=>`<tr style="background:${convBg[d.conviction]||''}">
+    <td><span style="background:${d.signal&&d.signal.includes('MACD')?'#1a3a6a':'#145a32'};color:#fff;padding:2px 7px;border-radius:4px;font-size:10px;font-weight:700">${d.signal}</span></td>
+    <td class="left" style="font-weight:500">${d.name}</td>
+    <td class="ticker">${d.ticker}</td>
+    <td style="color:var(--text2);font-size:11px">${d.date||'—'}</td>
+    <td class="price">₹${Number(d.price).toLocaleString('en-IN',{maximumFractionDigits:2})}</td>
+    <td style="text-align:center">${d.weekly_ok?'<span style="color:var(--green)">✓</span>':'<span style="color:#546e7a">✗</span>'}</td>
+    <td style="text-align:center">${d.monthly_ok?'<span style="color:var(--green)">✓</span>':'<span style="color:#546e7a">✗</span>'}</td>
+    <td><span style="color:${stCol[d.weekly]||'#546e7a'};font-size:10px;font-weight:600">${d.weekly||'—'}</span></td>
+    <td><span style="color:${stCol[d.monthly]||'#546e7a'};font-size:10px;font-weight:600">${d.monthly||'—'}</span></td>
+    <td><span style="color:${convCol[d.conviction]||'#546e7a'};font-weight:700;font-size:11px">${d.conviction||'—'}</span></td>
+    <td><span class="${rsClass(d.rs_score)}">${d.rs_score}</span></td>
+  </tr>`).join('');
+  document.getElementById('buys-count').textContent=`${data.length} signals`;
+}
+
+// ── EMA Squeeze ──
+let squeezeData=[];
+function filterSqueeze(){
+  const q=document.getElementById('squeeze-quality').value;
+  const filtered=squeezeData.filter(d=>!q||d.quality===q);
+  renderSqueezeTable(filtered);
+}
+function renderSqueezeTable(data){
+  const ibdCol={'IBD ELITE':'#00e676','IBD STRONG':'#69f0ae','IBD WATCH':'#ffd740','—':'#546e7a'};
+  const qCol={'HIGH':'#00e676','MED':'#ffd740','LOW':'#ff5252'};
+  document.getElementById('tbody-squeeze').innerHTML=data.map(d=>`<tr>
+    <td class="left" style="font-weight:500">${d.name}</td>
+    <td class="ticker">${d.ticker}</td>
+    <td class="price">₹${Number(d.price).toLocaleString('en-IN',{maximumFractionDigits:2})}</td>
+    <td style="color:var(--teal)">${Number(d.ema10).toLocaleString('en-IN',{maximumFractionDigits:2})}</td>
+    <td style="color:var(--blue)">${Number(d.ema21).toLocaleString('en-IN',{maximumFractionDigits:2})}</td>
+    <td><span style="color:${d.rsi>60?'var(--green)':d.rsi<40?'var(--red)':'var(--text2)'}">${d.rsi}</span></td>
+    <td>${pct(d.dist_52h)}</td>
+    <td style="text-align:center">${d.vol_dry?'<span style="color:var(--green)">✓</span>':'<span style="color:#546e7a">✗</span>'}</td>
+    <td style="text-align:center">${d.w_macd?'<span style="color:var(--green)">✓</span>':'<span style="color:#546e7a">✗</span>'}</td>
+    <td>${pct(d.chg_1d,2)}</td>
+    <td>${pct(d.chg_1m)}</td>
+    <td><span class="${rsClass(d.rs_score)}">${d.rs_score}</span></td>
+    <td><span style="color:${ibdCol[d.ibd_label||'—']};font-size:10px;font-weight:700">${d.ibd_score||0}/7 ${d.ibd_label||'—'}</span></td>
+    <td><span style="color:${qCol[d.quality]||'#546e7a'};font-weight:700;font-size:11px">${d.quality||'—'}</span></td>
+  </tr>`).join('');
+  document.getElementById('squeeze-count').textContent=`${data.length} stocks`;
 }
 
 // ── Volume Surge ──
@@ -650,6 +770,26 @@ async function loadData(){
     renderTracker();
     renderVolume(DATA.volume_surge||[]);
     renderRetest(DATA.retest_setup||[]);
+
+    // Daily Buy Signals tab
+    buysData=(DATA.daily_buy_signals||[]).map(d=>({
+      signal:   d.signal||'—',
+      name:     d.name||'—',
+      ticker:   d.ticker||'—',
+      date:     d.date||'—',
+      price:    d.price||0,
+      weekly_ok:d.weekly_ok||false,
+      monthly_ok:d.monthly_ok||false,
+      weekly:   d.weekly||'—',
+      monthly:  d.monthly||'—',
+      conviction:d.conviction||'—',
+      rs_score: d.rs_score||0,
+    }));
+    renderBuysTable(buysData);
+
+    // EMA Squeeze tab
+    squeezeData=DATA.ema_squeeze||[];
+    renderSqueezeTable(squeezeData);
 
   }catch(e){
     document.getElementById('summary-bar').innerHTML=`<div class="error-msg" style="width:100%">⚠ ${e.message}</div>`;
