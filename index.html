@@ -2,662 +2,630 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>ZenPro2026 — Pro Members Scanner</title>
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@700;800&display=swap" rel="stylesheet"/>
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-:root{
-  --bg0:#0f0f0e;--bg1:#1a1a18;--bg2:#222220;--bg3:#2a2a28;
-  --border:#333331;--border2:#3a3a38;
-  --text:#e8e6e0;--text2:#888780;--text3:#5a5a58;
-  --amber:#EF9F27;--amberl:#FAC775;--amberd:#BA7517;
-  --green:#639922;--greenl:#97C459;
-  --red:#E24B4A;--redl:#F09595;
-  --teal:#1D9E75;--teall:#5DCAA5;
-  --blue:#378ADD;--bluel:#85B7EB;
-  --mono:'Space Mono',monospace;--sans:'Syne',sans-serif;
-}
-body{background:var(--bg0);color:var(--text);font-family:var(--sans);min-height:100vh;}
-
-/* ── LOGIN SCREEN ── */
-#loginScreen{
-  display:flex;align-items:center;justify-content:center;
-  min-height:100vh;padding:2rem;
-}
-.login-card{
-  background:var(--bg1);border:0.5px solid var(--border2);
-  border-radius:16px;padding:2.5rem;width:100%;max-width:400px;text-align:center;
-}
-.login-badge{
-  width:56px;height:56px;border-radius:12px;
-  background:var(--amberd);border:1px solid var(--amber);
-  display:flex;align-items:center;justify-content:center;
-  font-family:var(--mono);font-size:20px;font-weight:700;color:#FAEEDA;
-  margin:0 auto 1.25rem;
-}
-.login-title{font-size:22px;font-weight:800;color:var(--amberl);margin-bottom:4px;}
-.login-sub{font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:2px;text-transform:uppercase;margin-bottom:1.5rem;}
-.login-label{font-family:var(--mono);font-size:10px;color:var(--text2);letter-spacing:1px;text-transform:uppercase;text-align:left;margin-bottom:6px;display:block;}
-.login-inp{
-  width:100%;background:var(--bg2);border:0.5px solid var(--border2);
-  color:var(--text);padding:10px 14px;border-radius:8px;
-  font-family:var(--mono);font-size:13px;outline:none;
-  transition:border-color 0.15s;margin-bottom:1rem;
-}
-.login-inp:focus{border-color:var(--amber);}
-.login-btn{
-  width:100%;background:var(--amberd);color:#FAEEDA;border:none;
-  padding:11px;border-radius:8px;font-family:var(--mono);font-size:12px;
-  font-weight:700;letter-spacing:1.5px;cursor:pointer;transition:background 0.15s;
-}
-.login-btn:hover{background:var(--amber);}
-.login-err{color:var(--redl);font-family:var(--mono);font-size:11px;margin-top:0.75rem;display:none;}
-.login-disc{font-family:var(--mono);font-size:9px;color:var(--text3);margin-top:1.25rem;line-height:1.6;letter-spacing:0.5px;}
-
-/* ── MAIN DASHBOARD ── */
-#mainDash{display:none;}
-
-/* ── BANNER ── */
-.banner{background:var(--bg1);border-bottom:1px solid var(--border2);padding:1.25rem 2rem 1rem;position:relative;overflow:hidden;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:#0f0f0e;color:#e8e6e0;font-family:'Syne',sans-serif;min-height:100vh;}
+#login{display:flex;align-items:center;justify-content:center;min-height:100vh;padding:2rem;}
+.lcard{background:#1a1a18;border:0.5px solid #3a3a38;border-radius:16px;padding:2.5rem;width:100%;max-width:380px;text-align:center;}
+.lbadge{width:52px;height:52px;border-radius:10px;background:#BA7517;border:1px solid #EF9F27;display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:18px;font-weight:700;color:#FAEEDA;margin:0 auto 1rem;}
+.ltitle{font-size:24px;font-weight:800;color:#FAC775;margin-bottom:4px;}
+.lsub{font-family:'Space Mono',monospace;font-size:10px;color:#5a5a58;letter-spacing:2px;text-transform:uppercase;margin-bottom:1.5rem;}
+input[type=password]{width:100%;background:#222220;border:0.5px solid #3a3a38;color:#e8e6e0;padding:10px 14px;border-radius:8px;font-family:'Space Mono',monospace;font-size:13px;outline:none;margin-bottom:1rem;}
+input[type=password]:focus{border-color:#EF9F27;}
+.lbtn{width:100%;background:#BA7517;color:#FAEEDA;border:none;padding:11px;border-radius:8px;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:1.5px;cursor:pointer;}
+.lbtn:hover{background:#EF9F27;}
+.lerr{color:#F09595;font-family:'Space Mono',monospace;font-size:11px;margin-top:0.75rem;display:none;}
+.ldisc{font-family:'Space Mono',monospace;font-size:9px;color:#5a5a58;margin-top:1rem;line-height:1.6;}
+#dash{display:none;}
+.banner{background:#1a1a18;border-bottom:1px solid #333331;padding:1.25rem 2rem 1rem;position:relative;overflow:hidden;}
 .banner::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(186,117,23,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(186,117,23,0.06) 1px,transparent 1px);background-size:28px 28px;pointer-events:none;}
-.b-inner{position:relative;z-index:2;}
-.b-top{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
-.brand-row{display:flex;align-items:center;gap:14px;}
-.zp-badge{width:46px;height:46px;border-radius:9px;background:var(--amberd);border:1px solid var(--amber);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:16px;font-weight:700;color:#FAEEDA;flex-shrink:0;}
-.brand-name{font-size:clamp(20px,3.5vw,30px);font-weight:800;color:var(--amberl);letter-spacing:-1px;line-height:1;}
-.brand-name .pro{color:var(--amber);}
-.brand-name .yr{color:var(--text3);font-size:0.65em;}
-.brand-sub{font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:2px;text-transform:uppercase;margin-top:5px;}
-.pro-chip{background:rgba(186,117,23,0.2);border:0.5px solid var(--amber);padding:4px 12px;border-radius:20px;font-family:var(--mono);font-size:10px;color:var(--amberl);letter-spacing:1px;}
-.live-chip{display:flex;align-items:center;gap:6px;background:rgba(99,153,34,0.12);border:0.5px solid rgba(99,153,34,0.3);padding:4px 12px;border-radius:20px;font-family:var(--mono);font-size:10px;color:#97C459;letter-spacing:1px;}
-.dot{width:7px;height:7px;border-radius:50%;background:#639922;animation:pulse 1.3s ease-in-out infinite;}
+.bi{position:relative;z-index:2;}
+.bt{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
+.br{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.zbadge{width:44px;height:44px;border-radius:8px;background:#BA7517;border:1px solid #EF9F27;display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:15px;font-weight:700;color:#FAEEDA;flex-shrink:0;}
+.bname{font-size:clamp(20px,3.5vw,28px);font-weight:800;color:#FAC775;letter-spacing:-1px;line-height:1;}
+.bsub{font-family:'Space Mono',monospace;font-size:10px;color:#5a5a58;letter-spacing:2px;text-transform:uppercase;margin-top:4px;}
+.chip{display:flex;align-items:center;gap:5px;padding:4px 10px;border-radius:20px;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.5px;}
+.chip-pro{background:rgba(186,117,23,0.2);border:0.5px solid #EF9F27;color:#FAC775;}
+.chip-live{background:rgba(99,153,34,0.12);border:0.5px solid rgba(99,153,34,0.3);color:#97C459;}
+.dot{width:6px;height:6px;border-radius:50%;background:#639922;animation:pulse 1.3s ease-in-out infinite;}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
-.logout-btn{background:var(--bg3);border:0.5px solid var(--border2);color:var(--text2);padding:4px 12px;border-radius:6px;font-family:var(--mono);font-size:10px;cursor:pointer;}
-.b-divider{border:none;border-top:0.5px solid var(--border);margin:1rem 0 0.75rem;}
-.b-stats{display:flex;gap:0;flex-wrap:wrap;}
-.bs{flex:1;min-width:90px;padding:0 1.25rem;border-right:0.5px solid var(--border);}
+.lout{background:#2a2a28;border:0.5px solid #3a3a38;color:#888780;padding:4px 10px;border-radius:6px;font-family:'Space Mono',monospace;font-size:10px;cursor:pointer;}
+.bdiv{border:none;border-top:0.5px solid #333331;margin:1rem 0 0.75rem;}
+.bstats{display:flex;flex-wrap:wrap;}
+.bs{flex:1;min-width:80px;padding:0 1rem;border-right:0.5px solid #333331;}
 .bs:first-child{padding-left:0;}
 .bs:last-child{border-right:none;}
-.bsv{font-family:var(--mono);font-size:14px;font-weight:700;color:var(--amberl);}
-.bsv.g{color:#97C459;}.bsv.r{color:#F09595;}.bsv.t{color:#5DCAA5;}
-.bsl{font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:1.5px;text-transform:uppercase;margin-top:2px;}
-
-/* ── DISCLAIMER BAR ── */
-.disc-bar{background:rgba(226,75,74,0.08);border-bottom:0.5px solid rgba(226,75,74,0.2);padding:6px 2rem;font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:0.5px;text-align:center;}
-
-/* ── TABS ── */
-.tabs{display:flex;background:var(--bg1);border-bottom:1px solid var(--border2);padding:0 2rem;overflow-x:auto;}
-.tab{padding:10px 18px;font-family:var(--mono);font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--text3);cursor:pointer;border-bottom:2px solid transparent;transition:all 0.15s;white-space:nowrap;}
-.tab:hover{color:var(--text);}
-.tab.active{color:var(--amberl);border-bottom-color:var(--amber);}
-
-/* ── FILTERS ── */
-.filters{padding:0.9rem 2rem;display:flex;align-items:center;gap:8px;flex-wrap:wrap;border-bottom:0.5px solid var(--border);}
-.fb{background:var(--bg2);border:0.5px solid var(--border2);color:var(--text2);padding:5px 14px;border-radius:20px;font-family:var(--mono);font-size:10px;cursor:pointer;transition:all 0.15s;}
-.fb:hover{border-color:var(--amber);color:var(--amberl);}
-.fb.active{background:var(--amberd);border-color:var(--amber);color:#FAEEDA;font-weight:700;}
-.si{background:var(--bg2);border:0.5px solid var(--border2);color:var(--text);padding:5px 12px;border-radius:6px;font-family:var(--mono);font-size:11px;outline:none;width:150px;}
-.si:focus{border-color:var(--amber);}
-.si::placeholder{color:var(--text3);}
-.ss{background:var(--bg2);border:0.5px solid var(--border2);color:var(--text2);padding:5px 10px;border-radius:6px;font-family:var(--mono);font-size:10px;cursor:pointer;outline:none;}
-.rc{font-family:var(--mono);font-size:10px;color:var(--text3);margin-left:auto;}
-.last-update{font-family:var(--mono);font-size:9px;color:var(--text3);}
-
-/* ── TABLE ── */
+.bsv{font-family:'Space Mono',monospace;font-size:13px;font-weight:700;color:#FAC775;}
+.bsv.g{color:#97C459;}.bsv.t{color:#5DCAA5;}.bsv.b{color:#85B7EB;}
+.bsl{font-family:'Space Mono',monospace;font-size:9px;color:#5a5a58;letter-spacing:1.5px;text-transform:uppercase;margin-top:2px;}
+.disc{background:rgba(226,75,74,0.08);border-bottom:0.5px solid rgba(226,75,74,0.2);padding:6px 2rem;font-family:'Space Mono',monospace;font-size:9px;color:#5a5a58;text-align:center;}
+.filters{padding:0.9rem 2rem;display:flex;align-items:center;gap:8px;flex-wrap:wrap;border-bottom:0.5px solid #333331;}
+.fb{background:#222220;border:0.5px solid #3a3a38;color:#888780;padding:5px 12px;border-radius:20px;font-family:'Space Mono',monospace;font-size:10px;cursor:pointer;transition:all 0.15s;}
+.fb:hover,.fb.active{background:#BA7517;border-color:#EF9F27;color:#FAEEDA;font-weight:700;}
+.si{background:#222220;border:0.5px solid #3a3a38;color:#e8e6e0;padding:5px 12px;border-radius:6px;font-family:'Space Mono',monospace;font-size:11px;outline:none;width:150px;}
+.si:focus{border-color:#EF9F27;}
+.si::placeholder{color:#5a5a58;}
+.ss{background:#222220;border:0.5px solid #3a3a38;color:#888780;padding:5px 10px;border-radius:6px;font-family:'Space Mono',monospace;font-size:10px;cursor:pointer;outline:none;}
+.rc{font-family:'Space Mono',monospace;font-size:10px;color:#5a5a58;margin-left:auto;}
 .tw{padding:0 2rem 2rem;overflow-x:auto;}
-table{width:100%;border-collapse:collapse;min-width:900px;}
-thead th{background:var(--bg2);padding:9px 12px;text-align:left;font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--text3);border-bottom:0.5px solid var(--border2);white-space:nowrap;}
-tbody tr{border-bottom:0.5px solid var(--bg3);transition:background 0.1s;}
-tbody tr:hover{background:var(--bg2);}
-tbody td{padding:10px 12px;font-family:var(--mono);font-size:11px;white-space:nowrap;}
-.sym{font-weight:700;font-size:13px;color:var(--amberl);}
-.nr{text-align:right;}
-.pu{color:#97C459;}.pd{color:#F09595;}.t3{color:var(--text3);}
-.sig{display:inline-block;padding:2px 9px;border-radius:20px;font-size:9px;font-weight:700;letter-spacing:1px;}
-.s-rsi  {background:rgba(99,153,34,0.15);color:#97C459;border:0.5px solid rgba(99,153,34,0.4);}
-.s-ema  {background:rgba(29,158,117,0.15);color:#5DCAA5;border:0.5px solid rgba(29,158,117,0.35);}
-.s-macd {background:rgba(55,138,221,0.15);color:#85B7EB;border:0.5px solid rgba(55,138,221,0.35);}
-.s-near {background:rgba(186,117,23,0.15);color:var(--amberl);border:0.5px solid rgba(186,117,23,0.3);}
-.s-decl {background:rgba(226,75,74,0.12);color:#F09595;border:0.5px solid rgba(226,75,74,0.3);}
-.tfd{color:var(--amberl);}.tfw{color:#5DCAA5;}.tfm{color:#85B7EB;}
-.yes{color:#97C459;font-weight:700;}.no2{color:var(--text3);}
-
-/* ── JOURNAL ── */
-.jsum{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:1px;background:var(--border);border-bottom:0.5px solid var(--border);}
-.jc{background:var(--bg1);padding:1rem 1.25rem;}
-.jv{font-family:var(--mono);font-size:18px;font-weight:700;color:var(--amberl);}
-.jv.g{color:#97C459;}.jv.r{color:#F09595;}
-.jl{font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:1.5px;text-transform:uppercase;margin-top:3px;}
-
-/* ── BREADTH ── */
-.breadth-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:var(--border);padding:0;}
-.bc{background:var(--bg1);padding:1.25rem;}
-.bc-title{font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:0.75rem;}
-.bc-val{font-family:var(--mono);font-size:24px;font-weight:700;color:var(--amberl);}
-.bc-sub{font-family:var(--mono);font-size:9px;color:var(--text3);margin-top:4px;}
-.progress-bar{height:4px;background:var(--bg3);border-radius:2px;margin-top:8px;overflow:hidden;}
-.progress-fill{height:100%;border-radius:2px;transition:width 0.5s;}
-
-.empty{text-align:center;padding:4rem;font-family:var(--mono);font-size:12px;color:var(--text3);letter-spacing:1px;}
-footer{padding:0.75rem 2rem;border-top:0.5px solid var(--border);display:flex;justify-content:space-between;flex-wrap:wrap;gap:0.5rem;font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:1px;}
-
-@media(max-width:600px){
-  .banner,.filters,.tw{padding-left:1rem;padding-right:1rem;}
-  .bs{min-width:80px;}
-}
+table{width:100%;border-collapse:collapse;min-width:1100px;}
+thead th{background:#1e1e1c;padding:9px 10px;text-align:left;font-family:'Space Mono',monospace;font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#5a5a58;border-bottom:0.5px solid #3a3a38;white-space:nowrap;}
+tbody tr{border-bottom:0.5px solid #1e1e1c;transition:background 0.1s;}
+tbody tr:hover{background:#1e1e1c;}
+tbody td{padding:9px 10px;font-family:'Space Mono',monospace;font-size:11px;white-space:nowrap;}
+.empty{text-align:center;padding:4rem;font-family:'Space Mono',monospace;font-size:12px;color:#5a5a58;}
+footer{padding:0.75rem 2rem;border-top:0.5px solid #333331;display:flex;justify-content:space-between;flex-wrap:wrap;gap:0.5rem;font-family:'Space Mono',monospace;font-size:9px;color:#5a5a58;letter-spacing:1px;}
 </style>
 </head>
 <body>
-
-<!-- ── LOGIN ── -->
-<div id="loginScreen">
-  <div class="login-card">
-    <div class="login-badge">ZP</div>
-    <div class="login-title">Zen<span style="color:var(--amber)">Pro</span><span style="color:var(--text3);font-size:0.7em">2026</span></div>
-    <div class="login-sub">Pro Members Scanner</div>
-    <label class="login-label">Member Password</label>
-    <input class="login-inp" type="password" id="pwdInp" placeholder="Enter your password" onkeydown="if(event.key==='Enter')doLogin()"/>
-    <button class="login-btn" onclick="doLogin()">ACCESS SCANNER</button>
-    <div class="login-err" id="loginErr">Incorrect password. Please try again.</div>
-    <div class="login-disc">
-      ⚠ Educational content only. Not SEBI registered.<br/>
-      No buy/sell signals. No financial advice.<br/>
-      Charts and indicators are for learning purposes only.
-    </div>
+<div id="login">
+  <div class="lcard">
+    <div class="lbadge">ZP</div>
+    <div class="ltitle">Zen<span style="color:#EF9F27">Pro</span><span style="color:#5a5a58;font-size:0.65em">2026</span></div>
+    <div class="lsub">Pro Members Scanner</div>
+    <input type="password" id="pw" placeholder="Enter member password" onkeydown="if(event.key==='Enter')login()"/>
+    <button class="lbtn" onclick="login()">ACCESS SCANNER</button>
+    <div class="lerr" id="err">Incorrect password.</div>
+    <div class="ldisc">⚠ Educational content only. Not SEBI registered.<br/>No buy/sell signals. No financial advice.</div>
   </div>
 </div>
 
-<!-- ── MAIN DASHBOARD ── -->
-<div id="mainDash">
-
-  <!-- Banner -->
+<div id="dash">
   <div class="banner">
-    <div class="b-inner">
-      <div class="b-top">
-        <div class="brand-row">
-          <div class="zp-badge">ZP</div>
+    <div class="bi">
+      <div class="bt">
+        <div style="display:flex;align-items:center;gap:12px">
+          <div class="zbadge">ZP</div>
           <div>
-            <div class="brand-name">Zen<span class="pro">Pro</span><span class="yr">2026</span></div>
-            <div class="brand-sub">Technical Indicator Study — Pro Members</div>
+            <div class="bname">Zen<span style="color:#EF9F27">Pro</span><span style="color:#5a5a58;font-size:0.65em">2026</span></div>
+            <div class="bsub">Technical Indicator Study — Pro Members</div>
           </div>
         </div>
-        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
-          <span class="pro-chip">⭐ PRO MEMBERS</span>
-          <div class="live-chip"><span class="dot"></span>LIVE DATA</div>
-          <button class="logout-btn" onclick="doLogout()">LOGOUT</button>
+        <div class="br">
+          <span class="chip chip-pro">⭐ PRO MEMBERS</span>
+          <span class="chip chip-live"><span class="dot"></span>LIVE DATA</span>
+          <span style="font-family:'Space Mono',monospace;font-size:10px;color:#5a5a58">Updated: 31 Mar 2026 · 01:19 PM</span>
+          <button class="lout" onclick="document.getElementById('dash').style.display='none';document.getElementById('login').style.display='flex'">LOGOUT</button>
         </div>
       </div>
-      <hr class="b-divider"/>
-      <div class="b-stats">
-        <div class="bs"><div class="bsv" id="bT">—</div><div class="bsl">Total Setups</div></div>
-        <div class="bs"><div class="bsv g" id="bR">—</div><div class="bsl">RSI Cross 60</div></div>
-        <div class="bs"><div class="bsv t" id="bE">—</div><div class="bsl">EMA Cross</div></div>
-        <div class="bs"><div class="bsv" style="color:var(--bluel)" id="bM">—</div><div class="bsl">MACD Cross</div></div>
+      <hr class="bdiv"/>
+      <div class="bstats">
+        <div class="bs"><div class="bsv">20</div><div class="bsl">Total Setups</div></div>
+        <div class="bs"><div class="bsv g">0</div><div class="bsl">Full Signals</div></div>
+        <div class="bs"><div class="bsv" style="color:#FAC775">20</div><div class="bsl">Near Signal</div></div>
+        <div class="bs"><div class="bsv t">20</div><div class="bsl">EMA Cross</div></div>
+        <div class="bs"><div class="bsv b">18</div><div class="bsl">MACD Cross</div></div>
+        <div class="bs"><div class="bsv g">19</div><div class="bsl">RSI Cross 60</div></div>
         <div class="bs"><div class="bsv">500</div><div class="bsl">NSE Stocks</div></div>
-        <div class="bs"><div class="bsv" id="bD">—</div><div class="bsl">Last Update</div></div>
+        <div class="bs"><div class="bsv" style="color:#5DCAA5">Test</div><div class="bsl">Session</div></div>
       </div>
     </div>
   </div>
 
-  <!-- Disclaimer bar -->
-  <div class="disc-bar">
-    ⚠ EDUCATIONAL CONTENT ONLY — These are technical indicator readings for chart study. Not SEBI registered. Not buy/sell signals. Not financial advice. All markets involve risk.
+  <div class="disc">⚠ EDUCATIONAL CONTENT ONLY — Technical indicator readings for chart study. Not SEBI registered. Not buy/sell signals. Not financial advice. All markets involve risk.</div>
+
+  <div class="filters">
+    <span style="font-family:'Space Mono',monospace;font-size:10px;color:#5a5a58">FILTER:</span>
+    <button class="fb active" onclick="setF('all',this)">All</button>
+    <button class="fb" onclick="setF('BUY',this)">Full Signal</button>
+    <button class="fb" onclick="setF('WATCH',this)">Near Signal</button>
+    <button class="fb" onclick="setF('Daily',this)">Daily</button>
+    <button class="fb" onclick="setF('Weekly',this)">Weekly</button>
+    <button class="fb" onclick="setF('Monthly',this)">Monthly</button>
+    <input class="si" id="si" placeholder="Search symbol..." oninput="render()"/>
+    <select class="ss" id="ss" onchange="render()">
+      <option value="default">Default order</option>
+      <option value="symbol">Symbol A–Z</option>
+      <option value="rsi">RSI High–Low</option>
+      <option value="score">Score High–Low</option>
+    </select>
+    <span class="rc" id="rc">—</span>
   </div>
 
-  <!-- Tabs -->
-  <div class="tabs">
-    <div class="tab active" onclick="showTab('scanner',this)">📊 Indicator Scanner</div>
-    <div class="tab" onclick="showTab('watchlist',this)">👁 Near Signal</div>
-    <div class="tab" onclick="showTab('journal',this)">📒 Study Journal</div>
-    <div class="tab" onclick="showTab('breadth',this)">📈 Market Breadth</div>
-  </div>
-
-  <!-- SCANNER TAB -->
-  <div id="tab-scanner">
-    <div class="filters">
-      <span style="font-family:var(--mono);font-size:10px;color:var(--text3);">FILTER:</span>
-      <button class="fb active" onclick="setF('all',this)">All</button>
-      <button class="fb" onclick="setF('RSI Cross',this)">RSI Cross 60</button>
-      <button class="fb" onclick="setF('EMA Cross',this)">EMA Cross</button>
-      <button class="fb" onclick="setF('MACD Cross',this)">MACD Cross</button>
-      <button class="fb" onclick="setF('Daily',this)">Daily</button>
-      <button class="fb" onclick="setF('Weekly',this)">Weekly</button>
-      <button class="fb" onclick="setF('Monthly',this)">Monthly</button>
-      <input class="si" id="si" placeholder="Search symbol..." oninput="renderScanner()"/>
-      <select class="ss" id="ss" onchange="renderScanner()">
-        <option value="date_desc">Latest first</option>
-        <option value="symbol">Symbol A–Z</option>
-        <option value="rsi_desc">RSI High–Low</option>
-        <option value="score_desc">Score High–Low</option>
-      </select>
-      <span class="rc" id="rc">—</span>
-      <span class="last-update" id="lastUpd">—</span>
-    </div>
-    <div class="tw">
-      <table>
-        <thead><tr>
-          <th>#</th><th>Symbol</th><th>Setup Type</th><th>Timeframe</th>
-          <th class="nr">Price (₹)</th><th class="nr">RSI</th>
-          <th class="nr">EMA10</th><th class="nr">EMA21</th><th class="nr">EMA200</th>
-          <th class="nr">MACD</th>
-          <th>Above EMA200</th><th>EMA10 Cross EMA21</th>
-          <th>Price Cross EMA10</th><th>MACD Cross Zero</th><th>RSI Cross 60</th>
-          <th>Score</th><th>Avg Volume</th><th>Date</th>
-        </tr></thead>
-        <tbody id="scanB"></tbody>
-      </table>
-      <div class="empty" id="scanE" style="display:none">No setups match filter</div>
-    </div>
-  </div>
-
-  <!-- WATCHLIST TAB -->
-  <div id="tab-watchlist" style="display:none">
-    <div class="filters">
-      <span style="font-family:var(--mono);font-size:10px;color:var(--text3);">Stocks with 4/6 or more indicators aligned — potential setups forming</span>
-      <span class="rc" id="wc">—</span>
-    </div>
-    <div class="tw">
-      <table>
-        <thead><tr>
-          <th>#</th><th>Symbol</th><th class="nr">Price (₹)</th><th class="nr">RSI</th>
-          <th>Score</th><th>Above EMA200</th><th>EMA10 Cross EMA21</th>
-          <th>Price Cross EMA10</th><th>MACD Cross Zero</th><th>RSI Cross 60</th><th>Date</th>
-        </tr></thead>
-        <tbody id="wB"></tbody>
-      </table>
-      <div class="empty" id="wE" style="display:none">No near-signal stocks today</div>
-    </div>
-  </div>
-
-  <!-- JOURNAL TAB -->
-  <div id="tab-journal" style="display:none">
-    <div class="jsum">
-      <div class="jc"><div class="jv" id="jT">—</div><div class="jl">Study Setups</div></div>
-      <div class="jc"><div class="jv g" id="jW">—</div><div class="jl">Worked</div></div>
-      <div class="jc"><div class="jv r" id="jL">—</div><div class="jl">Did Not Work</div></div>
-      <div class="jc"><div class="jv" id="jWR">—</div><div class="jl">Success Rate</div></div>
-      <div class="jc"><div class="jv g" id="jPL">—</div><div class="jl">Hypothetical P&amp;L</div></div>
-      <div class="jc"><div class="jv">₹10,000</div><div class="jl">Study Capital</div></div>
-    </div>
-    <div style="padding:1rem 2rem;font-family:var(--mono);font-size:10px;color:var(--text3);border-bottom:0.5px solid var(--border);">
-      ⚠ This is a hypothetical study journal for educational backtesting only. Not real trades. Not financial advice.
-    </div>
-    <div class="tw">
-      <table>
-        <thead><tr>
-          <th>#</th><th>Symbol</th><th>Entry Date</th><th class="nr">Entry Price</th>
-          <th class="nr">Study Qty</th><th class="nr">Study Capital</th>
-          <th>Exit Date</th><th class="nr">Exit Price</th>
-          <th class="nr">Hypo P&amp;L (₹)</th><th class="nr">Return %</th><th>Status</th>
-        </tr></thead>
-        <tbody id="jnlB"></tbody>
-      </table>
-      <div class="empty" id="jnlE">No study entries yet. Setups will appear here after indicator alignments.</div>
-    </div>
-  </div>
-
-  <!-- BREADTH TAB -->
-  <div id="tab-breadth" style="display:none">
-    <div style="padding:1rem 2rem;font-family:var(--mono);font-size:10px;color:var(--text3);border-bottom:0.5px solid var(--border);">
-      Market breadth shows how many stocks are in bullish vs bearish technical conditions — for educational chart study only.
-    </div>
-    <div class="breadth-grid" id="breadthGrid">
-      <div class="bc">
-        <div class="bc-title">Stocks Above EMA 200</div>
-        <div class="bc-val" id="brAbove200">—</div>
-        <div class="bc-sub">of 500 Nifty stocks</div>
-        <div class="progress-bar"><div class="progress-fill" id="brAbove200Bar" style="background:#639922;width:0%"></div></div>
-      </div>
-      <div class="bc">
-        <div class="bc-title">EMA 10 Above EMA 21</div>
-        <div class="bc-val" id="brEMACross">—</div>
-        <div class="bc-sub">bullish EMA alignment</div>
-        <div class="progress-bar"><div class="progress-fill" id="brEMACrossBar" style="background:#5DCAA5;width:0%"></div></div>
-      </div>
-      <div class="bc">
-        <div class="bc-title">MACD Above Zero Line</div>
-        <div class="bc-val" id="brMACD">—</div>
-        <div class="bc-sub">positive momentum</div>
-        <div class="progress-bar"><div class="progress-fill" id="brMACDBar" style="background:#85B7EB;width:0%"></div></div>
-      </div>
-      <div class="bc">
-        <div class="bc-title">RSI Above 60</div>
-        <div class="bc-val" id="brRSI">—</div>
-        <div class="bc-sub">strong momentum</div>
-        <div class="progress-bar"><div class="progress-fill" id="brRSIBar" style="background:#FAC775;width:0%"></div></div>
-      </div>
-      <div class="bc">
-        <div class="bc-title">All 5 Indicators Aligned</div>
-        <div class="bc-val" id="brFull">—</div>
-        <div class="bc-sub">full setup confirmed</div>
-        <div class="progress-bar"><div class="progress-fill" id="brFullBar" style="background:#EF9F27;width:0%"></div></div>
-      </div>
-      <div class="bc">
-        <div class="bc-title">Overall Market Trend</div>
-        <div class="bc-val" id="brTrend">—</div>
-        <div class="bc-sub">based on breadth readings</div>
-        <div class="progress-bar"><div class="progress-fill" id="brTrendBar" style="background:#639922;width:0%"></div></div>
-      </div>
-    </div>
+  <div class="tw">
+    <table id="tbl">
+      <thead><tr>
+        <th>#</th><th>Symbol</th><th>Setup Type</th><th>Timeframe</th>
+        <th style="text-align:right">Price (₹)</th><th style="text-align:right">RSI</th>
+        <th style="text-align:right">EMA10</th><th style="text-align:right">EMA21</th><th style="text-align:right">EMA200</th>
+        <th style="text-align:right">MACD</th>
+        <th style="text-align:center">EMA200✓</th><th style="text-align:center">EMA Cross✓</th>
+        <th style="text-align:center">P&gt;EMA10✓</th><th style="text-align:center">MACD✓</th><th style="text-align:center">RSI60✓</th>
+        <th style="text-align:center">Score</th><th>Avg Vol</th><th>Date</th><th>Time</th>
+      </tr></thead>
+      <tbody id="tbody"><tr>
+<td style="color:#555">1</td>
+<td style="color:#FAC775;font-weight:700;font-size:13px">ACMESOLAR</td>
+<td><span style="background:rgba(186,117,23,0.2);color:#FAC775;border:0.5px solid rgba(186,117,23,0.4);padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;">NEAR SIGNAL</span></td>
+<td style="color:#FAC775">Daily</td>
+<td style="text-align:right">₹261.61</td>
+<td style="text-align:right;color:#e8e6e0">59.7</td>
+<td style="text-align:right;color:#666">₹252.46</td>
+<td style="text-align:right;color:#666">₹245.03</td>
+<td style="text-align:right;color:#666">₹nan</td>
+<td style="text-align:right;color:#666">7.9956</td>
+<td style="text-align:center"><span style="color:#444;">—</span></td>
+<td style="text-align:center"><span style="color:#97C459;font-weight:700;">✓</span></td>
+<td style="text-align:center"><span style="color:#97C459;font-weight:700;">✓</span></td>
+<td style="text-align:center"><span style="color:#97C459;font-weight:700;">✓</span></td>
+<td style="text-align:center"><span style="color:#97C459;font-weight:700;">✓</span></td>
+<td style="color:#FAC775;text-align:center">5/6</td>
+<td style="color:#555">25.7L</td>
+<td style="color:#555">31/03/2026</td>
+<td style="color:#555">01:13:45 pm</td>
+</tr><tr>
+<td style="color:#555">2</td>
+<td style="color:#FAC775;font-weight:700;font-size:13px">ACUTAAS</td>
+<td><span style="background:rgba(186,117,23,0.2);color:#FAC775;border:0.5px solid rgba(186,117,23,0.4);padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;">NEAR SIGNAL</span></td>
+<td style="color:#FAC775">Daily</td>
+<td style="text-align:right">₹2558.6</td>
+<td style="text-align:right;color:#e8e6e0">68.0</td>
+<td style="text-align:right;color:#666">₹2401.33</td>
+<td style="text-align:right;color:#666">₹2295.39</td>
+<td style="text-align:right;color:#666">₹nan</td>
+<td style="text-align:right;color:#666">118.4884</td>
+<td style="text-align:center"><span style="color:#444;">—</span></td>
+<td style="text-align:center"><span style="color:#97C459;font-weight:700;">✓</span></td>
+<td style="text-align:center"><span style="color:#97C459;font-weight:700;">✓</span></td>
+<td style="text-align:center"><span style="color:#97C459;font-weight:700;">✓</span></td>
+<td style="text-align:center"><span style="color:#97C459;font-weight:700;">✓</span></td>
+<td style="color:#FAC775;text-align:center">5/6</td>
+<td style="color:#555">5.1L</td>
+<td style="color:#555">31/03/2026</td>
+<td style="color:#555">01:13:52 pm</td>
+</tr><tr>
+<td style="color:#555">3</td>
+<td style="color:#FAC775;font-weight:700;font-size:13px">AUROPHARMA</td>
+<td><span style="background:rgba(186,117,23,0.2);color:#FAC775;border:0.5px solid rgba(186,117,23,0.4);padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;">NEAR SIGNAL</span></td>
+<td style="color:#FAC775">Daily</td>
+<td style="text-align:right">₹1304.4</td>
+<td style="text-align:right;color:#e8e6e0">60.9</td>
+<td style="text-align:right;color:#666">₹1289.14</td>
+<td style="text-align:right;color:#666">₹1266.51</td>
+<td style="text-align:right;color:#666">₹nan</td>
+<td style="text-align:right;color:#666">27.0645</td>
+<td style="text-align:center"><span style="color:#444;">—</span></td>
+<td style="text-align:center"><span style="color:#97C459;font-weight:700;">✓</span></td>
+<td style="text-align:center"><span style="color:#97C459;font-weight:700;">✓</span></td>
+<td style="text-align:center"><span style="color:#97C459;font-weight:700;">✓</span></td>
+<td style="text-align:center"><span style="color:#97C459;font-weight:700;">✓</span></td>
+<td style="color:#FAC775;text-align:center">5/6</td>
+<td style="color:#555">15.9L</td>
+<td style="color:#555">31/03/2026</td>
+<td style="color:#555">01:14:20 pm</td>
+</tr><tr>
+<td style="color:#555">4</td>
+<td style="color:#FAC775;font-weight:700;font-size:13px">DMART</td>
+<td><span style="background:rgba(186,117,23,0.2);color:#FAC775;border:0.5px solid rgba(186,117,23,0.4);padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;">NEAR SIGNAL</span></td>
+<td style="color:#FAC775">Daily</td>
+<td style="text-align:right">₹3956.8</td>
+<td style="text-align:right;color:#e8e6e0">57.7</td>
+<td style="text-align:right;color:#666">₹3853.86</td>
+<td style="text-align:right;color:#666">₹3849.2</td>
+<td style="text-align:right;color:#666">₹nan</td>
+<td style="text-align:right;color:#666">2.843</td>
+<td style="text-align:center"><span style="color:#444;">—</span></td>
+<td style="text-align:center"><span style="color:#97C459;font-weight:700;">✓</span></td>
+<td style="text-align:center"><span style="color:#97C459;font-weight:700;">✓</span></td>
+<td style="text-align:center"><span style="color:#97C459;font-weight:700;">✓</span></td>
+<td style="text-align:center"><span style="color:#97C459;font-weight:700;">✓</span></td>
+<td style="color:#FAC775;text-align:center">5/6</td>
+<td style="color:#555">6.1L</td>
+<td style="color:#555">31/03/2026</td>
+<td style="color:#555">01:14:21 pm</td>
+</tr><tr>
+<td style="color:#555">5</td>
+<td style="color:#FAC775;font-weight:700;font-size:13px">GRANULES</td>
+<td><span style="background:rgba(186,117,23,0.2);color:#FAC775;border:0.5px solid rgba(186,117,23,0.4);padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;">NEAR SIGNAL</span></td>
+<td style="color:#FAC775">Daily</td>
+<td style="text-align:right">₹620.4</td>
+<td style="text-align:right;color:#e8e6e0">61.0</td>
+<td style="text-align:right;color:#666">₹602.55</td>
+<td style="text-align:right;color:#666">₹592.11</td>
+<td style="text-align:right;color:#666">₹nan</td>
+<td style="text-align:right;color:#666">9.8316</td>
+<td style="text-align:center"><span style="color:#444;">—</span></td>
+<td style="text-align:center"><span style="color:#97C459;font-weight:700;">✓</span></td>
+<td style="text-align:center"><span style="color:#97C459;font-weight:700;">✓</span></td>
+<td style="text-align:center"><span style="color:#97C459;font-weight:700;">✓</span></td>
+<td style="text-align:center"><span style="color:#97C459;font-weight:700;">✓</span></td>
+<td style="color:#FAC775;text-align:center">5/6</td>
+<td style="color:#555">9.1L</td>
+<td style="color:#555">31/03/2026</td>
+<td style="color:#555">01:16:04 pm</td>
+</tr><tr>
+<td style="color:#555">6</td>
+<td style="color:#FAC775;font-weight:700;font-size:13px">HONASA</td>
+<td><span style="background:rgba(186,117,23,0.2);color:#FAC775;border:0.5px solid rgba(186,117,23,0.4);padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;">NEAR SIGNAL</span></td>
+<td style="color:#FAC775">Daily</td>
+<td style="text-align:right">₹298.25</td>
+<td style="text-align:right;color:#e8e6e0">56.9</td>
+<td style="text-align:right;color:#666">₹289.07</td>
+<td style="text-align:right;color:#666">₹288.1</td>
+<td style="text-align:right;color:#666">₹nan</td>
+<td style="text-align:right;color:#666">0.3591</td>
+<td style="text-align:center"><span style="color:#444;">—</span></td>
+<td style="text-align:center"><span style="color:#97C459;font-weight:700;">✓</span></td>
+<td style="text-align:center"><span style="color:#97C459;font-weight:700;">✓</span></td>
+<td style="text-align:center"><span style="color:#97C459;font-weight:700;">✓</span></td>
+<td style="text-align:center"><span style="color:#97C459;font-weight:700;">✓</span></td>
+<td style="color:#FAC775;text-align:center">5/6</td>
+<td style="color:#555">6.6L</td>
+<td style="color:#555">31/03/2026</td>
+<td style="color:#555">01:16:24 pm</td>
+</tr><tr>
+<td style="color:#555">7</td>
+<td style="color:#FAC775;font-weight:700;font-size:13px">IRB</td>
+<td><span style="background:rgba(186,117,23,0.2);color:#FAC775;border:0.5px solid rgba(186,117,23,0.4);padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;">NEAR SIGNAL</span></td>
+<td style="color:#FAC775">Daily</td>
+<td style="text-align:right">₹22.14</td>
+<td style="text-align:right;color:#e8e6e0">65.2</td>
+<td style="text-align:right;color:#666">₹20.85</td>
+<td style="text-align:right;color:#666">₹20.77</td>
+<td style="text-align:right;color:#666">₹nan</td>
+<td style="text-align:right;color:#666">0.0528</td>
+<td style="text-align:center"><span style="color:#444;">—</span></td>
+<td style="text-align:center"><span style="color:#97C459;font-weight:700;">✓</span></td>
+<td style="text-align:center"><span style="color:#97C459;font-weight:700;">✓</span></td>
+<td style="text-align:center"><span style="color:#97C459;font-weight:700;">✓</span></td>
+<td style="text-align:center"><span style="color:#97C459;font-weight:700;">✓</span></td>
+<td style="color:#FAC775;text-align:center">5/6</td>
+<td style="color:#555">2.2Cr</td>
+<td style="color:#555">31/03/2026</td>
+<td style="color:#555">01:16:33 pm</td>
+</tr><tr>
+<td style="color:#555">8</td>
+<td style="color:#FAC775;font-weight:700;font-size:13px">JAINREC</td>
+<td><span style="background:rgba(186,117,23,0.2);color:#FAC775;border:0.5px solid rgba(186,117,23,0.4);padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;">NEAR SIGNAL</span></td>
+<td style="color:#FAC775">Daily</td>
+<td style="text-align:right">₹456.5</td>
+<td style="text-align:right;color:#e8e6e0">69.3</td>
+<td style="text-align:right;color:#666">₹445.81</td>
+<td style="text-align:right;color:#666">₹431.54</td>
+<td style="text-align:right;color:#666">₹nan</td>
+<td style="text-align:right;color:#666">15.6704</td>
+<td style="text-align:center"><span style="color:#444;">—</span></td>
+<td style="text-align:center"><span style="color:#97C459;font-weight:700;">✓</span></td>
+<td style="text-align:center"><span style="color:#97C459;font-weight:700;">✓</span></td>
+<td style="text-align:center"><span style="color:#97C459;font-weight:700;">✓</span></td>
+<td style="text-align:center"><span style="color:#97C459;font-weight:700;">✓</span></td>
+<td style="color:#FAC775;text-align:center">5/6</td>
+<td style="color:#555">16.0L</td>
+<td style="color:#555">31/03/2026</td>
+<td style="color:#555">01:16:58 pm</td>
+</tr><tr>
+<td style="color:#555">9</td>
+<td style="color:#FAC775;font-weight:700;font-size:13px">LLOYDSME</td>
+<td><span style="background:rgba(186,117,23,0.2);color:#FAC775;border:0.5px solid rgba(186,117,23,0.4);padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;">NEAR SIGNAL</span></td>
+<td style="color:#FAC775">Daily</td>
+<td style="text-align:right">₹1271.7</td>
+<td style="text-align:right;color:#e8e6e0">55.8</td>
+<td style="text-align:right;color:#666">₹1246.04</td>
+<td style="text-align:right;color:#666">₹1225.16</td>
+<td style="text-align:right;color:#666">₹nan</td>
+<td style="text-align:right;color:#666">19.0437</td>
+<td style="text-align:center"><span style="color:#444;">—</span></td>
+<td style="text-align:center"><span style="color:#97C459;font-weight:700;">✓</span></td>
+<td style="text-align:center"><span style="color:#97C459;font-weight:700;">✓</span></td>
+<td style="text-align:center"><span style="color:#97C459;font-weight:700;">✓</span></td>
+<td style="text-align:center"><span style="color:#97C459;font-weight:700;">✓</span></td>
+<td style="color:#FAC775;text-align:center">5/6</td>
+<td style="color:#555">7.2L</td>
+<td style="color:#555">31/03/2026</td>
+<td style="color:#555">01:17:25 pm</td>
+</tr><tr>
+<td style="color:#555">10</td>
+<td style="color:#FAC775;font-weight:700;font-size:13px">NLCINDIA</td>
+<td><span style="background:rgba(186,117,23,0.2);color:#FAC775;border:0.5px solid rgba(186,117,23,0.4);padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;">NEAR SIGNAL</span></td>
+<td style="color:#FAC775">Daily</td>
+<td style="text-align:right">₹268.6</td>
+<td style="text-align:right;color:#e8e6e0">56.6</td>
+<td style="text-align:right;color:#666">₹263.21</td>
+<td style="text-align:right;color:#666">₹260.53</td>
+<td style="text-align:right;color:#666">₹nan</td>
+<td style="text-align:right;color:#666">2.5995</td>
+<td style="text-align:center"><span style="color:#444;">—</span></td>
+<td style="text-align:center"><span style="color:#97C459;font-weight:700;">✓</span></td>
+<td style="text-align:center"><span style="color:#97C459;font-weight:700;">✓</span></td>
+<td style="text-align:center"><span style="color:#97C459;font-weight:700;">✓</span></td>
+<td style="text-align:center"><span style="color:#97C459;font-weight:700;">✓</span></td>
+<td style="color:#FAC775;text-align:center">5/6</td>
+<td style="color:#555">27.6L</td>
+<td style="color:#555">31/03/2026</td>
+<td style="color:#555">01:17:45 pm</td>
+</tr><tr>
+<td style="color:#555">11</td>
+<td style="color:#FAC775;font-weight:700;font-size:13px">ONGC</td>
+<td><span style="background:rgba(186,117,23,0.2);color:#FAC775;border:0.5px solid rgba(186,117,23,0.4);padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;">NEAR SIGNAL</span></td>
+<td style="color:#FAC775">Daily</td>
+<td style="text-align:right">₹284.65</td>
+<td style="text-align:right;color:#e8e6e0">66.4</td>
+<td style="text-align:right;color:#666">₹273.05</td>
+<td style="text-align:right;color:#666">₹270.85</td>
+<td style="text-align:right;color:#666">₹nan</td>
+<td style="text-align:right;color:#666">2.6602</td>
+<td style="text-align:center"><span style="color:#444;">—</span></td>
+<td style="text-align:center"><span style="color:#97C459;font-weight:700;">✓</span></td>
+<td style="text-align:center"><span style="color:#97C459;font-weight:700;">✓</span></td>
+<td style="text-align:center"><span style="color:#97C459;font-weight:700;">✓</span></td>
+<td style="text-align:center"><span style="color:#97C459;font-weight:700;">✓</span></td>
+<td style="color:#FAC775;text-align:center">5/6</td>
+<td style="color:#555">3.0Cr</td>
+<td style="color:#555">31/03/2026</td>
+<td style="color:#555">01:17:57 pm</td>
+</tr><tr>
+<td style="color:#555">12</td>
+<td style="color:#FAC775;font-weight:700;font-size:13px">PREMIERENE</td>
+<td><span style="background:rgba(186,117,23,0.2);color:#FAC775;border:0.5px solid rgba(186,117,23,0.4);padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;">NEAR SIGNAL</span></td>
+<td style="color:#FAC775">Daily</td>
+<td style="text-align:right">₹891.65</td>
+<td style="text-align:right;color:#e8e6e0">68.9</td>
+<td style="text-align:right;color:#666">₹864.63</td>
+<td style="text-align:right;color:#666">₹827.99</td>
+<td style="text-align:right;color:#666">₹nan</td>
+<td style="text-align:right;color:#666">37.1801</td>
+<td style="text-align:center"><span style="color:#444;">—</span></td>
+<td style="text-align:center"><span style="color:#97C459;font-weight:700;">✓</span></td>
+<td style="text-align:center"><span style="color:#97C459;font-weight:700;">✓</span></td>
+<td style="text-align:center"><span style="color:#97C459;font-weight:700;">✓</span></td>
+<td style="text-align:center"><span style="color:#97C459;font-weight:700;">✓</span></td>
+<td style="color:#FAC775;text-align:center">5/6</td>
+<td style="color:#555">26.0L</td>
+<td style="color:#555">31/03/2026</td>
+<td style="color:#555">01:18:19 pm</td>
+</tr><tr>
+<td style="color:#555">13</td>
+<td style="color:#FAC775;font-weight:700;font-size:13px">WAAREEENER</td>
+<td><span style="background:rgba(186,117,23,0.2);color:#FAC775;border:0.5px solid rgba(186,117,23,0.4);padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;">NEAR SIGNAL</span></td>
+<td style="color:#FAC775">Daily</td>
+<td style="text-align:right">₹3109.8</td>
+<td style="text-align:right;color:#e8e6e0">60.2</td>
+<td style="text-align:right;color:#666">₹3047.6</td>
+<td style="text-align:right;color:#666">₹2963.93</td>
+<td style="text-align:right;color:#666">₹nan</td>
+<td style="text-align:right;color:#666">81.0187</td>
+<td style="text-align:center"><span style="color:#444;">—</span></td>
+<td style="text-align:center"><span style="color:#97C459;font-weight:700;">✓</span></td>
+<td style="text-align:center"><span style="color:#97C459;font-weight:700;">✓</span></td>
+<td style="text-align:center"><span style="color:#97C459;font-weight:700;">✓</span></td>
+<td style="text-align:center"><span style="color:#97C459;font-weight:700;">✓</span></td>
+<td style="color:#FAC775;text-align:center">5/6</td>
+<td style="color:#555">21.3L</td>
+<td style="color:#555">31/03/2026</td>
+<td style="color:#555">01:19:34 pm</td>
+</tr><tr>
+<td style="color:#555">14</td>
+<td style="color:#FAC775;font-weight:700;font-size:13px">CPPLUS</td>
+<td><span style="background:rgba(186,117,23,0.2);color:#FAC775;border:0.5px solid rgba(186,117,23,0.4);padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;">NEAR SIGNAL</span></td>
+<td style="color:#FAC775">Daily</td>
+<td style="text-align:right">₹1798.3</td>
+<td style="text-align:right;color:#e8e6e0">63.3</td>
+<td style="text-align:right;color:#666">₹1725.17</td>
+<td style="text-align:right;color:#666">₹1674.87</td>
+<td style="text-align:right;color:#666">₹nan</td>
+<td style="text-align:right;color:#666">55.5479</td>
+<td style="text-align:center"><span style="color:#444;">—</span></td>
+<td style="text-align:center"><span style="color:#97C459;font-weight:700;">✓</span></td>
+<td style="text-align:center"><span style="color:#97C459;font-weight:700;">✓</span></td>
+<td style="text-align:center"><span style="color:#97C459;font-weight:700;">✓</span></td>
+<td style="text-align:center"><span style="color:#97C459;font-weight:700;">✓</span></td>
+<td style="color:#FAC775;text-align:center">4/6</td>
+<td style="color:#555">3.3L</td>
+<td style="color:#555">31/03/2026</td>
+<td style="color:#555">01:14:00 pm</td>
+</tr><tr>
+<td style="color:#555">15</td>
+<td style="color:#FAC775;font-weight:700;font-size:13px">ASTERDM</td>
+<td><span style="background:rgba(186,117,23,0.2);color:#FAC775;border:0.5px solid rgba(186,117,23,0.4);padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;">NEAR SIGNAL</span></td>
+<td style="color:#FAC775">Daily</td>
+<td style="text-align:right">₹670.0</td>
+<td style="text-align:right;color:#e8e6e0">58.7</td>
+<td style="text-align:right;color:#666">₹653.39</td>
+<td style="text-align:right;color:#666">₹648.16</td>
+<td style="text-align:right;color:#666">₹nan</td>
+<td style="text-align:right;color:#666">7.9536</td>
+<td style="text-align:center"><span style="color:#444;">—</span></td>
+<td style="text-align:center"><span style="color:#97C459;font-weight:700;">✓</span></td>
+<td style="text-align:center"><span style="color:#97C459;font-weight:700;">✓</span></td>
+<td style="text-align:center"><span style="color:#444;">—</span></td>
+<td style="text-align:center"><span style="color:#97C459;font-weight:700;">✓</span></td>
+<td style="color:#FAC775;text-align:center">4/6</td>
+<td style="color:#555">9.7L</td>
+<td style="color:#555">31/03/2026</td>
+<td style="color:#555">01:14:17 pm</td>
+</tr><tr>
+<td style="color:#555">16</td>
+<td style="color:#FAC775;font-weight:700;font-size:13px">ATHERENERG</td>
+<td><span style="background:rgba(186,117,23,0.2);color:#FAC775;border:0.5px solid rgba(186,117,23,0.4);padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;">NEAR SIGNAL</span></td>
+<td style="color:#FAC775">Daily</td>
+<td style="text-align:right">₹754.0</td>
+<td style="text-align:right;color:#e8e6e0">56.0</td>
+<td style="text-align:right;color:#666">₹754.98</td>
+<td style="text-align:right;color:#666">₹736.03</td>
+<td style="text-align:right;color:#666">₹nan</td>
+<td style="text-align:right;color:#666">20.6839</td>
+<td style="text-align:center"><span style="color:#444;">—</span></td>
+<td style="text-align:center"><span style="color:#97C459;font-weight:700;">✓</span></td>
+<td style="text-align:center"><span style="color:#444;">—</span></td>
+<td style="text-align:center"><span style="color:#97C459;font-weight:700;">✓</span></td>
+<td style="text-align:center"><span style="color:#97C459;font-weight:700;">✓</span></td>
+<td style="color:#FAC775;text-align:center">4/6</td>
+<td style="color:#555">25.6L</td>
+<td style="color:#555">31/03/2026</td>
+<td style="color:#555">01:14:19 pm</td>
+</tr><tr>
+<td style="color:#555">17</td>
+<td style="color:#FAC775;font-weight:700;font-size:13px">BALRAMCHIN</td>
+<td><span style="background:rgba(186,117,23,0.2);color:#FAC775;border:0.5px solid rgba(186,117,23,0.4);padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;">NEAR SIGNAL</span></td>
+<td style="color:#FAC775">Daily</td>
+<td style="text-align:right">₹497.1</td>
+<td style="text-align:right;color:#e8e6e0">56.6</td>
+<td style="text-align:right;color:#666">₹489.86</td>
+<td style="text-align:right;color:#666">₹483.63</td>
+<td style="text-align:right;color:#666">₹nan</td>
+<td style="text-align:right;color:#666">8.2868</td>
+<td style="text-align:center"><span style="color:#444;">—</span></td>
+<td style="text-align:center"><span style="color:#97C459;font-weight:700;">✓</span></td>
+<td style="text-align:center"><span style="color:#97C459;font-weight:700;">✓</span></td>
+<td style="text-align:center"><span style="color:#444;">—</span></td>
+<td style="text-align:center"><span style="color:#97C459;font-weight:700;">✓</span></td>
+<td style="color:#FAC775;text-align:center">4/6</td>
+<td style="color:#555">13.7L</td>
+<td style="color:#555">31/03/2026</td>
+<td style="color:#555">01:14:29 pm</td>
+</tr><tr>
+<td style="color:#555">18</td>
+<td style="color:#FAC775;font-weight:700;font-size:13px">DCMSHRIRAM</td>
+<td><span style="background:rgba(186,117,23,0.2);color:#FAC775;border:0.5px solid rgba(186,117,23,0.4);padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;">NEAR SIGNAL</span></td>
+<td style="color:#FAC775">Daily</td>
+<td style="text-align:right">₹1116.5</td>
+<td style="text-align:right;color:#e8e6e0">59.2</td>
+<td style="text-align:right;color:#666">₹1077.23</td>
+<td style="text-align:right;color:#666">₹1067.04</td>
+<td style="text-align:right;color:#666">₹nan</td>
+<td style="text-align:right;color:#666">3.0629</td>
+<td style="text-align:center"><span style="color:#444;">—</span></td>
+<td style="text-align:center"><span style="color:#97C459;font-weight:700;">✓</span></td>
+<td style="text-align:center"><span style="color:#97C459;font-weight:700;">✓</span></td>
+<td style="text-align:center"><span style="color:#97C459;font-weight:700;">✓</span></td>
+<td style="text-align:center"><span style="color:#97C459;font-weight:700;">✓</span></td>
+<td style="color:#FAC775;text-align:center">4/6</td>
+<td style="color:#555">81143</td>
+<td style="color:#555">31/03/2026</td>
+<td style="color:#555">01:15:17 pm</td>
+</tr><tr>
+<td style="color:#555">19</td>
+<td style="color:#FAC775;font-weight:700;font-size:13px">EMCURE</td>
+<td><span style="background:rgba(186,117,23,0.2);color:#FAC775;border:0.5px solid rgba(186,117,23,0.4);padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;">NEAR SIGNAL</span></td>
+<td style="color:#FAC775">Daily</td>
+<td style="text-align:right">₹1595.5</td>
+<td style="text-align:right;color:#e8e6e0">58.8</td>
+<td style="text-align:right;color:#666">₹1548.69</td>
+<td style="text-align:right;color:#666">₹1519.08</td>
+<td style="text-align:right;color:#666">₹nan</td>
+<td style="text-align:right;color:#666">28.5058</td>
+<td style="text-align:center"><span style="color:#444;">—</span></td>
+<td style="text-align:center"><span style="color:#97C459;font-weight:700;">✓</span></td>
+<td style="text-align:center"><span style="color:#97C459;font-weight:700;">✓</span></td>
+<td style="text-align:center"><span style="color:#97C459;font-weight:700;">✓</span></td>
+<td style="text-align:center"><span style="color:#97C459;font-weight:700;">✓</span></td>
+<td style="color:#FAC775;text-align:center">4/6</td>
+<td style="color:#555">4.0L</td>
+<td style="color:#555">31/03/2026</td>
+<td style="color:#555">01:15:40 pm</td>
+</tr><tr>
+<td style="color:#555">20</td>
+<td style="color:#FAC775;font-weight:700;font-size:13px">GPIL</td>
+<td><span style="background:rgba(186,117,23,0.2);color:#FAC775;border:0.5px solid rgba(186,117,23,0.4);padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;">NEAR SIGNAL</span></td>
+<td style="color:#FAC775">Daily</td>
+<td style="text-align:right">₹268.8</td>
+<td style="text-align:right;color:#e8e6e0">54.7</td>
+<td style="text-align:right;color:#666">₹263.98</td>
+<td style="text-align:right;color:#666">₹261.13</td>
+<td style="text-align:right;color:#666">₹nan</td>
+<td style="text-align:right;color:#666">2.526</td>
+<td style="text-align:center"><span style="color:#444;">—</span></td>
+<td style="text-align:center"><span style="color:#97C459;font-weight:700;">✓</span></td>
+<td style="text-align:center"><span style="color:#97C459;font-weight:700;">✓</span></td>
+<td style="text-align:center"><span style="color:#97C459;font-weight:700;">✓</span></td>
+<td style="text-align:center"><span style="color:#444;">—</span></td>
+<td style="color:#FAC775;text-align:center">4/6</td>
+<td style="color:#555">22.5L</td>
+<td style="color:#555">31/03/2026</td>
+<td style="color:#555">01:16:01 pm</td>
+</tr></tbody>
+    </table>
+    <div class="empty" id="empty" style="display:none">No setups match filter</div>
   </div>
 
   <footer>
     <span>ZENPRO2026 · PRO MEMBERS · EDUCATIONAL ONLY · NOT SEBI REGISTERED</span>
-    <span id="fc">—</span>
+    <span>20 setups · 31 Mar 2026 · 01:19 PM</span>
     <span>shankarji.co.in</span>
   </footer>
 </div>
 
 <script>
-// ── PASSWORD CONFIG ──────────────────────────────────────────
-// Change this to your Pro members password
-const PRO_PASSWORD = "zenpro2026pro";
-// Data URL — your GitHub Pages JSON
-const DATA_URL = "https://tesladons-blip.github.io/Zen-market-scanner/data/signals_latest.json";
-// Fallback to root data.json if subfolder not found
-// ─────────────────────────────────────────────────────────────
+const PWD="zenpro2026pro";
+const ROWS=[{"Date": "31/03/2026", "Symbol": "ACMESOLAR", "Price (Rs)": 261.61, "200 EMA": null, "Above 200EMA": "NO", "Avg Volume": "25.7L", "Today Volume": "20.6L", "RSI": 59.7, "MACD": 7.9956, "EMA10": 252.46, "EMA21": 245.03, "Signal": "WATCH", "Timeframe": "Daily", "Scan Time": "01:13:45 pm", "EMA Cross": "YES", "Price>EMA10": "YES", "MACD Cross": "YES", "RSI Cross 60": "YES", "Score": "5/6"}, {"Date": "31/03/2026", "Symbol": "ACUTAAS", "Price (Rs)": 2558.6, "200 EMA": null, "Above 200EMA": "NO", "Avg Volume": "5.1L", "Today Volume": "4.1L", "RSI": 68.0, "MACD": 118.4884, "EMA10": 2401.33, "EMA21": 2295.39, "Signal": "WATCH", "Timeframe": "Daily", "Scan Time": "01:13:52 pm", "EMA Cross": "YES", "Price>EMA10": "YES", "MACD Cross": "YES", "RSI Cross 60": "YES", "Score": "5/6"}, {"Date": "31/03/2026", "Symbol": "AUROPHARMA", "Price (Rs)": 1304.4, "200 EMA": null, "Above 200EMA": "NO", "Avg Volume": "15.9L", "Today Volume": "24.7L", "RSI": 60.9, "MACD": 27.0645, "EMA10": 1289.14, "EMA21": 1266.51, "Signal": "WATCH", "Timeframe": "Daily", "Scan Time": "01:14:20 pm", "EMA Cross": "YES", "Price>EMA10": "YES", "MACD Cross": "YES", "RSI Cross 60": "YES", "Score": "5/6"}, {"Date": "31/03/2026", "Symbol": "DMART", "Price (Rs)": 3956.8, "200 EMA": null, "Above 200EMA": "NO", "Avg Volume": "6.1L", "Today Volume": "17.4L", "RSI": 57.7, "MACD": 2.843, "EMA10": 3853.86, "EMA21": 3849.2, "Signal": "WATCH", "Timeframe": "Daily", "Scan Time": "01:14:21 pm", "EMA Cross": "YES", "Price>EMA10": "YES", "MACD Cross": "YES", "RSI Cross 60": "YES", "Score": "5/6"}, {"Date": "31/03/2026", "Symbol": "GRANULES", "Price (Rs)": 620.4, "200 EMA": null, "Above 200EMA": "NO", "Avg Volume": "9.1L", "Today Volume": "12.4L", "RSI": 61.0, "MACD": 9.8316, "EMA10": 602.55, "EMA21": 592.11, "Signal": "WATCH", "Timeframe": "Daily", "Scan Time": "01:16:04 pm", "EMA Cross": "YES", "Price>EMA10": "YES", "MACD Cross": "YES", "RSI Cross 60": "YES", "Score": "5/6"}, {"Date": "31/03/2026", "Symbol": "HONASA", "Price (Rs)": 298.25, "200 EMA": null, "Above 200EMA": "NO", "Avg Volume": "6.6L", "Today Volume": "6.7L", "RSI": 56.9, "MACD": 0.3591, "EMA10": 289.07, "EMA21": 288.1, "Signal": "WATCH", "Timeframe": "Daily", "Scan Time": "01:16:24 pm", "EMA Cross": "YES", "Price>EMA10": "YES", "MACD Cross": "YES", "RSI Cross 60": "YES", "Score": "5/6"}, {"Date": "31/03/2026", "Symbol": "IRB", "Price (Rs)": 22.14, "200 EMA": null, "Above 200EMA": "NO", "Avg Volume": "2.2Cr", "Today Volume": "10.5Cr", "RSI": 65.2, "MACD": 0.0528, "EMA10": 20.85, "EMA21": 20.77, "Signal": "WATCH", "Timeframe": "Daily", "Scan Time": "01:16:33 pm", "EMA Cross": "YES", "Price>EMA10": "YES", "MACD Cross": "YES", "RSI Cross 60": "YES", "Score": "5/6"}, {"Date": "31/03/2026", "Symbol": "JAINREC", "Price (Rs)": 456.5, "200 EMA": null, "Above 200EMA": "NO", "Avg Volume": "16.0L", "Today Volume": "16.6L", "RSI": 69.3, "MACD": 15.6704, "EMA10": 445.81, "EMA21": 431.54, "Signal": "WATCH", "Timeframe": "Daily", "Scan Time": "01:16:58 pm", "EMA Cross": "YES", "Price>EMA10": "YES", "MACD Cross": "YES", "RSI Cross 60": "YES", "Score": "5/6"}, {"Date": "31/03/2026", "Symbol": "LLOYDSME", "Price (Rs)": 1271.7, "200 EMA": null, "Above 200EMA": "NO", "Avg Volume": "7.2L", "Today Volume": "4.7L", "RSI": 55.8, "MACD": 19.0437, "EMA10": 1246.04, "EMA21": 1225.16, "Signal": "WATCH", "Timeframe": "Daily", "Scan Time": "01:17:25 pm", "EMA Cross": "YES", "Price>EMA10": "YES", "MACD Cross": "YES", "RSI Cross 60": "YES", "Score": "5/6"}, {"Date": "31/03/2026", "Symbol": "NLCINDIA", "Price (Rs)": 268.6, "200 EMA": null, "Above 200EMA": "NO", "Avg Volume": "27.6L", "Today Volume": "34.8L", "RSI": 56.6, "MACD": 2.5995, "EMA10": 263.21, "EMA21": 260.53, "Signal": "WATCH", "Timeframe": "Daily", "Scan Time": "01:17:45 pm", "EMA Cross": "YES", "Price>EMA10": "YES", "MACD Cross": "YES", "RSI Cross 60": "YES", "Score": "5/6"}, {"Date": "31/03/2026", "Symbol": "ONGC", "Price (Rs)": 284.65, "200 EMA": null, "Above 200EMA": "NO", "Avg Volume": "3.0Cr", "Today Volume": "4.5Cr", "RSI": 66.4, "MACD": 2.6602, "EMA10": 273.05, "EMA21": 270.85, "Signal": "WATCH", "Timeframe": "Daily", "Scan Time": "01:17:57 pm", "EMA Cross": "YES", "Price>EMA10": "YES", "MACD Cross": "YES", "RSI Cross 60": "YES", "Score": "5/6"}, {"Date": "31/03/2026", "Symbol": "PREMIERENE", "Price (Rs)": 891.65, "200 EMA": null, "Above 200EMA": "NO", "Avg Volume": "26.0L", "Today Volume": "20.4L", "RSI": 68.9, "MACD": 37.1801, "EMA10": 864.63, "EMA21": 827.99, "Signal": "WATCH", "Timeframe": "Daily", "Scan Time": "01:18:19 pm", "EMA Cross": "YES", "Price>EMA10": "YES", "MACD Cross": "YES", "RSI Cross 60": "YES", "Score": "5/6"}, {"Date": "31/03/2026", "Symbol": "WAAREEENER", "Price (Rs)": 3109.8, "200 EMA": null, "Above 200EMA": "NO", "Avg Volume": "21.3L", "Today Volume": "18.0L", "RSI": 60.2, "MACD": 81.0187, "EMA10": 3047.6, "EMA21": 2963.93, "Signal": "WATCH", "Timeframe": "Daily", "Scan Time": "01:19:34 pm", "EMA Cross": "YES", "Price>EMA10": "YES", "MACD Cross": "YES", "RSI Cross 60": "YES", "Score": "5/6"}, {"Date": "31/03/2026", "Symbol": "CPPLUS", "Price (Rs)": 1798.3, "200 EMA": null, "Above 200EMA": "NO", "Avg Volume": "3.3L", "Today Volume": "3.0L", "RSI": 63.3, "MACD": 55.5479, "EMA10": 1725.17, "EMA21": 1674.87, "Signal": "WATCH", "Timeframe": "Daily", "Scan Time": "01:14:00 pm", "EMA Cross": "YES", "Price>EMA10": "YES", "MACD Cross": "YES", "RSI Cross 60": "YES", "Score": "4/6"}, {"Date": "31/03/2026", "Symbol": "ASTERDM", "Price (Rs)": 670.0, "200 EMA": null, "Above 200EMA": "NO", "Avg Volume": "9.7L", "Today Volume": "7.7L", "RSI": 58.7, "MACD": 7.9536, "EMA10": 653.39, "EMA21": 648.16, "Signal": "WATCH", "Timeframe": "Daily", "Scan Time": "01:14:17 pm", "EMA Cross": "YES", "Price>EMA10": "YES", "MACD Cross": "NO", "RSI Cross 60": "YES", "Score": "4/6"}, {"Date": "31/03/2026", "Symbol": "ATHERENERG", "Price (Rs)": 754.0, "200 EMA": null, "Above 200EMA": "NO", "Avg Volume": "25.6L", "Today Volume": "36.2L", "RSI": 56.0, "MACD": 20.6839, "EMA10": 754.98, "EMA21": 736.03, "Signal": "WATCH", "Timeframe": "Daily", "Scan Time": "01:14:19 pm", "EMA Cross": "YES", "Price>EMA10": "NO", "MACD Cross": "YES", "RSI Cross 60": "YES", "Score": "4/6"}, {"Date": "31/03/2026", "Symbol": "BALRAMCHIN", "Price (Rs)": 497.1, "200 EMA": null, "Above 200EMA": "NO", "Avg Volume": "13.7L", "Today Volume": "13.8L", "RSI": 56.6, "MACD": 8.2868, "EMA10": 489.86, "EMA21": 483.63, "Signal": "WATCH", "Timeframe": "Daily", "Scan Time": "01:14:29 pm", "EMA Cross": "YES", "Price>EMA10": "YES", "MACD Cross": "NO", "RSI Cross 60": "YES", "Score": "4/6"}, {"Date": "31/03/2026", "Symbol": "DCMSHRIRAM", "Price (Rs)": 1116.5, "200 EMA": null, "Above 200EMA": "NO", "Avg Volume": "81143", "Today Volume": "1.0L", "RSI": 59.2, "MACD": 3.0629, "EMA10": 1077.23, "EMA21": 1067.04, "Signal": "WATCH", "Timeframe": "Daily", "Scan Time": "01:15:17 pm", "EMA Cross": "YES", "Price>EMA10": "YES", "MACD Cross": "YES", "RSI Cross 60": "YES", "Score": "4/6"}, {"Date": "31/03/2026", "Symbol": "EMCURE", "Price (Rs)": 1595.5, "200 EMA": null, "Above 200EMA": "NO", "Avg Volume": "4.0L", "Today Volume": "2.8L", "RSI": 58.8, "MACD": 28.5058, "EMA10": 1548.69, "EMA21": 1519.08, "Signal": "WATCH", "Timeframe": "Daily", "Scan Time": "01:15:40 pm", "EMA Cross": "YES", "Price>EMA10": "YES", "MACD Cross": "YES", "RSI Cross 60": "YES", "Score": "4/6"}, {"Date": "31/03/2026", "Symbol": "GPIL", "Price (Rs)": 268.8, "200 EMA": null, "Above 200EMA": "NO", "Avg Volume": "22.5L", "Today Volume": "21.2L", "RSI": 54.7, "MACD": 2.526, "EMA10": 263.98, "EMA21": 261.13, "Signal": "WATCH", "Timeframe": "Daily", "Scan Time": "01:16:01 pm", "EMA Cross": "YES", "Price>EMA10": "YES", "MACD Cross": "YES", "RSI Cross 60": "NO", "Score": "4/6"}];
+let AF="all";
 
-let ALL=[], AF='all', AT='scanner';
-
-// ── LOGIN ────────────────────────────────────────────────────
-function doLogin(){
-  const pwd = document.getElementById('pwdInp').value;
-  if(pwd === PRO_PASSWORD){
-    document.getElementById('loginScreen').style.display='none';
-    document.getElementById('mainDash').style.display='block';
-    sessionStorage.setItem('zp_auth','1');
-    loadData();
+function login(){
+  if(document.getElementById("pw").value===PWD){
+    document.getElementById("login").style.display="none";
+    document.getElementById("dash").style.display="block";
+    sessionStorage.setItem("zp","1");
   }else{
-    document.getElementById('loginErr').style.display='block';
-    document.getElementById('pwdInp').value='';
-    document.getElementById('pwdInp').focus();
+    document.getElementById("err").style.display="block";
+    document.getElementById("pw").value="";
   }
 }
-function doLogout(){
-  sessionStorage.removeItem('zp_auth');
-  document.getElementById('loginScreen').style.display='flex';
-  document.getElementById('mainDash').style.display='none';
+if(sessionStorage.getItem("zp")==="1"){
+  document.getElementById("login").style.display="none";
+  document.getElementById("dash").style.display="block";
 }
-// Auto-login if session active
-if(sessionStorage.getItem('zp_auth')==='1'){
-  document.getElementById('loginScreen').style.display='none';
-  document.getElementById('mainDash').style.display='block';
-  loadData();
-}
-
-// ── LOAD DATA FROM GITHUB ────────────────────────────────────
-function loadData(){
-  document.getElementById('lastUpd').textContent='Loading...';
-  const urls=[
-    "https://tesladons-blip.github.io/Zen-market-scanner/data/signals_latest.json";
-    "https://raw.githubusercontent.com/tesladons-blip/Zen-market-scanner/main/data.json",
-  ];
-  function tryNext(i){
-    if(i>=urls.length){
-      document.getElementById('lastUpd').textContent='Could not load data — check connection';
-      return;
-    }
-    fetch(urls[i]+'?t='+Date.now())
-      .then(r=>{if(!r.ok)throw new Error('not ok');return r.text();})
-      .then(txt=>{
-        // Fix NaN values which are invalid JSON
-        const clean=txt.replace(/:\s*NaN/g,': null').replace(/:\s*Infinity/g,': null');
-        const data=JSON.parse(clean);
-        ALL=Array.isArray(data)?data.map(norm):(data.signals||[]).map(norm);
-        updateBanner();
-        renderScanner();
-        renderWatchlist();
-        renderJournal();
-        renderBreadth();
-        const now=new Date().toLocaleString('en-IN');
-        document.getElementById('lastUpd').textContent='Updated: '+now;
-        document.getElementById('fc').textContent=ALL.length+' setups loaded';
-      })
-      .catch(()=>tryNext(i+1));
-  }
-  tryNext(0);
-}
-
-// ── NORMALISE DATA ───────────────────────────────────────────
-function norm(r){
-  const g=(keys)=>{
-    for(const k of keys){
-      const found=Object.keys(r).find(c=>c.trim().toLowerCase().replace(/[\s_()₹]/g,'').includes(k));
-      if(found)return(r[found]??'').toString().trim();
-    }
-    return'';
-  };
-  const rnd=(v,d=2)=>{const n=parseFloat(v);return isNaN(n)?'':n.toFixed(d);};
-  const rawSig=(g(['signal','action'])||'').toUpperCase();
-  const sigMap={'BUY':'RSI Cross + MACD Cross + EMA Cross','WATCH':'Near Signal','SELL':'RSI Decline','RSI MOMENTUM':'RSI Cross'};
-  const cleanSig=sigMap[rawSig]||rawSig||'Near Signal';
-  return{
-    symbol   :g(['symbol','stock']),
-    signal   :cleanSig,
-    rawSignal:rawSig,
-    timeframe:g(['timeframe','tf'])||'Daily',
-    price    :rnd(g(['pricers','price','ltp','close'])),
-    rsi      :rnd(g(['rsi']),1),
-    ema10    :rnd(g(['ema10'])),
-    ema21    :rnd(g(['ema21'])),
-    ema200   :rnd(g(['200ema','ema200'])),
-    macd     :rnd(g(['macd']),4),
-    ema200ok :g(['above200ema','above200','aboveema200']),
-    emacross :g(['emacross','emacros']),
-    pe10     :g(['pricema10','priceema10','pe10','pricee10']),
-    macdok   :g(['macdcross','macdbull','macdok']),
-    rsi60    :g(['rsicross60','rsi60','rsicross']),
-    score    :g(['score']),
-    avgvol   :g(['avgvolume','avgvol']),
-    date     :g(['date']),
-    raw:r
-  };
-}
-
-// ── BANNER STATS ─────────────────────────────────────────────
-function updateBanner(){
-  const rsi=ALL.filter(r=>r.rsi60==='YES'||r.rawSignal==='BUY').length;
-  const ema=ALL.filter(r=>r.emacross==='YES').length;
-  const mac=ALL.filter(r=>r.macdok==='YES').length;
-  const dates=ALL.map(r=>r.date).filter(Boolean).sort();
-  document.getElementById('bT').textContent=ALL.length;
-  document.getElementById('bR').textContent=rsi;
-  document.getElementById('bE').textContent=ema;
-  document.getElementById('bM').textContent=mac;
-  document.getElementById('bD').textContent=dates[dates.length-1]||'—';
-}
-
-// ── TAB SWITCHING ────────────────────────────────────────────
-function showTab(name,btn){
-  AT=name;
-  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
-  if(btn)btn.classList.add('active');
-  ['scanner','watchlist','journal','breadth'].forEach(t=>{
-    const el=document.getElementById('tab-'+t);
-    if(el)el.style.display=(t===name?'block':'none');
-  });
-}
+document.getElementById("pw").addEventListener("keydown",e=>{if(e.key==="Enter")login();});
 
 function setF(v,btn){
   AF=v;
-  document.querySelectorAll('.fb').forEach(b=>b.className='fb');
-  btn.className='fb active';
-  renderScanner();
+  document.querySelectorAll(".fb").forEach(b=>b.classList.remove("active"));
+  btn.classList.add("active");
+  render();
 }
 
-function yn(v){
-  return(v||'').toString().toUpperCase()==='YES'
-    ?'<span class="yes">✓</span>'
-    :'<span class="no2">—</span>';
-}
-
-function sigBadge(s){
-  if(s.includes('RSI Cross + MACD'))return'<span class="sig s-rsi">RSI + MACD + EMA</span>';
-  if(s.includes('RSI Cross'))return'<span class="sig s-rsi">RSI Cross 60</span>';
-  if(s.includes('EMA Cross'))return'<span class="sig s-ema">EMA Cross</span>';
-  if(s.includes('MACD'))return'<span class="sig s-macd">MACD Cross</span>';
-  if(s.includes('Near'))return'<span class="sig s-near">Near Signal</span>';
-  if(s.includes('Decline'))return'<span class="sig s-decl">RSI Decline</span>';
-  return'<span class="sig s-near">'+s+'</span>';
-}
-
-// ── SCANNER TAB ──────────────────────────────────────────────
-function renderScanner(){
-  const search=(document.getElementById('si')?.value||'').toLowerCase();
-  const sort=document.getElementById('ss')?.value||'date_desc';
-  let rows=ALL.filter(r=>{
-    const mf=AF==='all'
-      ||(AF==='RSI Cross'&&(r.rsi60==='YES'||r.rawSignal==='BUY'))
-      ||(AF==='EMA Cross'&&r.emacross==='YES')
-      ||(AF==='MACD Cross'&&r.macdok==='YES')
-      ||r.timeframe===AF;
-    const ms=!search||r.symbol.toLowerCase().includes(search);
+function render(){
+  const s=(document.getElementById("si").value||"").toLowerCase();
+  const sort=document.getElementById("ss").value;
+  let rows=[...ROWS].filter(r=>{
+    const mf=AF==="all"||r.Signal===AF||r.Timeframe===AF;
+    const ms=!s||r.Symbol.toLowerCase().includes(s);
     return mf&&ms;
   });
-  if(sort==='symbol')rows.sort((a,b)=>a.symbol.localeCompare(b.symbol));
-  else if(sort==='rsi_desc')rows.sort((a,b)=>parseFloat(b.rsi||0)-parseFloat(a.rsi||0));
-  else if(sort==='score_desc')rows.sort((a,b)=>(parseInt(b.score)||0)-(parseInt(a.score)||0));
-  else rows.sort((a,b)=>(b.date||'').localeCompare(a.date||''));
+  if(sort==="symbol") rows.sort((a,b)=>a.Symbol.localeCompare(b.Symbol));
+  else if(sort==="rsi") rows.sort((a,b)=>parseFloat(b.RSI||0)-parseFloat(a.RSI||0));
+  else if(sort==="score") rows.sort((a,b)=>parseInt(b.Score||0)-parseInt(a.Score||0));
 
-  const body=document.getElementById('scanB');
-  const empty=document.getElementById('scanE');
-  document.getElementById('rc').textContent=rows.length+' setups';
-  if(!rows.length){body.innerHTML='';empty.style.display='block';return;}
-  empty.style.display='none';
-  const tc=t=>t==='Daily'?'tfd':t==='Weekly'?'tfw':'tfm';
-  body.innerHTML=rows.map((r,i)=>`<tr>
-    <td class="t3">${i+1}</td>
-    <td class="sym">${r.symbol}</td>
-    <td>${sigBadge(r.signal)}</td>
-    <td class="${tc(r.timeframe)}">${r.timeframe}</td>
-    <td class="nr">${r.price?'₹'+r.price:'—'}</td>
-    <td class="nr ${parseFloat(r.rsi)>=70?'pd':parseFloat(r.rsi)<=30?'pu':''}">${r.rsi||'—'}</td>
-    <td class="nr t3">${r.ema10?'₹'+r.ema10:'—'}</td>
-    <td class="nr t3">${r.ema21?'₹'+r.ema21:'—'}</td>
-    <td class="nr t3">${r.ema200?'₹'+r.ema200:'—'}</td>
-    <td class="nr t3">${r.macd||'—'}</td>
-    <td>${yn(r.ema200ok)}</td>
-    <td>${yn(r.emacross)}</td>
-    <td>${yn(r.pe10)}</td>
-    <td>${yn(r.macdok)}</td>
-    <td>${yn(r.rsi60)}</td>
-    <td style="color:var(--amberl)">${r.score||'—'}</td>
-    <td class="t3">${r.avgvol||'—'}</td>
-    <td class="t3">${r.date||'—'}</td>
-  </tr>`).join('');
-}
+  document.getElementById("rc").textContent=rows.length+" setups";
+  const tbody=document.getElementById("tbody");
+  const empty=document.getElementById("empty");
 
-// ── WATCHLIST TAB ────────────────────────────────────────────
-function renderWatchlist(){
-  const w=ALL.filter(r=>r.signal.includes('Near')||r.rawSignal==='WATCH');
-  document.getElementById('wc').textContent=w.length+' stocks';
-  const body=document.getElementById('wB');
-  const empty=document.getElementById('wE');
-  if(!w.length){body.innerHTML='';empty.style.display='block';return;}
-  empty.style.display='none';
-  body.innerHTML=w.map((r,i)=>`<tr>
-    <td class="t3">${i+1}</td>
-    <td class="sym">${r.symbol}</td>
-    <td class="nr">${r.price?'₹'+r.price:'—'}</td>
-    <td class="nr">${r.rsi||'—'}</td>
-    <td style="color:var(--amberl)">${r.score||'—'}</td>
-    <td>${yn(r.ema200ok)}</td>
-    <td>${yn(r.emacross)}</td>
-    <td>${yn(r.pe10)}</td>
-    <td>${yn(r.macdok)}</td>
-    <td>${yn(r.rsi60)}</td>
-    <td class="t3">${r.date||'—'}</td>
-  </tr>`).join('');
-}
+  if(!rows.length){
+    tbody.innerHTML="";
+    empty.style.display="block";
+    return;
+  }
+  empty.style.display="none";
 
-// ── JOURNAL TAB ──────────────────────────────────────────────
-function renderJournal(){
-  const entries=ALL.filter(r=>r.rawSignal==='BUY');
-  const exits=ALL.filter(r=>r.rawSignal==='SELL');
-  const body=document.getElementById('jnlB');
-  const empty=document.getElementById('jnlE');
-  const CAP=10000;
-  if(!entries.length){body.innerHTML='';empty.style.display='block';return;}
-  empty.style.display='none';
-  let totalPL=0,wins=0,losses=0;
-  const rows=entries.map((e,i)=>{
-    const exit=exits.find(x=>x.symbol===e.symbol&&x.date>=e.date);
-    const bp=parseFloat(e.price||0);
-    const qty=bp>0?Math.floor(CAP/bp):0;
-    const inv=(qty*bp).toFixed(2);
-    let plRs='—',plPct='—',plC='',status='';
-    if(exit&&bp>0){
-      const sp=parseFloat(exit.price||0);
-      const pl=(sp-bp)*qty;
-      plRs=(pl>=0?'+':'')+pl.toFixed(2);
-      plPct=(((sp-bp)/bp)*100).toFixed(2)+'%';
-      plC=pl>=0?'pu':'pd';
-      status='<span class="sig '+(pl>=0?'s-rsi':'s-decl')+'">'+(pl>=0?'WORKED':'REVIEW')+'</span>';
-      totalPL+=pl; if(pl>=0)wins++;else losses++;
-    }else{
-      status='<span class="sig s-near">ACTIVE</span>';
-    }
-    return`<tr>
-      <td class="t3">${i+1}</td>
-      <td class="sym">${e.symbol}</td>
-      <td class="t3">${e.date||'—'}</td>
-      <td class="nr">${bp?'₹'+bp.toFixed(2):'—'}</td>
-      <td class="nr">${qty||'—'}</td>
-      <td class="nr">₹${inv}</td>
-      <td class="t3">${exit?exit.date:'—'}</td>
-      <td class="nr">${exit?'₹'+parseFloat(exit.price).toFixed(2):'—'}</td>
-      <td class="nr ${plC}">${plRs}</td>
-      <td class="nr ${plC}">${plPct}</td>
-      <td>${status}</td>
-    </tr>`;
-  });
-  body.innerHTML=rows.join('');
-  const wr=entries.length>0?((wins/entries.length)*100).toFixed(0)+'%':'—';
-  document.getElementById('jT').textContent=entries.length;
-  document.getElementById('jW').textContent=wins;
-  document.getElementById('jL').textContent=losses;
-  document.getElementById('jWR').textContent=wr;
-  const el=document.getElementById('jPL');
-  el.textContent=(totalPL>=0?'+':'')+'₹'+totalPL.toFixed(2);
-  el.className='jv '+(totalPL>=0?'g':'r');
-}
+  const yn=v=>v==="YES"?'<span style="color:#97C459;font-weight:700">✓</span>':'<span style="color:#444">—</span>';
+  const sig=s=>s==="BUY"?'<span style="background:rgba(99,153,34,0.2);color:#97C459;border:0.5px solid rgba(99,153,34,0.4);padding:2px 8px;border-radius:10px;font-size:9px;font-weight:700">RSI+MACD+EMA</span>':'<span style="background:rgba(186,117,23,0.2);color:#FAC775;border:0.5px solid rgba(186,117,23,0.4);padding:2px 8px;border-radius:10px;font-size:9px;font-weight:700">NEAR SIGNAL</span>';
+  const tfc=t=>t==="Daily"?"#FAC775":t==="Weekly"?"#5DCAA5":"#85B7EB";
+  const rsic=v=>parseFloat(v||0)>=70?"#F09595":parseFloat(v||0)<=30?"#97C459":"#e8e6e0";
 
-// ── BREADTH TAB ──────────────────────────────────────────────
-function renderBreadth(){
-  const total=ALL.length||1;
-  const above200=ALL.filter(r=>r.ema200ok==='YES').length;
-  const emacross=ALL.filter(r=>r.emacross==='YES').length;
-  const macdpos =ALL.filter(r=>r.macdok==='YES').length;
-  const rsiabove =ALL.filter(r=>parseFloat(r.rsi||0)>=60).length;
-  const full=ALL.filter(r=>r.ema200ok==='YES'&&r.emacross==='YES'&&r.macdok==='YES'&&r.rsi60==='YES').length;
-
-  const pct=(n)=>Math.round((n/total)*100);
-  const setBar=(id,n,tot)=>{
-    const p=Math.round((n/tot)*100);
-    const el=document.getElementById(id);
-    if(el)el.style.width=p+'%';
-  };
-
-  document.getElementById('brAbove200').textContent=above200+' ('+pct(above200)+'%)';
-  document.getElementById('brEMACross').textContent=emacross+' ('+pct(emacross)+'%)';
-  document.getElementById('brMACD').textContent=macdpos+' ('+pct(macdpos)+'%)';
-  document.getElementById('brRSI').textContent=rsiabove+' ('+pct(rsiabove)+'%)';
-  document.getElementById('brFull').textContent=full+' ('+pct(full)+'%)';
-
-  const breadthPct=pct(above200);
-  const trend=breadthPct>=70?'BULLISH':breadthPct>=50?'MIXED':'WEAK';
-  const trendColor=breadthPct>=70?'#97C459':breadthPct>=50?'#FAC775':'#F09595';
-  document.getElementById('brTrend').textContent=trend;
-  document.getElementById('brTrend').style.color=trendColor;
-  document.getElementById('brTrendBar').style.width=breadthPct+'%';
-  document.getElementById('brTrendBar').style.background=trendColor;
-
-  setBar('brAbove200Bar',above200,total);
-  setBar('brEMACrossBar',emacross,total);
-  setBar('brMACDBar',macdpos,total);
-  setBar('brRSIBar',rsiabove,total);
-  setBar('brFullBar',full,total);
+  tbody.innerHTML=rows.map((r,i)=>`<tr>
+    <td style="color:#555">${i+1}</td>
+    <td style="color:#FAC775;font-weight:700;font-size:13px">${r.Symbol}</td>
+    <td>${sig(r.Signal)}</td>
+    <td style="color:${tfc(r.Timeframe)}">${r.Timeframe}</td>
+    <td style="text-align:right">₹${r["Price (Rs)"]||"—"}</td>
+    <td style="text-align:right;color:${rsic(r.RSI)}">${r.RSI||"—"}</td>
+    <td style="text-align:right;color:#666">₹${r.EMA10||"—"}</td>
+    <td style="text-align:right;color:#666">₹${r.EMA21||"—"}</td>
+    <td style="text-align:right;color:#666">₹${r["200 EMA"]||"—"}</td>
+    <td style="text-align:right;color:#666">${r.MACD||"—"}</td>
+    <td style="text-align:center">${yn(r["Above 200EMA"])}</td>
+    <td style="text-align:center">${yn(r["EMA Cross"])}</td>
+    <td style="text-align:center">${yn(r["Price>EMA10"])}</td>
+    <td style="text-align:center">${yn(r["MACD Cross"])}</td>
+    <td style="text-align:center">${yn(r["RSI Cross 60"])}</td>
+    <td style="color:#FAC775;text-align:center">${r.Score||"—"}</td>
+    <td style="color:#555">${r["Avg Volume"]||"—"}</td>
+    <td style="color:#555">${r.Date||"—"}</td>
+    <td style="color:#555">${r["Scan Time"]||"—"}</td>
+  </tr>`).join("");
 }
 </script>
 </body>
