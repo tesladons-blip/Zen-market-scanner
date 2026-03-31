@@ -1,5 +1,5 @@
 {
-  "last_updated": "31-Mar-2026",
+  "last_updated": "2026-03-31 18:15",
   "members": [
     {
       "name": "Test Member",
@@ -8,6 +8,16 @@
       "plan": "Monthly",
       "joined": "2026-03-31",
       "expires": "2026-12-31",
+      "days": 30,
+      "active": true
+    },
+    {
+      "name": "Shankar Ji",
+      "phone": "9445951115",
+      "password": "ZP-ZXS1P-VEYNC",
+      "plan": "Monthly",
+      "joined": "2026-03-31",
+      "expires": "2026-04-30",
       "days": 30,
       "active": true
     }
